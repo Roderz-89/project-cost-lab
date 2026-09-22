@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All projects — Project Cost Lab</title>
+  <meta name="description" content="Catalogue of compiled 2026 UK home-project cost types used in the Project Cost Lab calculator.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html">
+        <span class="mark">PC</span>
+        <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#calculator">Calculator</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="guides/index.html">Guides</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <main class="section">
+    <div class="wrap">
+      <p class="badge">CATALOGUE</p>
+      <h1>Projects in this lab</h1>
+      <p class="lede-plain">Compiled September 2026 mid points before spec, region, VAT and contingency. Open a row to run it with your size and extras. Not a price book for a postcode.</p>
+      <div class="cat-row" id="filter-row"></div>
+      <div style="overflow:auto;margin-top:16px;">
+        <table class="project-table" id="project-table">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>How it scales</th>
+              <th>Default size</th>
+              <th>Compiled mid before factors</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="hint" style="margin-top:16px;">Whole-job items show a lump mid. Area, run and unit items show mid × default quantity.</p>
+    </div>
+  </main>
+  <footer>
+    <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Draft — not submitted for indexing.</div>
+  </footer>
+  <script src="js/costs.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const lab = window.ProjectCostLab;
+      if (!lab) return;
+      const body = document.querySelector("#project-table tbody");
+      const filters = document.getElementById("filter-row");
+      function midOf(p) {
+        if (p.mode === "lump") return lab.money(p.mid);
+        return lab.money(p.midPer * (p.defaultQty || 1)) + " at default size";
+      }
+      function unitOf(p) {
+        if (p.mode === "lump" && !p.qtyLabel) return "Whole job";
+        return (p.mode === "area" ? "Per m² · " : p.mode === "run" ? "Per metre · " : p.mode === "unit" ? "Per unit · " : "Scales · ") + (p.unit || p.qtyLabel || "");
+      }
+      function draw(cat) {
+        const list = lab.listProjects(cat || "all");
+        body.innerHTML = list.map(function (p) {
+          return "<tr><td><a href='index.html#calculator?p=" + p.id + "'>" + p.label + "</a><div class='hint'>" + p.note + "</div></td><td>" + unitOf(p) + "</td><td>" + (p.defaultQty ? p.defaultQty + " " + (p.unit || "") : "—") + "</td><td>" + midOf(p) + "</td></tr>";
+        }).join("");
+      }
+      filters.innerHTML = lab.CATS.map(function (c, i) {
+        return '<button type="button" class="cat-chip" data-cat="' + c.id + '" aria-pressed="' + (i === 0 ? "true" : "false") + '">' + c.label + "</button>";
+      }).join("");
+      filters.addEventListener("click", function (e) {
+        const b = e.target.closest("[data-cat]");
+        if (!b) return;
+        filters.querySelectorAll(".cat-chip").forEach(function (x) {
+          x.setAttribute("aria-pressed", x === b ? "true" : "false");
+        });
+        draw(b.getAttribute("data-cat"));
+      });
+      draw("all");
+    });
+  </script>
+</body>
+</html>
