@@ -3,72 +3,244 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Cost Lab — UK home project cost ranges 2026</title>
-  <meta name="description" content="Illustrative UK cost ranges for loft conversions, extensions, kitchens, bathrooms and boiler swaps. Published by Rodway Labs. Not a quote.">
+  <title>Project Cost Lab — UK home project cost calculator 2026</title>
+  <meta name="description" content="Illustrative UK cost ranges for 40+ home projects. Size, spec, region, access, VAT and extras are editable. Published by Rodway Labs. Not a quote.">
+  <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-row">
-      <a class="brand" href="index.html"><span class="mark">PC</span><span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span></a>
-      <nav><a href="index.html" aria-current="page">Home</a><a href="index.html#calculator">Calculator</a><a href="guides/index.html">Guides</a><a href="about.html">About</a></nav>
+      <a class="brand" href="index.html">
+        <span class="mark">PC</span>
+        <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <nav id="nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="index.html#calculator">Calculator</a>
+        <a href="projects.html">Projects</a>
+        <a href="guides/index.html">Guides</a>
+        <a href="about.html">About</a>
+      </nav>
     </div>
   </header>
-  <div class="trust-bar"><div class="wrap"><span>Free</span><span>No signup</span><span>Not a contractor</span><span>Ranges, not quotes</span><a href="disclaimer.html">Disclaimer</a></div></div>
-  <section class="hero"><div class="wrap hero-grid"><div>
-    <p class="kicker">Planning a loft, kitchen or boiler swap?</p>
-    <h1>Put a range on the works before you collect quotes</h1>
-    <p class="lede">Compiled 2026 UK bands for common home projects, with a London or North factor, 20% VAT and a contingency slider. Illustrative only — not a tender and not a builder.</p>
-    <div class="meta"><span class="avatar">RL</span><span>Published by <strong>Rodway Labs</strong> — not a contractor<br>Project Cost Lab editorial · 21 September 2026 · Ranges last checked September 2026</span></div>
-    <div class="actions"><a class="btn" href="#calculator">Open cost range calculator</a><a class="linkish" href="guides/loft.html">Loft conversion worked range →</a></div>
-  </div><div>
-    <div class="panel"><p style="letter-spacing:.08em;font-size:.72rem;margin:0 0 8px;color:#94a3b8;">POSITIONING</p><h2>The mid figure is a band, not a price</h2><p>Access, spec, region and VAT move the number more than the project name. Use the range to size a budget, then get written quotes.</p><a class="btn" href="#calculator">Estimate a range</a></div>
-    <div class="panel light" style="margin-top:14px;"><h2 style="font-size:1rem;">UK cost tools — illustrative only</h2><p>Not a builder, architect or quantity surveyor. Ranges compiled from 2026 UK trade guides.</p></div>
-  </div></div></section>
-  <section class="calc-section" id="calculator"><div class="wrap"><div class="calc-card">
-    <div class="calc-head"><p class="badge">CALCULATOR</p><h2>Project cost range — 2026 illustration</h2></div>
-    <div class="calc-grid">
-      <form class="calc-form" id="pc-form">
-        <label for="pc-project">Project</label>
-        <select id="pc-project">
-          <option value="loft_dormer" selected>Loft conversion — rear dormer</option>
-          <option value="loft_velux">Loft conversion — Velux / rooflight</option>
-          <option value="ext_single">Single-storey rear extension (~20m²)</option>
-          <option value="kitchen">Kitchen refit (no extension)</option>
-          <option value="bathroom">Bathroom renovation</option>
-          <option value="boiler_combi">Combi boiler like-for-like swap</option>
-        </select>
-        <label for="pc-region">Region factor</label>
-        <select id="pc-region">
-          <option value="uk" selected>UK mid-range</option>
-          <option value="london">London (+25%)</option>
-          <option value="se">South East ex-London (+12%)</option>
-          <option value="north">North / Wales / Scotland (−10%)</option>
-        </select>
-        <label for="pc-vat">VAT</label>
-        <select id="pc-vat"><option value="on" selected>Include 20% VAT</option><option value="off">Show ex-VAT</option></select>
-        <label for="pc-contig">Contingency (<span id="pc-contig-label">10%</span>)</label>
-        <input id="pc-contig" type="range" min="0" max="20" step="5" value="10">
-        <p class="hint">Most work on an existing dwelling is standard-rated. This tool does not decide your VAT treatment.</p>
-      </form>
-      <div class="calc-out">
-        <p class="hint" id="pc-label">—</p>
-        <div class="result-hero" id="pc-mid">—</div>
-        <p class="result-sub" id="pc-meta">—</p>
-        <table class="table"><tr><th>Low in this run</th><td id="pc-low">—</td></tr><tr><th>High in this run</th><td id="pc-high">—</td></tr></table>
-        <p class="method" id="pc-note"></p>
-        <p class="warn">Not a quote. Planning fees, Party Wall awards and professional fees are omitted.</p>
-      </div>
+  <div class="trust-bar">
+    <div class="wrap">
+      <span>Free</span><span>No signup</span><span>Not a contractor</span><span>Ranges, not quotes</span>
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
   </div>
-  <div class="example"><p><span class="badge">EXAMPLE</span> REAR DORMER · UK MID · VAT ON · 10% CONTINGENCY</p><p>Compiled mid £50,000 before factors. After 20% VAT and 10% contingency the illustrated mid is <strong>£66,000</strong>.</p></div>
-  </div></section>
-  <section class="section"><div class="wrap"><h2>Guides with numbers</h2><div class="cards">
-    <a class="card" href="guides/loft.html"><span class="badge">GUIDE</span><h3>Loft conversion ranges</h3><p>Velux versus dormer.</p></a>
-    <a class="card" href="guides/extension.html"><span class="badge">GUIDE</span><h3>Single-storey extension</h3><p>£ per m² is a blunt tool.</p></a>
-    <a class="card" href="guides/boiler.html"><span class="badge">GUIDE</span><h3>Combi swap versus conversion</h3><p>Same name, different job.</p></a>
-  </div></div></section>
-  <footer><div class="wrap foot-grid"><div><h3>Project Cost Lab</h3><p>Independent informational tools from Rodway Labs. Not a contractor.</p></div><div><h3>On this site</h3><ul><li><a href="index.html#calculator">Calculator</a></li><li><a href="guides/index.html">Guides</a></li><li><a href="about.html">About</a></li></ul></div><div><h3>Legal</h3><ul><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab.</div></footer>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Loft, extension, kitchen, heat pump, driveway — or a whole-house refurb?</p>
+        <h1>Put a range on the works before you collect quotes</h1>
+        <p class="lede">Forty-plus compiled 2026 UK project bands. Change the size, spec, region, access, whether you live in, VAT treatment, contingency and optional extras. Illustrative only — not a tender and not a builder.</p>
+        <div class="meta">
+          <span class="avatar">RL</span>
+          <span>Published by <strong>Rodway Labs</strong> — not a contractor<br>Project Cost Lab editorial · 22 September 2026 · Ranges last checked September 2026</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#calculator">Open the range calculator</a>
+          <a class="linkish" href="projects.html">Browse all project types →</a>
+        </div>
+        <div class="steps">
+          <div><span class="num">1</span><strong>Pick a job</strong>40+ UK project types</div>
+          <div><span class="num">2</span><strong>Tune it</strong>Size, spec, access, extras</div>
+          <div><span class="num">3</span><strong>Range</strong>Low / mid / high with VAT</div>
+        </div>
+      </div>
+      <div>
+        <div class="panel">
+          <p style="letter-spacing:.08em;font-size:.72rem;margin:0 0 8px;color:#94a3b8;">POSITIONING</p>
+          <h2>The mid figure is a band, not a price</h2>
+          <p>Access, spec, region, VAT and what you add on move the number more than the project name. Use the range to size a budget, then get written quotes on the same drawing.</p>
+          <a class="btn" href="#calculator">Estimate a range</a>
+        </div>
+        <div class="panel light" style="margin-top:14px;">
+          <h2 style="font-size:1rem;">UK cost tools — illustrative only</h2>
+          <p>Not a builder, architect or quantity surveyor. We do not inspect properties or arrange trades.</p>
+          <p>Ranges compiled from 2026 UK trade guides. Your site will differ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="calc-section" id="calculator">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-head">
+          <p class="badge">CALCULATOR</p>
+          <h2>Project cost range — 2026 illustration</h2>
+          <p class="hint" style="margin:6px 0 0;">Filter a category, then edit every input that applies to that job.</p>
+        </div>
+        <div id="pc-cats" class="cat-row" aria-label="Project categories"></div>
+        <div class="calc-grid">
+          <form class="calc-form" id="pc-form">
+            <label for="pc-project">Project</label>
+            <select id="pc-project"></select>
+            <div id="pc-qty-wrap">
+              <label for="pc-qty" id="pc-qty-label">Size</label>
+              <input id="pc-qty" type="number" min="1" step="1" value="20">
+              <p class="hint" id="pc-qty-hint"></p>
+            </div>
+            <div class="row-2">
+              <div>
+                <label for="pc-spec">Specification</label>
+                <select id="pc-spec">
+                  <option value="budget">Budget — basic fittings, standard labour</option>
+                  <option value="mid" selected>Mid — typical 2026 homeowner spec</option>
+                  <option value="high">High — better materials, more glazing / joinery</option>
+                </select>
+              </div>
+              <div>
+                <label for="pc-region">Region</label>
+                <select id="pc-region">
+                  <option value="uk" selected>UK mid-range</option>
+                  <option value="london_inner">Inner London (+30%)</option>
+                  <option value="london_outer">Outer London (+22%)</option>
+                  <option value="se">South East ex-London (+12%)</option>
+                  <option value="east">East of England (+5%)</option>
+                  <option value="sw">South West (+5%)</option>
+                  <option value="wmids">West Midlands (mid)</option>
+                  <option value="emids">East Midlands (−5%)</option>
+                  <option value="nw">North West (−7%)</option>
+                  <option value="yorks">Yorkshire & Humber (−10%)</option>
+                  <option value="ne">North East (−12%)</option>
+                  <option value="wales">Wales (−10%)</option>
+                  <option value="scotland">Scotland (−7%)</option>
+                  <option value="ni">Northern Ireland (−10%)</option>
+                </select>
+              </div>
+            </div>
+            <div class="row-2">
+              <div>
+                <label for="pc-access">Access</label>
+                <select id="pc-access">
+                  <option value="easy">Easy — parking, skip, side access</option>
+                  <option value="typical" selected>Typical suburban plot</option>
+                  <option value="tight">Tight terrace / no side access</option>
+                </select>
+              </div>
+              <div>
+                <label for="pc-occupied">Occupation</label>
+                <select id="pc-occupied">
+                  <option value="empty">House empty during works</option>
+                  <option value="live_in" selected>Living in during works</option>
+                </select>
+              </div>
+            </div>
+            <div class="row-2">
+              <div>
+                <label for="pc-listed">Listed / conservation</label>
+                <select id="pc-listed">
+                  <option value="no" selected>No extra constraint</option>
+                  <option value="yes">Listed or conservation-area uplift (+15%)</option>
+                </select>
+              </div>
+              <div>
+                <label for="pc-vat">VAT treatment</label>
+                <select id="pc-vat">
+                  <option value="std" selected>Include 20% VAT</option>
+                  <option value="reduced">Include 5% VAT</option>
+                  <option value="zero">0% VAT</option>
+                  <option value="ex">Show ex-VAT</option>
+                </select>
+              </div>
+            </div>
+            <label for="pc-contig">Contingency (<span id="pc-contig-label">10%</span>)</label>
+            <input id="pc-contig" type="range" min="0" max="25" step="5" value="10">
+            <p class="field-kicker">Optional extras for this job</p>
+            <div id="pc-addons" class="addon-grid"></div>
+            <p class="hint">Most work on an existing dwelling is standard-rated. New dwellings and some energy-saving measures can differ — this tool does not decide your VAT treatment.</p>
+            <div class="form-actions">
+              <button class="btn" type="button" id="pc-copy">Copy this range</button>
+              <button class="btn btn-light" type="button" id="pc-reset">Reset</button>
+            </div>
+          </form>
+          <div class="calc-out">
+            <p class="hint" id="pc-label">—</p>
+            <div class="result-hero" id="pc-mid">—</div>
+            <p class="result-sub" id="pc-meta">—</p>
+            <div class="range-track" id="pc-range-bar" aria-hidden="true"><span class="range-mid"></span></div>
+            <table class="table">
+              <tr><th>Low in this run</th><td id="pc-low">—</td></tr>
+              <tr><th>High in this run</th><td id="pc-high">—</td></tr>
+              <tr><th>Size used</th><td id="pc-qty-used">—</td></tr>
+              <tr><th>Typical programme</th><td id="pc-weeks">—</td></tr>
+            </table>
+            <p class="field-kicker">How the mid is built</p>
+            <table class="table">
+              <tr><th>Works (after spec, access, region)</th><td id="pc-row-works">—</td></tr>
+              <tbody id="pc-addon-rows"></tbody>
+              <tr><th>Extras total</th><td id="pc-row-addons">—</td></tr>
+              <tr><th>Subtotal ex-VAT</th><td id="pc-row-exvat">—</td></tr>
+              <tr><th>VAT on this run</th><td id="pc-row-vat">—</td></tr>
+              <tr><th>Contingency</th><td id="pc-row-contig">—</td></tr>
+              <tr><th>Illustrated mid</th><td id="pc-row-total">—</td></tr>
+            </table>
+            <p class="method" id="pc-note"></p>
+            <p class="inc"><strong>Usually in the band.</strong> <span id="pc-includes"></span></p>
+            <p class="exc"><strong>Usually outside the band.</strong> <span id="pc-excludes"></span></p>
+            <p class="warn">Not a quote. Planning fees, Party Wall awards, temporary accommodation, furniture and professional fees are omitted unless you tick them. Ground conditions, asbestos, services diversions and hidden rot sit outside every published range.</p>
+          </div>
+        </div>
+      </div>
+      <div class="example" id="pc-example">
+        <p><span class="badge">EXAMPLE</span> REAR DORMER · UK MID · VAT ON · 10% CONTINGENCY</p>
+        <p>Change any input and this box follows the live run.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>What you can price in this lab</h2>
+      <p class="lede-plain">Each type has its own size unit and extras. Open the catalogue for the compiled mid before factors.</p>
+      <div class="cards cards-4">
+        <a class="card" href="index.html#calculator"><span class="badge">SPACE</span><h3>Lofts & extensions</h3><p>Velux to mansard, rear, side, wraparound, orangery.</p></a>
+        <a class="card" href="index.html#calculator"><span class="badge">ROOMS</span><h3>Kitchen & bath</h3><p>Refit by run length, family bath, ensuite, wet room.</p></a>
+        <a class="card" href="index.html#calculator"><span class="badge">FABRIC</span><h3>Roof to driveway</h3><p>Re-roof, windows, render, EWI, drive, deck, fence.</p></a>
+        <a class="card" href="index.html#calculator"><span class="badge">ENERGY</span><h3>Heat, power, services</h3><p>Boiler, heat pump, PV, battery, EV, rewire, DPC.</p></a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>Guides with numbers</h2>
+      <div class="cards">
+        <a class="card" href="guides/loft.html"><span class="badge">GUIDE</span><h3>Loft conversion ranges</h3><p>Velux versus dormer, hip-to-gable and mansard.</p></a>
+        <a class="card" href="guides/extension.html"><span class="badge">GUIDE</span><h3>Extension £ per m²</h3><p>Why floor area is a blunt tool on its own.</p></a>
+        <a class="card" href="guides/boiler.html"><span class="badge">GUIDE</span><h3>Boiler, heat pump, PV</h3><p>Same plant name, different job.</p></a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <h3>Project Cost Lab</h3>
+        <p>Independent informational tools from Rodway Labs. Not a contractor and not a quote engine.</p>
+        <p><a href="https://takehomelab.co.uk">Take-Home Lab</a> · <a href="https://remortgagelab.co.uk">Remortgage Lab</a> · <a href="https://loancalclab.net">LoanCalc Lab</a></p>
+      </div>
+      <div>
+        <h3>On this site</h3>
+        <ul>
+          <li><a href="index.html#calculator">Calculator</a></li>
+          <li><a href="projects.html">All projects</a></li>
+          <li><a href="guides/index.html">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Ranges last checked September 2026. Draft — not submitted for indexing.</div>
+  </footer>
   <script src="js/costs.js"></script>
 </body>
 </html>
