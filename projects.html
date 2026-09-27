@@ -4,24 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>All projects — Project Cost Lab</title>
-  <meta name="description" content="Catalogue of compiled 2026 UK home-project cost types used in the Project Cost Lab calculator.">
-  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Catalogue of compiled 2026 UK home-project cost types used in the Project Cost Lab calculator. Ranges, not quotes.">
+  <link rel="canonical" href="https://projectcostlab.co.uk/projects">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7612291779397704"
+     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-row">
-      <a class="brand" href="index.html">
+      <a class="brand" href="/">
         <span class="mark">PC</span>
         <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
       <nav id="nav">
-        <a href="index.html">Home</a>
-        <a href="index.html#calculator">Calculator</a>
-        <a href="projects.html" aria-current="page">Projects</a>
-        <a href="guides/index.html">Guides</a>
-        <a href="about.html">About</a>
+        <a href="/">Home</a>
+        <a href="/#calculator">Calculator</a>
+        <a href="/projects" aria-current="page">Projects</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about">About</a>
       </nav>
     </div>
   </header>
@@ -29,7 +31,8 @@
     <div class="wrap">
       <p class="badge">CATALOGUE</p>
       <h1>Projects in this lab</h1>
-      <p class="lede-plain">Compiled September 2026 mid points before spec, region, VAT and contingency. Open a row to run it with your size and extras. Not a price book for a postcode.</p>
+      <p class="lede-plain">Compiled September 2026 mid points before spec, region, VAT and contingency. Open a row to run it with your size and extras. Not a price book for a postcode — and not a quote.</p>
+      <p class="not-quote"><strong>Not a quote.</strong> Figures on this page are illustrative UK cost bands for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
       <div class="cat-row" id="filter-row"></div>
       <div style="overflow:auto;margin-top:16px;">
         <table class="project-table" id="project-table">
@@ -44,11 +47,47 @@
           <tbody></tbody>
         </table>
       </div>
-      <p class="hint" style="margin-top:16px;">Whole-job items show a lump mid. Area, run and unit items show mid × default quantity.</p>
+      <p class="hint" style="margin-top:16px;">Whole-job items show a lump mid. Area, run and unit items show mid × default quantity. Treat every figure as a planning band.</p>
+    <aside class="ad-slot" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-client="ca-pub-7612291779397704"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
     </div>
   </main>
   <footer>
-    <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Draft — not submitted for indexing.</div>
+    <div class="wrap foot-grid">
+      <div>
+        <h3>Project Cost Lab</h3>
+        <p>Independent informational tools from Rodway Labs. Not a contractor, architect or quantity surveyor — and not a quote engine.</p>
+        <p>The mid figure is a band for planning, not a tender. The VAT toggle is a display choice, not a ruling.</p>
+        <p><a href="https://takehomelab.co.uk">Take-Home Lab</a> · <a href="https://remortgagelab.co.uk">Remortgage Lab</a> · <a href="https://loancalclab.net">LoanCalc Lab</a></p>
+      </div>
+      <div>
+        <h3>On this site</h3>
+        <ul>
+          <li><a href="/#calculator">Calculator</a></li>
+          <li><a href="/projects">All projects</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal &amp; ads</h3>
+        <ul>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+          <li><a href="/advertising">Advertising</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Ranges last checked September 2026.</div>
   </footer>
   <script src="js/data.js"></script>
   <script src="js/projects-a.js"></script>
@@ -71,7 +110,7 @@
       function draw(cat) {
         const list = lab.listProjects(cat || "all");
         body.innerHTML = list.map(function (p) {
-          return "<tr><td><a href='index.html#calculator?p=" + p.id + "'>" + p.label + "</a><div class='hint'>" + p.note + "</div></td><td>" + unitOf(p) + "</td><td>" + (p.defaultQty ? p.defaultQty + " " + (p.unit || "") : "—") + "</td><td>" + midOf(p) + "</td></tr>";
+          return "<tr><td><a href='/#calculator?p=" + p.id + "'>" + p.label + "</a><div class='hint'>" + p.note + "</div></td><td>" + unitOf(p) + "</td><td>" + (p.defaultQty ? p.defaultQty + " " + (p.unit || "") : "—") + "</td><td>" + midOf(p) + "</td></tr>";
         }).join("");
       }
       filters.innerHTML = lab.CATS.map(function (c, i) {
@@ -88,5 +127,8 @@
       draw("all");
     });
   </script>
+</body>
+</html>
+
 </body>
 </html>
