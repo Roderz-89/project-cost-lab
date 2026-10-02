@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-Sitemap: https://projectcostlab.co.uk/sitemap.xml
+# Parked 2 Oct 2026. Not for indexing or AdSense review.
+# Worker also sends X-Robots-Tag: noindex, nofollow.
