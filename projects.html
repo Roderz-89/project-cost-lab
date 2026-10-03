@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <title>All projects — Project Cost Lab</title>
   <meta name="description" content="Catalogue of compiled 2026 UK home-project cost types used in the Project Cost Lab calculator. Ranges, not quotes.">
   <link rel="canonical" href="https://projectcostlab.co.uk/projects">
@@ -149,5 +149,14 @@
       draw("all");
     });
   </script>
+
+  <div id="pcl-consent" class="consent" role="region" aria-label="Cookie choices">
+    <p>Choose how this browser remembers cookies. The choice is stored only in localStorage on this device (<code>pcl-consent</code>: all or essential). If you leave this unset, we treat the visit as essential only. Ads are off: we do not load advertising or analytics scripts, and we do not set advertising cookies, whichever you pick. <a href="/cookies">Cookies</a> · <a href="/privacy">Privacy</a></p>
+    <div class="consent-actions">
+      <button type="button" id="pcl-consent-essential">Essential only</button>
+      <button type="button" id="pcl-consent-all">Accept all</button>
+    </div>
+  </div>
+  <script src="/js/consent.js"></script>
 </body>
 </html>

@@ -1,2 +1,2 @@
-# Project Cost Lab is parked — no AdSense authorisation.
-# Site is noindex; do not request AdSense review for this host.
+# Ads are off. This file authorises no seller.
+# No advertising partner is listed until ads are deliberately turned on.

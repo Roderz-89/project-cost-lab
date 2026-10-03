@@ -1,8 +1,7 @@
 /**
- * Project Cost Lab — parked host.
- * www → apex 301. Every response is noindex until the park is lifted.
- * Do not load AdSense on this site.
- * Cache: no-store while parked so policy/ads.txt changes are not sticky at the edge.
+ * Project Cost Lab
+ * www → apex 301. Pages are indexable. Ads stay off — do not load AdSense.
+ * Cache: public, max-age=0, must-revalidate.
  */
 export default {
   async fetch(request, env) {
@@ -14,8 +13,7 @@ export default {
     }
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
-    headers.set("X-Robots-Tag", "noindex, nofollow");
-    headers.set("Cache-Control", "private, no-store");
+    headers.set("Cache-Control", "public, max-age=0, must-revalidate");
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <title>Advertising — Project Cost Lab</title>
   <meta name="description" content="How advertising works on Project Cost Lab. Ads are labelled and never presented as contractor prices.">
   <link rel="canonical" href="https://projectcostlab.co.uk/advertising">
@@ -31,25 +31,25 @@
     <article class="wrap prose">
       <h1>Advertising disclosure</h1>
       <p class="src">Last updated 3 October 2026 · Publisher: Rodway Labs</p>
-      <p><strong>This site is parked.</strong> Project Cost Lab does not currently display third-party advertisements. Ads are off. Ad scripts are not loaded, and the host is not offered as advertising inventory. The lab stays parked until that position is changed on purpose. Nothing on this page turns ads back on.</p>
+      <p><strong>Ads are off.</strong> Project Cost Lab does not currently display third-party advertisements. Ad scripts are not loaded, and the host is not offered as advertising inventory. Nothing on this page turns ads back on. The cookie banner records a choice only; it does not load an ad.</p>
 
       <h2>ads.txt lists no sellers</h2>
-      <p>ads.txt lists no authorised sellers while the lab stays parked. The file at <a href="/ads.txt">/ads.txt</a> is a short note that this host does not authorise digital sellers. It does not name an advertising partner as allowed to sell this site. Do not treat projectcostlab.co.uk as an inventory site, and do not read the file as permission to place ads. If seller lines were ever added, this page would have to say that the file had changed. It has not.</p>
+      <p>ads.txt lists no authorised sellers while ads stay off. The file at <a href="/ads.txt">/ads.txt</a> is a short note that this host does not authorise digital sellers. It does not name an advertising partner, and it does not carry a publisher ID. Do not treat projectcostlab.co.uk as an inventory site, and do not read the file as permission to place ads. If seller lines were ever added, this page would have to say that the file had changed. It has not.</p>
 
       <h2>What “ads off” means on the pages</h2>
       <p>Guides, the calculator, and the policy pages are informational. You should not see an advertisement labelled as such, and you should not see an unlabelled unit styled to look like one. There is no ad slot standing in for a cost range. The low, mid, and high figures come from the calculator’s own illustration, not from a sponsor. A paragraph about boilers, lofts, or extensions is editorial. It is not a paid placement, and a contractor is not buying position on the page.</p>
-      <p>While parked, advertising cookies are not used. The <a href="/cookies">cookies</a> page says the same thing. We do not show a consent banner for advertising cookies, because those cookies are not in use. Browser controls remain available if you want to block site data anyway.</p>
+      <p>Advertising cookies are not used while ads are off. The <a href="/cookies">cookies</a> page describes the banner: Accept all and Essential only, stored in localStorage, with neither choice loading an ad or analytics script. Browser controls remain available if you want to clear that stored choice.</p>
 
       <h2>How ads would be labelled if they returned</h2>
       <p>This section describes a standard we would apply if ads were switched on later. It does not mean they are on. If advertising returned, units would be labelled, for example “Advertisement”. On calculator and guide pages they would sit after the explanation of the range, not in place of the range, and they would not be styled as a contractor price or a tender figure. We would not put ads on a page that was only a number with no context. The mid figure would remain a planning band, not a quote, whether or not an ad sat further down the page.</p>
-      <p>That future standard is not an invitation to a network, and it is not a claim that a review is underway. The site is noindex while parked. Policy pages keep saying ads are off so the live host and this disclosure match.</p>
+      <p>That future standard is not an invitation to a network, and it is not a claim that a review is underway. Policy pages keep saying ads are off so the live host and this disclosure match.</p>
 
       <h2>Independence of the ranges</h2>
       <p>Compiled cost bands are editorial illustrations from Rodway Labs. Advertisers do not set our mid points, regional factors, access factors, or VAT display options, and none are set by an advertiser today because ads are off. We are not a contractor, architect, or quantity surveyor. A band is not a price, and proximity to a policy page about advertising does not make it one.</p>
       <p>Regional factors, the access settings, the listed-building toggle, contingency, and optional allowances such as scaffold or skips are explained in the <a href="/guides/">guides</a> and limited by the <a href="/disclaimer">disclaimer</a>. They are planning tools. They are not offers, and they are not influenced by a seller line — there is no seller line.</p>
 
       <h2>What to do if you see something that looks like an ad</h2>
-      <p>If a page on this host appears to load a third-party advertising unit, or if a copy of ads.txt elsewhere claims this site authorises a seller, treat that as a fault and email <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a>. Tell us the exact URL. We will check the parked deployment. Do not click through an unexpected unit and assume Rodway Labs endorsed the destination. The <a href="/privacy">privacy</a> notice describes the parked position alongside this page.</p>
+      <p>If a page on this host appears to load a third-party advertising unit, or if a copy of ads.txt elsewhere claims this site authorises a seller, treat that as a fault and email <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a>. Tell us the exact URL. We will check the deployment. Do not click through an unexpected unit and assume Rodway Labs endorsed the destination. The <a href="/privacy">privacy</a> notice describes the same ads-off position alongside this page.</p>
       <p>Questions about a cost band still belong with the calculator and with written quotes from people who will do the work. This inbox will not price a job because an advertising question was attached to it. The VAT toggle remains a display choice, not a ruling.</p>
       <p class="not-quote"><strong>Not a quote.</strong> Figures on this site are illustrative UK cost bands for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
     </article>
@@ -84,5 +84,14 @@
     </div>
     <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Ranges last checked September 2026.</div>
   </footer>
+
+  <div id="pcl-consent" class="consent" role="region" aria-label="Cookie choices">
+    <p>Choose how this browser remembers cookies. The choice is stored only in localStorage on this device (<code>pcl-consent</code>: all or essential). If you leave this unset, we treat the visit as essential only. Ads are off: we do not load advertising or analytics scripts, and we do not set advertising cookies, whichever you pick. <a href="/cookies">Cookies</a> · <a href="/privacy">Privacy</a></p>
+    <div class="consent-actions">
+      <button type="button" id="pcl-consent-essential">Essential only</button>
+      <button type="button" id="pcl-consent-all">Accept all</button>
+    </div>
+  </div>
+  <script src="/js/consent.js"></script>
 </body>
 </html>

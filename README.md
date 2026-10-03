@@ -2,7 +2,7 @@
 
 UK home-project cost range calculator and guides from **Rodway Labs**. Live at [https://projectcostlab.co.uk](https://projectcostlab.co.uk).
 
-**Status (2 Oct 2026): parked** — `robots.txt` Disallow, meta/X-Robots-Tag noindex, AdSense removed, `ads.txt` authorises no sellers. Do not request AdSense review for this host.
+**Status (3 Oct 2026): indexable again.** `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. The Worker does not send `X-Robots-Tag: noindex`. **Ads are still OFF.** `ads.txt` authorises nobody until ads are deliberately turned on. A first-party cookie consent banner is live; neither choice loads ads or analytics.
 
 ## What it is
 
@@ -16,13 +16,13 @@ Cloudflare Worker (assets) named `projectcostlab`, custom domain apex `projectco
 npx wrangler@4 deploy
 ```
 
-`wrangler.jsonc` uses `workers_dev: false`, `html_handling: auto-trailing-slash`, and a small Worker that 301s `www` → apex and sends `X-Robots-Tag: noindex, nofollow` while parked. Internal links use clean paths (no `.html`).
+`wrangler.jsonc` uses `workers_dev: false`, `html_handling: auto-trailing-slash`, and a small Worker that 301s `www` → apex. Internal links use clean paths (no `.html`).
 
-## Indexing & ads (parked)
+## Indexing & ads
 
-- `robots.txt` — Disallow: / (parked; not for indexing)
+- `robots.txt` — `Allow: /` and `Sitemap: https://projectcostlab.co.uk/sitemap.xml`
 - `ads.txt` — comments only; **no** `google.com, pub-…, DIRECT` line
-- AdSense client/scripts — removed while parked
+- AdSense client/scripts — not loaded. Consent banner stores `pcl-consent` (`all` or `essential`) in localStorage and does not load third-party tags either way.
 
 ## Contact
 

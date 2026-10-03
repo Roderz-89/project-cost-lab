@@ -264,3 +264,46 @@ footer li { margin: 6px 0; }
 .prose ul, .prose ol { padding-left: 1.2em; }
 .prose li { margin: 0.35em 0; }
 .cards-5 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* First-party cookie choice. No ad units. */
+.consent {
+  position: fixed;
+  z-index: 40;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  max-width: 40rem;
+  margin: 0 auto;
+  background: var(--navy);
+  color: #e2e8f0;
+  border-radius: 14px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 12px 32px rgba(11, 28, 46, 0.28);
+}
+.consent[hidden] { display: none !important; }
+.consent p { margin: 0 0 12px; font-size: 0.95rem; line-height: 1.45; }
+.consent a { color: #fecaca; }
+.consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.consent-actions button {
+  flex: 1 1 10rem;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.consent-actions button:focus-visible {
+  outline: 3px solid #f5e7b8;
+  outline-offset: 2px;
+}
+#pcl-consent-all {
+  background: #fff;
+  color: var(--navy);
+  border: 2px solid #fff;
+}
+#pcl-consent-essential {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #cbd5e1;
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <title>Privacy — Project Cost Lab</title>
   <meta name="description" content="How Project Cost Lab (Rodway Labs) handles privacy, cookies, analytics and advertising.">
   <link rel="canonical" href="https://projectcostlab.co.uk/privacy">
@@ -30,21 +30,22 @@
   <main class="section">
     <article class="wrap prose">
       <h1>Privacy</h1>
-      <p class="src">Last updated 2 October 2026 · Publisher: Rodway Labs</p>
+      <p class="src">Last updated 3 October 2026 · Publisher: Rodway Labs</p>
       <p>Project Cost Lab is an informational UK cost-tools site. This notice explains what we (and our service providers) may process when you use the site.</p>
 
       <h2>What the calculator does</h2>
       <p>The cost-range calculator runs in your browser. Project choices and inputs are used locally to illustrate a band. We do not ask you to create an account, and we do not use the calculator to collect your name, address or payment details.</p>
 
       <h2>Advertising</h2>
-      <p><strong>This site is parked.</strong> We do not currently use Google AdSense or other third-party ad networks on Project Cost Lab. There is no active publisher ID declared for this host, and <a href="/ads.txt">ads.txt</a> lists no authorised sellers.</p>
-      <p>If advertising is re-enabled later, AdSense (or similar) partners may use cookies or similar technologies, with units placed after explanatory content — never dressed as a contractor price or tender figure. See our <a href="/advertising">Advertising</a> page.</p>
+      <p><strong>Ads are off.</strong> We do not currently use Google AdSense or other third-party ad networks on Project Cost Lab. There is no active publisher ID on this host, and <a href="/ads.txt">ads.txt</a> authorises no sellers. The pages do not load adsbygoogle or any other ad script.</p>
+      <p>If advertising is re-enabled later, on purpose, AdSense (or similar) partners may use cookies or similar technologies, with units placed after explanatory content — never dressed as a contractor price or tender figure. That has not happened. See our <a href="/advertising">Advertising</a> page.</p>
 
-      <h2>Cookies</h2>
-      <p>Essential cookies (if any) keep the site working. Advertising and measurement cookies are described on our <a href="/cookies">Cookies</a> page. You can usually control cookies through your browser settings; blocking some cookies may limit ad personalisation rather than the calculator itself.</p>
+      <h2>Cookies and the consent banner</h2>
+      <p>A banner on every page offers two equal choices: <strong>Accept all</strong> and <strong>Essential only</strong>. The choice is stored in localStorage as <code>pcl-consent</code> (<code>all</code> or <code>essential</code>). If you do not choose, we do not treat the visit as permission for advertising cookies. Essential only is the default. Neither button sets an advertising cookie or loads an ad or analytics script while ads are off. Details are on the <a href="/cookies">Cookies</a> page. You can clear the stored choice in your browser’s site data.</p>
+      <p>Essential cookies, if any, are those the host needs to serve the site over HTTPS and to protect it. They are not a marketing profile.</p>
 
       <h2>Analytics</h2>
-      <p>We may use privacy-conscious or standard web analytics (including tools provided alongside Cloudflare) to understand aggregate traffic — for example which guides are read and whether pages load correctly. We use this to improve content, not to build a quote for your property.</p>
+      <p>We do not load a marketing analytics script on these pages, and Accept all does not start one. The calculator stays in your browser. Cloudflare, which serves the site, may process connection data as described below. That is not a quote for your property and it is not an advertising cookie.</p>
 
       <h2>Hosting and security</h2>
       <p>The site is served via Cloudflare. Cloudflare may process connection data (such as IP address and request metadata) to deliver content, apply HTTPS and protect against abuse. See Cloudflare’s published privacy documentation for details of that processing.</p>
@@ -93,5 +94,14 @@
     </div>
     <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Ranges last checked September 2026.</div>
   </footer>
+
+  <div id="pcl-consent" class="consent" role="region" aria-label="Cookie choices">
+    <p>Choose how this browser remembers cookies. The choice is stored only in localStorage on this device (<code>pcl-consent</code>: all or essential). If you leave this unset, we treat the visit as essential only. Ads are off: we do not load advertising or analytics scripts, and we do not set advertising cookies, whichever you pick. <a href="/cookies">Cookies</a> · <a href="/privacy">Privacy</a></p>
+    <div class="consent-actions">
+      <button type="button" id="pcl-consent-essential">Essential only</button>
+      <button type="button" id="pcl-consent-all">Accept all</button>
+    </div>
+  </div>
+  <script src="/js/consent.js"></script>
 </body>
 </html>
