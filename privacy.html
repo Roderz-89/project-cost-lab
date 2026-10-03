@@ -17,7 +17,7 @@
         <span class="mark">PC</span>
         <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
       </a>
-      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
       <nav id="nav">
         <a href="/" aria-current="page">Home</a>
         <a href="/#calculator">Calculator</a>

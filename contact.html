@@ -16,7 +16,7 @@
         <span class="mark">PC</span>
         <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
       </a>
-      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
       <nav id="nav">
         <a href="/" aria-current="page">Home</a>
         <a href="/#calculator">Calculator</a>
@@ -29,9 +29,25 @@
   <main class="section">
     <article class="wrap prose">
       <h1>Contact</h1>
-      <p>Publisher: <strong>Rodway Labs</strong>, United Kingdom.</p>
-      <p>Email: <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a></p>
-      <p>We publish illustrative UK cost tools. We do not quote for building work, inspect properties or recommend contractors. If you need a price for works, collect written quotes from trades — not from this inbox.</p>
+      <p class="src">Last updated 3 October 2026 · Publisher: Rodway Labs</p>
+      <p>Publisher: <strong>Rodway Labs</strong>, United Kingdom. Email: <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a>.</p>
+      <p>Email us about a range or a correction, not for a quote on your house. Project Cost Lab is an informational site about UK home-project cost bands. The inbox exists so you can ask how a planning band was put together, or tell us that a guide has a mistake. It is not an estimating desk, a site visit, or a way to be introduced to a builder.</p>
+
+      <h2>What to email</h2>
+      <p>Useful messages are specific. Say which page you were on, which project you selected in the calculator, and which levers you changed. Those levers are region, specification, access, whether anyone is living in the house during the works, the listed-building toggle, the VAT display, and contingency. If you are asking why Inner London sits above the North East on the same drawing, point at the <a href="/guides/region-access">region and access guide</a> and say what still does not make sense.</p>
+      <p>Corrections are welcome. Quote the sentence you think is wrong and, if you can, say what the page should say instead. A broken control is also worth a note: the copy button did nothing, a chip did not filter projects, or a checkbox did not move the band. Name the browser if you know it. We also read notes about unclear wording. If “mid” is being read as a price you were quoted, that is a writing problem, because the mid figure is a planning band, not a tender.</p>
+
+      <h2>What not to send</h2>
+      <p>Do not email drawings, floor plans, or photos and ask what the job should cost in your postcode. We will not measure an extension, a loft, a boiler swap, a re-roof, or a kitchen from a picture. We will not say whether your terrace needs householder planning permission, building regulations approval, a Party Wall notice, or listed-building consent. We will not recommend a contractor, an architect, or a quantity surveyor, and we will not mark a quote you have already received as fair or high. We have not seen the property.</p>
+      <p>Do not send bank details, National Insurance numbers, or a pack of commercial tenders expecting a verdict. Nothing in this inbox is a claim form, a warranty desk, or a route to a grant. If a neighbour dispute, a leasehold consent, or a council enforcement notice is the real problem, you need advice from someone instructed on that matter, not a reply from a cost-band website.</p>
+
+      <h2>What we will and will not do</h2>
+      <p>We will read the message. Where a guide disagrees with the way the calculator is built — a regional factor described on the page that no longer matches the tool, or an allowance described as if it were a measured rate — we will correct the page. Where the question is really “what should I budget in Leeds for a twenty-square-metre rear extension with bi-folds”, we will point you back to the calculator and the <a href="/guides/">guides</a>. We will not turn that question into a price.</p>
+      <p>We will not visit the house, open a floor, speak to your builder, or produce a schedule of works. Rodway Labs is not a contractor, architect, or quantity surveyor. A reply is not a valuation, a tender, or building-regulations advice. We will not tell you to ignore a written quote because a band on this site looked lower.</p>
+
+      <h2>What to expect back</h2>
+      <p>This is a small publisher, not a call centre and not a trade counter. There is no same-day site survey and no promise of a priced reply. We aim to answer practical notes about the site within a few working days when we can. A short reply might only name the guide that covers the lever you asked about. Silence, or a pointer to the <a href="/disclaimer">disclaimer</a>, is not a quote and not agreement with a figure you suggested.</p>
+      <p>If you need a number you can act on, collect written quotes from people who will do the work, on the same drawing, for the actual access, specification, and programme. Use the lab only to see which factors move an illustrative UK band before those conversations. The VAT toggle on the calculator is a display choice, not a ruling on whether your job is standard-rated, reduced-rated, or zero-rated. Ask the supplier, and an accountant if the treatment is unclear. We will not determine the VAT treatment of your project by email.</p>
       <p class="not-quote"><strong>Not a quote.</strong> Figures on this page are illustrative UK cost bands for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
     </article>
   </main>

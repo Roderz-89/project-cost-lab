@@ -16,7 +16,7 @@
         <span class="mark">PC</span>
         <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
       </a>
-      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
       <nav id="nav">
         <a href="/" aria-current="page">Home</a>
         <a href="/#calculator">Calculator</a>
@@ -29,12 +29,28 @@
   <main class="section">
     <article class="wrap prose">
       <h1>Disclaimer</h1>
-      <p>Project Cost Lab is published by Rodway Labs for general information. Outputs are not quotes, tenders, valuations or building-regulation advice.</p>
-      <p>VAT treatment depends on the works and the supplier. The VAT control on this site is a <strong>display choice</strong>, not a determination of the rate that applies to your job. Regional factors are blunt multipliers, not a price book for your postcode. Specification, access, occupation and listed-building sliders are illustrations. Optional extras are allowances, not measured items.</p>
-      <p>The mid figure is a band for planning, not a contractor price. Ground conditions, asbestos, hidden rot, services diversions, Party Wall awards and planning outcomes sit outside the range unless you tick the matching extra — and even then the figure is an allowance.</p>
-      <p>Rodway Labs is not a contractor, architect or quantity surveyor.</p>
+      <p class="src">Last updated 3 October 2026 · Publisher: Rodway Labs</p>
+      <p>Project Cost Lab is published by Rodway Labs for general information about UK home-project costs. Outputs are planning bands. They are not quotes, tenders, valuations, or building-regulation advice, and they are not legal advice. The mid figure is a band for planning, not a contractor price.</p>
+
+      <h2>Regional factors</h2>
+      <p>A regional factor is a blunt planning multiplier, not a postcode price book. The calculator scales a compiled works mid for broad areas — Inner London, Outer London, the South East outside London, and other nations and English regions down to the North East. It does not know your street, your borough’s current labour market, or whether the only firm who will take the job is already booked until next spring. A contractor in a region the model treats as lower can still price above the band if the specification is high or the programme is awkward. London premiums do not mean every borough quotes the same figure.</p>
+
+      <h2>Access, occupation, and listed buildings</h2>
+      <p>Access is just as blunt. An easy plot with parking and room for a skip is not the same logistic job as a tight terrace with no side access, where materials come through the house and scaffolding bears on a pavement. The access choices in the calculator are illustrations of that difference. They are not a survey of your alley, your parking bay, or your neighbour’s right of way.</p>
+      <p>Living in the house during the works is a separate factor. Dust, noise, and the need to keep a kitchen or a bathroom usable often slow a programme even when the pound figure only moves a little. The model cannot see school holidays, a vulnerable occupant, or a landlord who will not allow weekend work.</p>
+      <p>The listed or conservation uplift, when you switch it on, is a stand-in for extra care in design and materials. It is not a heritage consultant’s fee, not a conservation-area consent, and not a prediction of what a local planning authority will accept. Like-for-like materials, slower approvals, and specialist trades can all sit outside that single uplift.</p>
+
+      <h2>VAT display</h2>
+      <p>The VAT control is a <strong>display choice</strong>, not a determination of the rate that applies to your job. Standard-rated work, reduced-rate energy measures, and zero-rating on some new dwellings are legal tests. They depend on the works and on the supplier. Selecting “show ex-VAT” or a reduced rate on this site does not change what you will be charged, and it is not advice you can rely on in a return. Ask the contractor how they will invoice, and take tax advice if the treatment is unclear.</p>
+
+      <h2>Contingency and what the band leaves out</h2>
+      <p>Contingency is a percentage you choose on top of the illustration. It is not a calculated risk register. Ground conditions, asbestos, hidden rot, services diversions, Party Wall awards, and planning outcomes sit outside the range unless you tick a matching extra — and even then the figure is an allowance, not a measured item. Optional extras in the calculator are the same kind of allowance. An extra scaffolding period or an extra skip is a prompt to remember the cost, not a hire quote from a yard.</p>
+      <p>Specification sliders (budget, mid, high) describe a level of finish in words. They do not specify a product, a warranty, or a brand. Two “mid” kitchens can differ by more than the spread once worktops, appliances, and labour in your town are priced for real.</p>
+
+      <h2>When to get written quotes</h2>
+      <p>Written quotes are the point at which a planning band stops being useful as a number. Get them when you have a drawing, a description of the specification, and an honest note of access, occupation, and any listing or conservation constraint. Ask each firm to price the same scope, to say what is excluded, and to state how VAT will be charged. Use the band only to see which levers moved before those conversations, and to spot a quote that has dropped a whole class of cost, such as scaffold or waste.</p>
+      <p>Do not use this site to decide whether work is lawful, whether it meets the building regulations, whether a wall is load-bearing, or whether you must notify a neighbour. Those are questions for people instructed on the property: a building control body, a competent designer where one is needed, and solicitors where the issue is legal. Rodway Labs is not a contractor, architect, or quantity surveyor, and nothing here creates a duty to design or to price your job.</p>
       <p class="not-quote"><strong>Not a quote.</strong> Figures on this page are illustrative UK cost bands for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
-      <p>Last updated 27 September 2026.</p>
     </article>
   </main>
   <footer>

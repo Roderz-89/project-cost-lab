@@ -16,7 +16,7 @@
         <span class="mark">PC</span>
         <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
       </a>
-      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
       <nav id="nav">
         <a href="/">Home</a>
         <a href="/#calculator">Calculator</a>
@@ -29,12 +29,26 @@
   <main class="section">
     <article class="wrap prose">
       <h1>About Project Cost Lab</h1>
-      <p>Project Cost Lab is an independent informational site from <strong>Rodway Labs</strong>, United Kingdom. It publishes compiled cost ranges and a calculator for common home projects.</p>
-      <p>We are not a contractor, architect or quantity surveyor. We do not inspect properties, arrange trades or issue tenders. Ranges are illustrations compiled in September 2026 from published UK trade guides.</p>
-      <p>Size, specification, region, access, occupation, listed-building uplift, VAT display, contingency and optional extras are editable because those knobs move a budget more than the project name. The mid figure is a <strong>band for planning</strong>, not a price. The VAT toggle is a display choice, not a tax ruling.</p>
-      <p>Get written quotes for the property on the same drawing. Do not treat a mid figure as a tender.</p>
+      <p class="src">Last updated 3 October 2026 · Publisher: Rodway Labs</p>
+      <p>Project Cost Lab is an independent informational site from <strong>Rodway Labs</strong> in the United Kingdom. It shows how common home-project budgets move when you change size, specification, and site conditions. It is not a practice, a showroom, or a quote engine, and it does not sell building work.</p>
+
+      <h2>What the lab is</h2>
+      <p>The lab publishes a calculator and a short set of guides for jobs people in the UK actually try to price: lofts, extensions, conversions, kitchens and bathrooms, roofs and windows, gardens and drives, heat and energy, electrics and plumbing, decoration, and whole-house work. You pick a project type, set a quantity where the job is sized that way, and read a low, mid, and high figure. The mid figure is a planning band, not a price you can hand to a builder as if it were an offer.</p>
+      <p>There is no portfolio of finished jobs, no claim that anyone here designs houses, and no list of preferred contractors. We do not inspect properties, appoint trades, administer contracts, or issue tenders. The pages are written so a household can see which levers move an illustration before they ask for written quotes.</p>
+
+      <h2>How the bands are compiled</h2>
+      <p>The lab compiles illustrative 2026 UK ranges and then lets you edit the factors. Each project starts from a works mid for a stated unit — a square metre of extension, a linear metre of kitchen, a count of windows, or a whole job — with a spread either side so the low and high are not a single number pretending to be exact. Those anchors are editorial illustrations for planning. They are not a measured bill for a named house, and they are not a price book tied to your postcode.</p>
+      <p>Editable factors then sit on that works mid. Region scales the illustration from Inner London down to the North East. Specification is budget, mid, or high. Site access distinguishes an easy plot from a typical suburban one and from a tight terrace. A further factor covers living in the house during the works. A listed or conservation toggle is a blunt uplift, not a heritage fee. Optional extras are either a mid allowance, such as an extra scaffolding period or an extra skip, or a percentage of the works, and they are labelled as allowances. You choose a VAT display and a contingency percentage yourself.</p>
+      <p>Because those factors are editable, two people looking at the same project name can land in different bands without either result being a quote. That is intentional. The project name matters less than size, specification, access, occupation, and where in the UK the house stands. Ranges on the site were checked as illustrations in September 2026; they are not updated from live tender returns.</p>
+
+      <h2>What it is not</h2>
+      <p>Rodway Labs is not a contractor, architect, or quantity surveyor. The site does not hold itself out as a professional appointment, and it does not offer design, contract administration, or a valuation. A band that happens to sit near a quote you received is a coincidence of inputs, not confirmation that the quote is fair. Ground conditions, asbestos, rotten joists, a long drain run, a Party Wall award, or a planning refusal can sit outside the band entirely.</p>
+      <p>The VAT toggle is a display choice, not a ruling. Whether works are standard-rated, reduced-rated, or zero-rated depends on the job and the supplier, not on which option was selected here. Nothing on the site is legal advice or building-regulations advice.</p>
+
+      <h2>How the guides fit</h2>
+      <p>The <a href="/guides/">guides</a> explain the levers the calculator uses, in ordinary language: how extension area is discussed, what a loft range is trying to show, how to read a boiler or heat comparison, what the VAT display does and does not decide, and how region and access change a band. Read the relevant guide before you treat a mid figure as a budget you would defend to anyone else. Then get written quotes for the property on the same drawing.</p>
+      <p>If a page is unclear, or a factor on the site no longer matches the guide that describes it, use <a href="/contact">contact</a>. That address is for a correction or a question about the method. It is not a request line for a price, a survey, or a contractor recommendation. The <a href="/disclaimer">disclaimer</a> sets the limit on what any figure here can be used for.</p>
       <p class="not-quote"><strong>Not a quote.</strong> Figures on this page are illustrative UK cost bands for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
-      <p>Contact: <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a></p>
     </article>
   </main>
   <footer>

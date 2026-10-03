@@ -16,7 +16,7 @@
         <span class="mark">PC</span>
         <span><span class="brand-name">Project Cost Lab</span><br><span class="brand-sub">UK works tools</span></span>
       </a>
-      <button class="menu-btn" type="button" aria-expanded="false" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
       <nav id="nav">
         <a href="/">Home</a>
         <a href="/#calculator">Calculator</a>
@@ -30,47 +30,39 @@
     <article class="wrap prose">
       <p class="badge">GUIDE</p>
       <h1>Region and access — why the same drawing changes price</h1>
-      <p class="src">Last checked September 2026 · Published by Rodway Labs</p>
+      <p class="src">Last updated 3 October 2026 · Published by Rodway Labs</p>
       <p class="not-quote"><strong>Not a quote.</strong> Figures in this guide are illustrative UK cost bands compiled for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
 
-      <h2>Two blunt levers in the model</h2>
-      <p>Project Cost Lab applies regional and access factors on top of a compiled works mid. They exist because labour rates, scaffold logistics and parking differ across the UK — and because a rear extension on an open plot is not the same logistic job as the same footprint on a tight terrace with no side access. Both levers are <strong>illustrations</strong>, not a price book for your postcode.</p>
+      <h2>Factors on a band, not a postcode quote</h2>
+      <p>A factor on an illustrative band is not a postcode quote. Project Cost Lab starts from a compiled works mid for the project you pick, then applies broad multipliers for where the house is and how hard it is to get materials to the workface. The same rear extension, on paper, is a different logistic job in an inner-London terrace and on an open plot in the North East. The model exists so you can see that difference before you compare written quotes. It does not look up your street, your parking permit, or the three firms who actually price your town.</p>
+      <p>Read the percentages below as the factors already built into the calculator. They are blunt. A contractor in a region the model treats as cheaper can still price above the band if the specification is high or the programme is awkward. London premiums do not mean every borough quotes the same.</p>
 
-      <h2>Regional factors used in the calculator</h2>
-      <ul>
-        <li>UK mid-range — baseline</li>
-        <li>Inner London — about +30%</li>
-        <li>Outer London — about +22%</li>
-        <li>South East outside London — about +12%</li>
-        <li>East of England / South West — about +5%</li>
-        <li>West Midlands — mid</li>
-        <li>East Midlands — about −5%</li>
-        <li>North West / Scotland — about −7%</li>
-        <li>Yorkshire &amp; Humber / Wales / Northern Ireland — about −10%</li>
-        <li>North East — about −12%</li>
-      </ul>
-      <p>A contractor in a “cheaper” region can still price above the band if the specification is high or the programme is awkward. London premiums do not mean every borough quotes the same.</p>
+      <h2>London and the South East against the North</h2>
+      <p>Labour, preliminaries, and the time it takes to park a van are why the regional list is wide. Inner London is illustrated at about +30% on the works mid. Outer London is about +22%. The South East outside London is about +12%. East of England and the South West are about +5%. The West Midlands sits on the UK mid-range baseline. East Midlands is about −5%. The North West and Scotland are about −7%. Yorkshire &amp; the Humber, Wales, and Northern Ireland are about −10%. The North East is about −12%.</p>
+      <p>Use the region that matches the property, not the region where you wish rates were lower. If you are comparing a London quote with a quote from another region on the same drawing, re-run the band with each region selected so you are not mixing a London illustration with a northern one and calling the gap “profit”. Inner versus outer London is its own split: the +30% and +22% factors are not interchangeable, and neither is a promise that a particular borough will come out on that number.</p>
+      <p>These percentages apply to the works mid inside the model. They are not a tender index, and they are not updated from a live price book. Specification, access, occupation, VAT display, and contingency are separate controls. Changing region does not by itself change the VAT treatment of the job.</p>
 
-      <h2>Access options</h2>
-      <ul>
-        <li><strong>Easy</strong> — parking, skip space, side access for materials.</li>
-        <li><strong>Typical suburban plot</strong> — the default assumption.</li>
-        <li><strong>Tight terrace / no side access</strong> — more manual handling, scaffold complexity, neighbour coordination.</li>
-      </ul>
-      <p>Access also interacts with occupation: living in during dusty or noisy works often slows the programme even when the pound figure looks similar.</p>
+      <h2>Parking, terrace, and detached plots</h2>
+      <p>Region is only half of the logistic storey. Access in the calculator has three settings, taken from the same model. Easy access — parking, room for a skip, and a way to bring materials to the side or the rear — is the baseline, with no uplift. A typical suburban plot is illustrated at about +6%. A tight terrace with no side access is illustrated at about +16%.</p>
+      <p>That terrace uplift is there because materials often come through the front door, rubble comes back the same way, and a pavement licence or a suspended scaffold bay is more likely. A detached house with a drive can take a skip on the plot and a van off the road; the model treats that as easier, not as a discount you are owed. Flats over shops, rear-only gardens behind a locked alley, and houses with no resident parking are closer to the tight setting even when the region is not London. Be honest about vans, skips, and whether materials go through the house. The factor will not discover that for you.</p>
 
-      <h2>Listed and conservation constraints</h2>
-      <p>The listed / conservation uplift in the calculator (+15% when selected) is a blunt stand-in for extra design care and materials — not a heritage consultant’s fee quote. Planning risk still sits largely outside the band.</p>
+      <h2>Scaffolding, skips, and living in the house</h2>
+      <p>Scaffold and waste are easy to forget when a headline rate is per square metre of extension or roof. The calculator does not hide them inside the regional percentage. An extra scaffolding period is an optional allowance with a mid of £1,800. An extra skip is an optional allowance with a mid of £600. Tick them when the programme is longer than a simple visit, or when the job will generate more waste than the base project assumes. They are allowances in the model, not a hire price from a scaffold firm or a skip licence from the council.</p>
+      <p>Occupation is separate again. An empty house is the baseline. Living in during the works is illustrated at about +8% on top of the other factors. The pounds move because the programme often moves: rooms must stay usable, dusty phases are broken up, and deliveries cannot block the only entrance all day. The percentage is not a disturbance payment and not a promise that living on site will cost exactly that much more.</p>
 
-      <h2>How to use these levers without fooling yourself</h2>
+      <h2>Listed buildings and the limit of the uplift</h2>
+      <p>The listed or conservation toggle adds about +15% when you select it. It is a blunt stand-in for extra design care and materials, not a heritage consultant’s fee and not a quote for sash windows, lime mortar, or a like-for-like roof. Planning risk, listed-building consent, and conservation-area detail still sit largely outside the band. Switching the toggle on does not mean the work is acceptable to the council, and leaving it off does not mean an unlisted house in a conservation area has no extra cost.</p>
+
+      <h2>How to use the levers</h2>
       <ol>
-        <li>Pick the region that matches where the property is, not where you wish rates were.</li>
-        <li>Be honest about vans, skips and whether materials go through the house.</li>
-        <li>Re-run the band when comparing a London quote with a regional one on the same drawing.</li>
-        <li>Remember VAT display and contingency are separate knobs.</li>
-        <li>Only written quotes settle the number — this lab sizes a conversation.</li>
+        <li>Pick the region that matches where the property is.</li>
+        <li>Pick access from how vans, skips, and materials will actually arrive — easy, typical suburban, or tight terrace.</li>
+        <li>Say whether the house is empty or occupied, and switch on the listed uplift only when that constraint is real.</li>
+        <li>Add scaffold or skip allowances when the base project would otherwise forget them.</li>
+        <li>Keep VAT display and contingency as their own knobs. Neither is a ruling.</li>
+        <li>Re-run the band when you compare quotes from different parts of the UK on the same drawing.</li>
       </ol>
-      <p><a class="btn" href="/#calculator">Open the calculator</a> · <a href="/guides/extension">Extension £/m²</a> · <a href="/guides/loft">Loft ranges</a></p>
+      <p>Only written quotes settle the number. This lab sizes a conversation: it shows how region and site access move an illustrative UK band. It does not price your postcode. Read the <a href="/disclaimer">disclaimer</a> before you treat any mid figure as a budget you would defend, then <a class="btn" href="/#calculator">open the calculator</a>. Related guides: <a href="/guides/extension">extension £/m²</a> · <a href="/guides/loft">loft ranges</a>.</p>
     </article>
   </main>
   <footer>

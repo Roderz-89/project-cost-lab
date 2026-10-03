@@ -56,7 +56,8 @@ nav a {
 nav a:hover, nav a[aria-current="page"] { background: #f1f5f9; color: var(--ink); }
 .menu-btn {
   display: none; border: 1px solid var(--line); background: #fff;
-  border-radius: 8px; padding: 8px 10px; font: inherit;
+  border-radius: 8px; padding: 10px 14px; font: inherit;
+  min-height: 44px; min-width: 44px;
 }
 
 .trust-bar {
@@ -153,8 +154,9 @@ input, select {
 }
 .cat-chip {
   border: 1px solid var(--line); background: #fff;
-  border-radius: 999px; padding: 6px 12px;
+  border-radius: 999px; padding: 10px 16px;
   font: inherit; font-size: 0.82rem; cursor: pointer; color: #334155;
+  min-height: 44px;
 }
 .cat-chip:hover { border-color: #94a3b8; }
 .cat-chip[aria-pressed="true"] {
@@ -166,11 +168,12 @@ input, select {
 }
 .addon-grid { display: grid; gap: 8px; }
 .check {
-  display: grid; grid-template-columns: 18px 1fr; gap: 10px;
-  align-items: start; margin: 0; font-weight: 500;
-  padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  display: grid; grid-template-columns: 44px 1fr; gap: 10px;
+  align-items: center; margin: 0; font-weight: 500;
+  padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  min-height: 44px;
 }
-.check input { width: 18px; height: 18px; margin-top: 2px; }
+.check input { width: 24px; height: 24px; min-width: 24px; min-height: 24px; margin: 0; }
 .check strong { display: block; font-size: 0.88rem; }
 .check em { display: block; font-style: normal; font-size: 0.75rem; color: var(--muted); }
 .form-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }

@@ -219,11 +219,36 @@
       copy.addEventListener("click", function () {
         const r = calc(read());
         const text = r.label + ": " + money(r.total.low) + " – " + money(r.total.high) + " (mid " + money(r.total.mid) + "). " + r.spec + ", " + r.region + ", " + r.vat.label + ", contingency " + r.contig + "%. Illustrative only — Project Cost Lab.";
+        function markCopied() {
+          copy.textContent = "Copied";
+          setTimeout(function () { copy.textContent = "Copy this range"; }, 1600);
+        }
+        function showRangeForManualCopy() {
+          const note = el("pc-note");
+          if (note) note.textContent = "Could not copy automatically. Select this range: " + text;
+          copy.textContent = "Copy failed — range shown below";
+        }
+        function fallbackCopy() {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.top = "0";
+          ta.style.left = "0";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          let ok = false;
+          try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+          document.body.removeChild(ta);
+          if (ok) markCopied();
+          else showRangeForManualCopy();
+        }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(function () {
-            copy.textContent = "Copied";
-            setTimeout(function () { copy.textContent = "Copy this range"; }, 1600);
-          });
+          navigator.clipboard.writeText(text).then(markCopied).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
         }
       });
     }
