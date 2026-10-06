@@ -1,6 +1,6 @@
 /**
- * Project Cost Lab
- * www → apex 301. Pages are indexable. Ads stay off — do not load AdSense.
+ * Project Cost Lab — parked.
+ * www → apex 301. Every response is noindex. Ads stay off.
  * Cache: public, max-age=0, must-revalidate.
  */
 export default {
@@ -14,6 +14,7 @@ export default {
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
     headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+    headers.set("X-Robots-Tag", "noindex, nofollow");
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
