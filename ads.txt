@@ -1,2 +1,1 @@
-# Ads are off. This file authorises no seller.
-# No advertising partner is listed until ads are deliberately turned on.
+# This site does not show ads. This file authorises no seller.

@@ -2,7 +2,7 @@
 
 UK home-project cost range calculator and guides from **Rodway Labs**. Live at [https://projectcostlab.co.uk](https://projectcostlab.co.uk).
 
-**Status (3 Oct 2026): indexable again.** `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. The Worker does not send `X-Robots-Tag: noindex`. **Ads are still OFF.** `ads.txt` authorises nobody until ads are deliberately turned on. A first-party cookie consent banner is live; neither choice loads ads or analytics.
+**Status (3 Oct 2026): indexable again.** `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. The Worker does not send `X-Robots-Tag: noindex`. **This site does not show ads.** `ads.txt` authorises nobody. A first-party cookie consent banner is live; neither choice loads ads or analytics.
 
 ## What it is
 
@@ -21,8 +21,8 @@ npx wrangler@4 deploy
 ## Indexing & ads
 
 - `robots.txt` — `Allow: /` and `Sitemap: https://projectcostlab.co.uk/sitemap.xml`
-- `ads.txt` — comments only; **no** `google.com, pub-…, DIRECT` line
-- AdSense client/scripts — not loaded. Consent banner stores `pcl-consent` (`all` or `essential`) in localStorage and does not load third-party tags either way.
+- `ads.txt` — comments only; authorises no seller
+- This site does not show ads. Consent banner stores `pcl-consent` (`all` or `essential`) in localStorage and does not load third-party tags either way.
 
 ## Contact
 

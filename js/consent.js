@@ -1,7 +1,7 @@
 /*
  * Project Cost Lab privacy choices (Rodway Labs).
  * First-party only. Stores one value in localStorage: pcl-consent = "all" | "essential".
- * Never loads ads, analytics, or any third-party tag. Ads are OFF on this site.
+ * Never loads ads, analytics, or any third-party tag. This site does not show ads.
  */
 (function () {
   "use strict";
@@ -16,16 +16,6 @@
     try { localStorage.setItem(KEY, value); } catch (e) {}
   }
 
-  /*
-   * Inert placeholder for a possible future AdSense switch-on. It is never called and
-   * contains no script URL. If ads are ever enabled, this site's privacy and cookies
-   * pages and this dialog are updated first, and ads load only when read() === "all".
-   *
-   * function applyConsent(value) {
-   *   if (value !== "all") return;
-   *   // Future: load the Google AdSense script for pub-7612291779397704 here, only after consent.
-   * }
-   */
 
   function build() {
     modal = document.createElement("div");
@@ -38,7 +28,7 @@
         '<h2 id="pcl-cmp-title">We value your privacy</h2>' +
         '<div id="pcl-cmp-intro">' +
           '<p>Rodway Labs asks you to consent to cookies and similar technologies on Project Cost Lab. We use your device only to remember the privacy choice you make here.</p>' +
-          '<p><strong>Ads are not currently shown on this site.</strong> If Google AdSense (publisher pub-7612291779397704) is ever enabled, it will only load after you consent, and we will update this notice first.</p>' +
+          '<p>This site does not show ads.</p>' +
         '</div>' +
         '<div class="pcl-cmp-purposes" id="pcl-cmp-purposes" hidden>' +
           '<h3>Purposes</h3>' +
@@ -138,7 +128,7 @@
 
   function choose(value) {
     write(value);
-    // Neither choice loads any ad or analytics script. Ads are off.
+    // Neither choice loads any ad or analytics script. This site does not show ads.
     close();
   }
 
