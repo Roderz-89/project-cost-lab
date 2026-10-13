@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# Parked 6 October 2026. Not for indexing and not an ad inventory site.
-# ads.txt authorises no sellers. This site does not show ads.
+Sitemap: https://projectcostlab.co.uk/sitemap.xml
