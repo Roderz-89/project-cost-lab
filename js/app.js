@@ -60,7 +60,8 @@
     const listed = LISTED_FACTOR && LISTED_FACTOR[input.listed] === 1.15 ? 1.15 : 1;
     const contig = clamp(Number(input.contig) || 0, 0, 30) / 100;
     const qty = Number(input.qty);
-    const safeQty = isFinite(qty) && qty > 0 ? qty : (p.defaultQty || 1);
+    const qMin = p.min || 1, qMax = p.max || Math.max(100, p.defaultQty || 1);
+    const safeQty = isFinite(qty) && qty > 0 ? clamp(qty, qMin, qMax) : (p.defaultQty || 1);
     const rawMid = baseWorks(p, safeQty);
     const local = rawMid * spec.factor * access.factor * occ.factor * listed;
     const works = band(local, p.spread || 0.3);
