@@ -144,8 +144,8 @@
                 <label for="pc-vat">VAT treatment</label>
                 <select id="pc-vat">
                   <option value="std" selected>Include 20% VAT</option>
-                  <option value="reduced">Include 5% VAT</option>
-                  <option value="zero">0% VAT</option>
+                  <option value="reduced">5% (energy-saving from 1 Apr 2027 / certain residential conversions)</option>
+                  <option value="zero">0% (energy-saving installs to 31 Mar 2027 — heat pumps, solar, insulation, batteries etc. — or a new dwelling)</option>
                   <option value="ex">Show ex-VAT</option>
                 </select>
               </div>
@@ -154,7 +154,7 @@
             <input id="pc-contig" type="range" min="0" max="25" step="5" value="10">
             <p class="field-kicker">Optional extras for this job</p>
             <div id="pc-addons" class="addon-grid"></div>
-            <p class="hint">Most work on an existing dwelling is standard-rated. New dwellings and some energy-saving measures can differ — this tool does not decide your VAT treatment.</p>
+            <p class="hint">Most work on an existing home is 20%. Installing qualifying energy-saving materials (heat pumps, solar panels, insulation, batteries and so on) in a home is 0% until 31 Mar 2027, then 5% from 1 Apr 2027. A boiler swap does not qualify. See <a href="/guides/vat">VAT guide</a> and <a href="https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086">VAT Notice 708/6</a>. This tool does not decide your VAT treatment.</p>
             <div class="form-actions">
               <button class="btn" type="button" id="pc-copy">Copy this range</button>
               <button class="btn btn-light" type="button" id="pc-reset">Reset</button>
