@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://projectcostlab.co.uk/projects">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://projectcostlab.co.uk/#org", "name": "Rodway Labs", "url": "https://projectcostlab.co.uk/", "logo": "https://projectcostlab.co.uk/favicon.svg"}, {"@type": "WebSite", "@id": "https://projectcostlab.co.uk/#website", "name": "Project Cost Lab", "url": "https://projectcostlab.co.uk/", "inLanguage": "en-GB", "publisher": {"@id": "https://projectcostlab.co.uk/#org"}}]}</script>
 </head>
 <body>
   <header class="site-header">
@@ -32,7 +33,7 @@
       <p class="badge">CATALOGUE</p>
       <h1>Projects in this lab</h1>
       <p class="lede-plain">Compiled September 2026 mid points before spec, region, VAT and contingency. Open a row to run it with your size and extras. Not a price book for a postcode — and not a quote.</p>
-      <p class="not-quote"><strong>Not a quote.</strong> Figures on this page are illustrative UK cost bands for planning. They are not a tender, valuation or building-regulation ruling. Get written quotes for the property. Project Cost Lab (Rodway Labs) is not a contractor, architect or quantity surveyor. The mid figure is a band, not a price; the VAT toggle is a display choice, not a ruling.</p>
+      <p class="not-quote"><strong>Not a quote.</strong> Illustrative planning bands from Rodway Labs, not a tender or professional advice — see the <a href="/disclaimer">disclaimer</a>.</p>
 
       <section aria-labelledby="catalogue-guide">
         <h2 id="catalogue-guide">How to use this projects catalogue</h2>
@@ -58,12 +59,31 @@
         </details>
         <details>
           <summary>What does the VAT display do?</summary>
-          <p>The VAT control changes how the estimate is displayed for planning. It does not decide whether a job, customer or supplier should be charged VAT, and it is not a tax ruling. Confirm the treatment with the relevant contractor or adviser.</p>
+          <p>It shows the band at the VAT rate you choose. Most work on an existing home is 20%; qualifying energy-saving installs are 0% until 31 March 2027. See the <a href="/guides/vat">VAT guide</a> and confirm the rate on the quote.</p>
         </details>
         <details>
           <summary>When should I get real quotes?</summary>
           <p>Once the scope and access are clear, obtain written, itemised quotes from suitable local firms. For structural, legal or compliance questions, use the appropriately qualified professional; keep this catalogue as an early budgeting aid.</p>
         </details>
+      </section>
+      <section aria-labelledby="cat-summary">
+        <h2 id="cat-summary">Typical ranges by category</h2>
+        <p>National mid-spec compiled mids at each project’s default size (UK mid-range region, before access, occupation, VAT, contingency and extras), computed from the calculator data. See the <a href="/about#methodology">methodology</a>.</p>
+        <div class="table-scroll"><table class="project-table">
+          <thead><tr><th>Category</th><th>Projects</th><th>Lowest mid</th><th>Highest mid</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Lofts</th><td>5</td><td>£34,100 (Loft conversion — Velux / rooflight)</td><td>£84,000 (Loft conversion — mansard)</td></tr>
+            <tr><th scope="row">Extensions</th><td>7</td><td>£8,800 (Front porch)</td><td>£92,000 (Two-storey rear extension)</td></tr>
+            <tr><th scope="row">Conversions</th><td>5</td><td>£4,500 (Knock-through (remove a load-bearing wall))</td><td>£64,000 (Basement conversion (existing cellar))</td></tr>
+            <tr><th scope="row">Kitchens & baths</th><td>5</td><td>£4,200 (Utility room fit-out)</td><td>£15,600 (Kitchen refit (existing footprint))</td></tr>
+            <tr><th scope="row">Roof, windows, walls</th><td>8</td><td>£1,080 (Replace guttering & downpipes)</td><td>£13,050 (External wall insulation)</td></tr>
+            <tr><th scope="row">Garden & drive</th><td>5</td><td>£1,700 (Garden fencing)</td><td>£4,200 (Rear garden landscaping package)</td></tr>
+            <tr><th scope="row">Heat & energy</th><td>9</td><td>£720 (Loft insulation top-up)</td><td>£13,000 (Air-source heat pump (typical house))</td></tr>
+            <tr><th scope="row">Electrics & plumbing</th><td>5</td><td>£850 (Consumer unit replacement)</td><td>£8,550 (Full house rewire)</td></tr>
+            <tr><th scope="row">Decor & finish</th><td>5</td><td>£448 (Decorate one room)</td><td>£2,520 (Decorate whole interior)</td></tr>
+            <tr><th scope="row">Whole house</th><td>3</td><td>£67,500 (Whole-house cosmetic refresh)</td><td>£207,000 (Whole-house structural renovation)</td></tr>
+          </tbody>
+        </table></div>
       </section>
       <div class="cat-row" id="filter-row"></div>
       <div style="overflow:auto;margin-top:16px;">
@@ -111,7 +131,7 @@
         </ul>
       </div>
     </div>
-    <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Ranges last checked September 2026.</div>
+    <div class="wrap legal">© 2026 Rodway Labs. Project Cost Lab. Ranges last checked September 2026 · <a href="/about#methodology">Methodology</a>.</div>
   </footer>
   <script src="js/data.js"></script>
   <script src="js/projects-a.js"></script>

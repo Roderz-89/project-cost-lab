@@ -13,6 +13,12 @@
   const PROJECTS = D.PROJECTS;
   const LISTED_FACTOR = D.LISTED_FACTOR;
 
+  const GUIDES = {
+    loft: ["/guides/loft", "Loft conversion cost UK"],
+    extend: ["/guides/extension", "Extension cost per m²"],
+    energy: ["/guides/boiler", "Boiler, heat pump and PV (with grants and VAT)"]
+  };
+
   function money(n) {
     return Math.round(n).toLocaleString("en-GB", {
       style: "currency",
@@ -85,7 +91,7 @@
     const withVat = { low: exVat.low * (1 + vat.rate), mid: exVat.mid * (1 + vat.rate), high: exVat.high * (1 + vat.rate) };
     const total = { low: withVat.low * (1 + contig), mid: withVat.mid * (1 + contig), high: withVat.high * (1 + contig) };
     return {
-      projectId: input.project, label: p.label, note: p.note, includes: p.includes, excludes: p.excludes,
+      projectId: input.project, cat: p.cat, label: p.label, note: p.note, includes: p.includes, excludes: p.excludes,
       weeks: p.weeks, qty: safeQty, unit: p.unit || p.qtyLabel || "", mode: p.mode,
       region: region.label, regionFactor: region.factor, spec: spec.label, specFactor: spec.factor,
       access: access.label, occupied: occ.label, listed: listed > 1, vat: vat, contig: contig * 100,
@@ -163,6 +169,12 @@
     if (bar) {
       const span = r.total.high - r.total.low;
       bar.style.setProperty("--mid", (span > 0 ? ((r.total.mid - r.total.low) / span) * 100 : 50) + "%");
+    }
+    const guideEl = el("pc-guide");
+    if (guideEl) {
+      const g = GUIDES[r.cat];
+      guideEl.hidden = !g;
+      guideEl.innerHTML = g ? 'Read the matching guide: <a href="' + g[0] + '">' + g[1] + "</a>." : "";
     }
     const example = el("pc-example");
     if (example) {
