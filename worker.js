@@ -4,6 +4,8 @@
  * gets a single 301 straight to the canonical apex URL. Ads stay off.
  * Cache: public, max-age=0, must-revalidate.
  * Security headers on every response; real 404s get a helpful page with status 404.
+ * CSP: per-response nonce (Cloudflare adds it to its injected challenge-platform
+ * script), hashes for the menu button onclick and the inline /projects table script.
  */
 const APEX = "projectcostlab.co.uk";
 const DIRS = new Set(["/", "/guides/"]);
@@ -49,10 +51,34 @@ const NOT_FOUND = `<!doctype html>
 </body>
 </html>`;
 
+// Hashes: menu-btn onclick (all pages) and the inline <script> on /projects.
+const SCRIPT_HASHES = "'unsafe-hashes' 'sha256-L3+KJysJYnvfE/f2J0yMsomXQvFAPxCWh9oeE7W6NRQ=' 'sha256-jl8PaxWT/oaiyRGm1VxoVHwYEUMFWnx3bZ4MUctQKQI='";
+
+function csp() {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  const nonce = btoa(String.fromCharCode(...bytes));
+  return [
+    "default-src 'self'",
+    `script-src 'self' 'nonce-${nonce}' ${SCRIPT_HASHES}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data:",
+    "font-src 'self'",
+    "connect-src 'self'",
+    "frame-src 'self'",
+    "worker-src 'self' blob:",
+    "frame-ancestors 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "upgrade-insecure-requests",
+  ].join("; ");
+}
+
 function withHeaders(response, extra) {
   const headers = new Headers(response.headers);
   headers.set("Cache-Control", "public, max-age=0, must-revalidate");
   for (const [k, v] of Object.entries(SECURITY)) headers.set(k, v);
+  headers.set("Content-Security-Policy", csp());
   if (extra) for (const [k, v] of Object.entries(extra)) headers.set(k, v);
   return headers;
 }
