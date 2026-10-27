@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://projectcostlab.co.uk/guides/region-access">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://projectcostlab.co.uk/#org", "name": "Rodway Labs", "url": "https://projectcostlab.co.uk/", "logo": "https://projectcostlab.co.uk/favicon.svg"}, {"@type": "WebSite", "@id": "https://projectcostlab.co.uk/#website", "name": "Project Cost Lab", "url": "https://projectcostlab.co.uk/", "inLanguage": "en-GB", "publisher": {"@id": "https://projectcostlab.co.uk/#org"}}, {"@type": "Article", "headline": "Region and access — why the same drawing changes price", "description": "How UK region and site access move Project Cost Lab cost bands. Blunt multipliers for planning — not a postcode price book or quote.", "dateModified": "2026-10-14", "inLanguage": "en-GB", "mainEntityOfPage": "https://projectcostlab.co.uk/guides/region-access", "author": {"@type": "Organization", "name": "Rodway Labs", "url": "https://projectcostlab.co.uk/"}, "publisher": {"@id": "https://projectcostlab.co.uk/#org"}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://projectcostlab.co.uk/#org", "name": "Rodway Labs", "url": "https://projectcostlab.co.uk/", "logo": "https://projectcostlab.co.uk/favicon.svg"}, {"@type": "WebSite", "@id": "https://projectcostlab.co.uk/#website", "name": "Project Cost Lab", "url": "https://projectcostlab.co.uk/", "inLanguage": "en-GB", "publisher": {"@id": "https://projectcostlab.co.uk/#org"}}, {"@type": "Article", "headline": "Region and access — why the same drawing changes price", "description": "How UK region and site access move Project Cost Lab cost bands. Blunt multipliers for planning — not a postcode price book or quote.", "dateModified": "2026-10-27", "inLanguage": "en-GB", "mainEntityOfPage": "https://projectcostlab.co.uk/guides/region-access", "author": {"@type": "Organization", "name": "Rodway Labs", "url": "https://projectcostlab.co.uk/"}, "publisher": {"@id": "https://projectcostlab.co.uk/#org"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does the same project cost more in London?", "acceptedAnswer": {"@type": "Answer", "text": "Labour, overheads, parking, waste and delivery logistics generally cost more in London and the South East. The calculator reflects that with broad factors — +30% for inner London and +22% for outer London — applied to the works band. They are planning factors, not a borough price list."}}, {"@type": "Question", "name": "Do access and region add together?", "acceptedAnswer": {"@type": "Answer", "text": "No, they multiply. Inner London (1.30) with a tight terrace (1.16) gives about 1.51 times the easy-access UK baseline, not 1.46. Extras such as scaffold and skip are scaled by region and specification, but not by access."}}, {"@type": "Question", "name": "Which access setting should I choose?", "acceptedAnswer": {"@type": "Answer", "text": "Choose easy access only if there is parking, room for a skip and a route to the work that avoids the house. Choose tight terrace if materials and waste must go through the house or the street is hard to load from. Most other houses fit the typical suburban setting."}}, {"@type": "Question", "name": "Does the calculator include skip licences, parking suspensions or scaffold licences?", "acceptedAnswer": {"@type": "Answer", "text": "Not as separate fees. Those costs vary by council and are partly covered by the access setting and the optional scaffold and skip allowances. Ask for them to be stated on written quotes."}}, {"@type": "Question", "name": "Do I need a party wall agreement?", "acceptedAnswer": {"@type": "Answer", "text": "In England and Wales you must give notice if work affects a party wall or boundary or involves digging near a neighbour’s foundations. Read the gov.uk party wall guidance; Scotland has different rules. The calculator’s Party Wall allowance is a planning placeholder, not a surveyor’s fee."}}]}]}</script>
 </head>
 <body>
   <header class="site-header">
@@ -32,39 +32,136 @@
     <article class="wrap prose">
       <p class="badge">GUIDE</p>
       <h1>Region and access — why the same drawing changes price</h1>
-      <p class="src"><a href="/about#methodology">Last reviewed 14 Oct 2026</a> · Published by Rodway Labs</p>
+      <p class="src"><a href="/about#methodology">Last reviewed 27 Oct 2026</a> · Published by Rodway Labs</p>
       <p class="not-quote"><strong>Not a quote.</strong> Illustrative planning bands from Rodway Labs, not a tender or professional advice — see the <a href="/disclaimer">disclaimer</a>.</p>
 
       <h2>Factors on a band, not a postcode quote</h2>
       <p>A factor on an illustrative band is not a postcode quote. Project Cost Lab starts from a compiled works mid for the project you pick, then applies broad multipliers for where the house is and how hard it is to get materials to the workface. The same rear extension, on paper, is a different logistic job in an inner-London terrace and on an open plot in the North East. The model exists so you can see that difference before you compare written quotes. It does not look up your street, your parking permit, or the three firms who actually price your town.</p>
       <p>Read the percentages below as the factors already built into the calculator. They are blunt. A contractor in a region the model treats as cheaper can still price above the band if the specification is high or the programme is awkward. London premiums do not mean every borough quotes the same.</p>
 
+      <h2>How the calculator applies region and access</h2>
+      <p>The order of the sums matters, because it explains why two settings that both look like “a percentage” do not behave in quite the same way. For every run, the calculator works through these steps:</p>
+      <ol>
+        <li><strong>Base works.</strong> The project’s compiled rate is multiplied by the size you enter — for example £2,650 per m² for a single-storey rear extension.</li>
+        <li><strong>Job factors.</strong> That base is multiplied by the specification, access, occupation and listed or conservation factors.</li>
+        <li><strong>Band.</strong> The project’s spread (±30% for a single-storey rear extension) turns the single figure into a low, mid and high.</li>
+        <li><strong>Region.</strong> The regional factor is applied to all three points of the works band.</li>
+        <li><strong>Extras.</strong> Each ticked fixed-sum allowance — scaffold, skip, Party Wall and so on — is scaled by specification and region, but not by access or occupation, then added.</li>
+        <li><strong>VAT and contingency.</strong> The VAT rate you choose is added to the ex-VAT subtotal, and the contingency slider is applied last.</li>
+      </ol>
+      <p>Because every factor multiplies, they compound rather than add. Inner London (+30%) with a tight terrace (+16%) is not +46% on the works: it is 1.30 × 1.16, which is about +51%. The result panel’s “How the mid is built” table shows the works line after spec, access and region, then each extra, the ex-VAT subtotal, VAT and contingency, so you can see exactly where a regional or access change landed.</p>
+
+      <h2>The regional factors in full</h2>
+      <p>These are the region settings in the calculator, taken directly from its data. The West Midlands and the “UK mid-range” option are the baseline at 1.00.</p>
+      <div class="table-scroll"><table class="project-table">
+        <thead><tr><th scope="col">Region</th><th scope="col">Factor</th><th scope="col">Change on the works band</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Inner London</th><td>1.30</td><td>+30%</td></tr>
+          <tr><th scope="row">Outer London</th><td>1.22</td><td>+22%</td></tr>
+          <tr><th scope="row">South East (ex-London)</th><td>1.12</td><td>+12%</td></tr>
+          <tr><th scope="row">East of England</th><td>1.05</td><td>+5%</td></tr>
+          <tr><th scope="row">South West</th><td>1.05</td><td>+5%</td></tr>
+          <tr><th scope="row">UK mid-range / West Midlands</th><td>1.00</td><td>baseline</td></tr>
+          <tr><th scope="row">East Midlands</th><td>0.95</td><td>−5%</td></tr>
+          <tr><th scope="row">North West</th><td>0.93</td><td>−7%</td></tr>
+          <tr><th scope="row">Scotland</th><td>0.93</td><td>−7%</td></tr>
+          <tr><th scope="row">Yorkshire &amp; Humber</th><td>0.90</td><td>−10%</td></tr>
+          <tr><th scope="row">Wales</th><td>0.90</td><td>−10%</td></tr>
+          <tr><th scope="row">Northern Ireland</th><td>0.90</td><td>−10%</td></tr>
+          <tr><th scope="row">North East</th><td>0.88</td><td>−12%</td></tr>
+        </tbody>
+      </table></div>
+      <p>Access, occupation and the listed toggle are separate controls. Easy access is 1.00, a typical suburban plot 1.06 and a tight terrace with no side access 1.16. Living in during the works is 1.08 against an empty house, and the listed or conservation uplift is 1.15.</p>
+
       <h2>London and the South East against the North</h2>
-      <p>Labour, preliminaries, and the time it takes to park a van are why the regional list is wide. Inner London is illustrated at about +30% on the works mid. Outer London is about +22%. The South East outside London is about +12%. East of England and the South West are about +5%. The West Midlands sits on the UK mid-range baseline. East Midlands is about −5%. The North West and Scotland are about −7%. Yorkshire &amp; the Humber, Wales, and Northern Ireland are about −10%. The North East is about −12%.</p>
+      <p>Labour, preliminaries, and the time it takes to park a van are why the regional list is wide. Inner London is illustrated at about +30% on the works mid and outer London at about +22%. The South East outside London is about +12%. At the other end, the North East is about −12%, and Yorkshire &amp; the Humber, Wales and Northern Ireland are about −10%.</p>
       <p>Use the region that matches the property, not the region where you wish rates were lower. If you are comparing a London quote with a quote from another region on the same drawing, re-run the band with each region selected so you are not mixing a London illustration with a northern one and calling the gap “profit”. Inner versus outer London is its own split: the +30% and +22% factors are not interchangeable, and neither is a promise that a particular borough will come out on that number.</p>
-      <p>These percentages apply to the works mid inside the model. They are not a tender index, and they are not updated from a live price book. Specification, access, occupation, VAT display, and contingency are separate controls. Changing region does not by itself change the VAT treatment of the job.</p>
+      <p>Commuter towns on a regional boundary are the awkward case. A town on the edge of outer London may be priced by firms whose other work is in London. There is no hidden rule in the calculator for that: if your written quotes keep landing nearer the London band, run both regions and treat the gap as the uncertainty, rather than picking whichever looks better.</p>
+      <p>These percentages apply to the works band inside the model. They are not a tender index, and they are not updated from a live price book. Specification, access, occupation, VAT display, and contingency are separate controls. Changing region does not by itself change the VAT treatment of the job.</p>
+
+      <h2>Worked example: the same extension in six regions</h2>
+      <p>Take a 20 m² single-storey rear extension at mid spec, an empty house, a typical suburban plot, no extras, shown ex-VAT with no contingency. The base works are 20 × £2,650 = £53,000. Typical access (× 1.06) makes that £56,180 before region. The region factor then gives these works bands, rounded to the nearest pound:</p>
+      <div class="table-scroll"><table class="project-table">
+        <thead><tr><th scope="col">Region</th><th scope="col">Low</th><th scope="col">Mid</th><th scope="col">High</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Inner London (1.30)</th><td>£51,124</td><td>£73,034</td><td>£94,944</td></tr>
+          <tr><th scope="row">Outer London (1.22)</th><td>£47,978</td><td>£68,540</td><td>£89,101</td></tr>
+          <tr><th scope="row">South East (1.12)</th><td>£44,045</td><td>£62,922</td><td>£81,798</td></tr>
+          <tr><th scope="row">UK mid-range (1.00)</th><td>£39,326</td><td>£56,180</td><td>£73,034</td></tr>
+          <tr><th scope="row">Scotland (0.93)</th><td>£36,573</td><td>£52,247</td><td>£67,922</td></tr>
+          <tr><th scope="row">Wales (0.90)</th><td>£35,393</td><td>£50,562</td><td>£65,731</td></tr>
+          <tr><th scope="row">North East (0.88)</th><td>£34,607</td><td>£49,438</td><td>£64,270</td></tr>
+        </tbody>
+      </table></div>
+      <p>Now change one thing: the house is a terrace with no side access. The access factor goes from 1.06 to 1.16. In inner London the works mid rises from £73,034 to £79,924. In the North East it rises from £49,438 to £54,102. The access change is the same percentage in both places, but it is worth more pounds in London because the regional factor multiplies it.</p>
+      <p>Finally, make it a realistic planning run for that terrace: tick an extra scaffolding period and an extra skip, include 20% VAT and leave contingency at the default 10%. In inner London the scaffold allowance becomes £2,340 and the skip £780, the ex-VAT subtotal is £83,044, and the illustrated mid is about <strong>£109,618</strong>, with a band of roughly £76,784 to £142,452. In the North East the same allowances are £1,584 and £528, the ex-VAT subtotal is £56,214 and the illustrated mid is about <strong>£74,203</strong> (roughly £51,977 to £96,429). Those are planning bands to size a conversation, not prices for either house.</p>
+
+      <h2>Scotland, Wales and Northern Ireland</h2>
+      <p>The model treats Scotland at −7% and Wales and Northern Ireland at −10%. Those are broad averages across very different places: a city-centre tenement and a rural site several hours from a builders’ merchant can both cost more than the regional factor suggests, for opposite reasons. Remote and island locations in particular can carry travel, accommodation and delivery costs that no regional percentage captures.</p>
+      <p>The rules also differ. The Party Wall etc. Act 1996 covers England and Wales; <a href="https://www.gov.uk/party-walls-building-works">gov.uk notes there are different rules in Scotland</a>, and the Act does not extend to Northern Ireland. Planning and building control are run separately in each nation, so check the system that applies where the property is rather than assuming the English process.</p>
 
       <h2>Parking, terrace, and detached plots</h2>
       <p>Region is only half of the logistics picture. Access in the calculator has three settings, taken from the same model. Easy access — parking, room for a skip, and a way to bring materials to the side or the rear — is the baseline, with no uplift. A typical suburban plot is illustrated at about +6%. A tight terrace with no side access is illustrated at about +16%.</p>
-      <p>That terrace uplift is there because materials often come through the front door, rubble comes back the same way, and a pavement licence or a suspended scaffold bay is more likely. A detached house with a drive can take a skip on the plot and a van off the road; the model treats that as easier, not as a discount you are owed. Flats over shops, rear-only gardens behind a locked alley, and houses with no resident parking are closer to the tight setting even when the region is not London. Be honest about vans, skips, and whether materials go through the house. The factor will not discover that for you.</p>
+      <p>A detached house with a drive can take a skip on the plot and a van off the road; the model treats that as easier, not as a discount you are owed. Flats over shops, rear-only gardens behind a locked alley, and houses with no resident parking are closer to the tight setting even when the region is not London. Be honest about vans, skips, and whether materials go through the house. The factor will not discover that for you.</p>
+
+      <h2>Access issues that move the price</h2>
+      <p>These are the common reasons a site is harder than the drawing suggests. None of them is priced individually in the calculator; together they are what the access setting is a stand-in for.</p>
+      <h3>Terraced houses with no side access</h3>
+      <p>When the only way to the garden is through the house, every bag of plaster, block, joist and length of steel goes in through the front door, and every barrow of spoil from the foundations comes back out the same way. That is slower, it needs floor and doorway protection, and it usually means the house is not fully usable during the dirtiest phases. Rear access over a shared alley or a neighbour’s garden can help, but only with written permission you can rely on for the whole programme.</p>
+      <h3>Scaffolding and highway licences</h3>
+      <p>Scaffold that stands on the pavement or road generally needs a licence from the local highway authority, normally your council, and some councils require hoarding, lighting or a minimum clear footway around it. The scaffold firm often applies, but the cost and the lead time land in your job. A longer programme means a longer hire period, which is why the calculator offers an extra scaffolding allowance rather than burying it in the region figure.</p>
+      <h3>Skips, parking permits and bay suspensions</h3>
+      <p><a href="https://www.gov.uk/apply-skip-permit">Gov.uk says a skip on a public road needs a skip licence</a> from the council, a skip cannot go on the pavement, and none is needed if the skip sits entirely on private land. In most areas the skip hire company gets the licence. Where there is controlled parking, you may also need a parking bay suspension or trade permits for vans, which are set by each council and need booking ahead. Smaller skip bags and more frequent collections are sometimes the only option on a narrow street.</p>
+      <h3>Cranes, conveyors and grab lorries</h3>
+      <p>Steel beams, large glazed units and roof trusses that cannot be carried through a house may need lifting over it. A crane or lorry-mounted lift can need a road closure or a lifting plan, and a conveyor or grab lorry may be used to move spoil from a rear garden to the road. These are site-specific costs. If a supplier or builder mentions any of them, ask for the item to be priced separately on the written quote.</p>
+      <h3>Upper-floor flats</h3>
+      <p>Work above ground floor adds carrying time up stairs, protection for communal areas, and sometimes restricted delivery windows or lift bookings set by the building. Leaseholders usually need the freeholder’s or managing agent’s consent before structural or layout changes, so read the lease early. Flats over shops often share all of these problems at once, which is why the tight setting is often the honest one.</p>
+      <h3>Party wall basics</h3>
+      <p>In England and Wales, <a href="https://www.gov.uk/party-walls-building-works">gov.uk explains</a> that you must tell your neighbours about work on or at a shared boundary, work on an existing party wall, or digging below and near their foundation level. Gov.uk says notice is given between two months and a year before you start. A neighbour can consent in writing; if they do not respond or do not agree, surveyors are appointed to agree a party wall award, which sets out how the work is done and who pays for what, including surveyors’ fees. The calculator’s Party Wall allowance (a mid of £1,400 for one adjoining owner, before spec and region) is a placeholder for that process, not a surveyor’s fee. Terraces and semis with two neighbours may need two notices.</p>
+      <h3>Restricted working hours and conservation areas</h3>
+      <p>Many councils publish recommended hours for noisy building work, and some sites have planning conditions or building rules that limit hours, delivery times or Saturday working. A shorter working day stretches the programme, and a longer programme costs more in scaffold hire, preliminaries and supervision. Conservation areas can add constraints on materials, windows and roofing, and may limit what can be done without permission. The calculator’s listed or conservation uplift is a blunt +15% for that extra care; it does not price consent or a heritage specification.</p>
 
       <h2>Scaffolding, skips, and living in the house</h2>
-      <p>Scaffold and waste are easy to forget when a headline rate is per square metre of extension or roof. The calculator does not hide them inside the regional percentage. An extra scaffolding period is an optional allowance with a mid of £1,800. An extra skip is an optional allowance with a mid of £600. Tick them when the programme is longer than a simple visit, or when the job will generate more waste than the base project assumes. They are allowances in the model, not a hire price from a scaffold firm or a skip licence from the council.</p>
+      <p>Scaffold and waste are easy to forget when a headline rate is per square metre of extension or roof. The calculator keeps them as separate allowances. An extra scaffolding period has a mid of £1,800 and an extra skip a mid of £600, before they are scaled by specification and region — which is why the worked example shows a higher scaffold figure in London than in the North East. Tick them when the programme is longer than a simple visit, or when the job will generate more waste than the base project assumes. They are allowances in the model, not a hire price from a scaffold firm or a skip licence from the council.</p>
       <p>Occupation is separate again. An empty house is the baseline. Living in during the works is illustrated at about +8% on top of the other factors. The pounds move because the programme often moves: rooms must stay usable, dusty phases are broken up, and deliveries cannot block the only entrance all day. The percentage is not a disturbance payment and not a promise that living on site will cost exactly that much more.</p>
 
       <h2>Listed buildings and the limit of the uplift</h2>
       <p>The listed or conservation toggle adds about +15% when you select it. It is a blunt stand-in for extra design care and materials, not a heritage consultant’s fee and not a quote for sash windows, lime mortar, or a like-for-like roof. Planning risk, listed-building consent, and conservation-area detail still sit largely outside the band. Switching the toggle on does not mean the work is acceptable to the council, and leaving it off does not mean an unlisted house in a conservation area has no extra cost.</p>
+
+      <h2>How to reduce access costs</h2>
+      <p>You cannot change your region, but you can often make a hard site less hard. None of these is guaranteed to lower a quote; they remove reasons for a builder to add risk.</p>
+      <ul>
+        <li><strong>Describe access in the tender.</strong> Say whether there is side access, where a skip can go, and whether materials must come through the house. Firms price unknowns cautiously.</li>
+        <li><strong>Sort permissions early.</strong> Party wall notices, skip licences, bay suspensions and any freeholder consent all have lead times. Late permissions stop the programme, and stopped programmes cost money.</li>
+        <li><strong>Agree shared access in writing.</strong> If a neighbour or alley owner will let materials through, get it written down for the whole programme, including what happens if anything is damaged.</li>
+        <li><strong>Clear the route.</strong> Emptying the hallway and rooms on the route, and moving out of the house for the dirtiest phases if you can, saves time for everyone.</li>
+        <li><strong>Batch deliveries and waste.</strong> Fewer, planned deliveries and collections mean fewer bay suspensions and less waiting about.</li>
+        <li><strong>Think about the programme.</strong> A shorter scaffold period and fewer return visits usually matter more on a tight site than on an open one.</li>
+      </ul>
 
       <h2>How to use the levers</h2>
       <ol>
         <li>Pick the region that matches where the property is.</li>
         <li>Pick access from how vans, skips, and materials will actually arrive — easy, typical suburban, or tight terrace.</li>
         <li>Say whether the house is empty or occupied, and switch on the listed uplift only when that constraint is real.</li>
-        <li>Add scaffold or skip allowances when the base project would otherwise forget them.</li>
+        <li>Add scaffold, skip or Party Wall allowances when the base project would otherwise forget them.</li>
         <li>Keep VAT and contingency as their own knobs; the <a href="/guides/vat">VAT guide</a> explains which rate is likely.</li>
         <li>Re-run the band when you compare quotes from different parts of the UK on the same drawing.</li>
       </ol>
-      <p>Only written quotes settle the number. This lab sizes a conversation: it shows how region and site access move an illustrative UK band. It does not price your postcode. Read the <a href="/disclaimer">disclaimer</a> before you treat any mid figure as a budget you would defend, then <a class="btn" href="/#calculator">open the calculator</a>. Related guides: <a href="/guides/extension">extension £/m²</a> · <a href="/guides/loft">loft ranges</a> · <a href="/guides/boiler">boiler, heat pump and PV</a> · <a href="/guides/vat">VAT on home works</a>.</p>
+
+      <h2>Region and access FAQ</h2>
+      <h3>Why does the same project cost more in London?</h3>
+      <p>Labour, overheads, parking, waste and delivery logistics generally cost more in London and the South East. The calculator reflects that with broad factors — +30% for inner London and +22% for outer London — applied to the works band. They are planning factors, not a borough price list.</p>
+      <h3>Do access and region add together?</h3>
+      <p>No, they multiply. Inner London (1.30) with a tight terrace (1.16) gives about 1.51 times the easy-access UK baseline, not 1.46. Extras such as scaffold and skip are scaled by region and specification, but not by access.</p>
+      <h3>Which access setting should I choose?</h3>
+      <p>Choose easy access only if there is parking, room for a skip and a route to the work that avoids the house. Choose tight terrace if materials and waste must go through the house or the street is hard to load from. Most other houses fit the typical suburban setting.</p>
+      <h3>Does the calculator include skip licences, parking suspensions or scaffold licences?</h3>
+      <p>Not as separate fees. Those costs vary by council and are partly covered by the access setting and the optional scaffold and skip allowances. Ask for them to be stated on written quotes.</p>
+      <h3>Do I need a party wall agreement?</h3>
+      <p>In England and Wales you must give notice if work affects a party wall or boundary or involves digging near a neighbour’s foundations. Read the gov.uk party wall guidance; Scotland has different rules. The calculator’s Party Wall allowance is a planning placeholder, not a surveyor’s fee.</p>
+
+      <p>Only written quotes settle the number. This lab sizes a conversation: it shows how region and site access move an illustrative UK band. It does not price your postcode. Read the <a href="/disclaimer">disclaimer</a> before you treat any mid figure as a budget you would defend, then <a class="btn" href="/#calculator">open the calculator</a>. Related guides: <a href="/guides/extension">extension £/m²</a> · <a href="/guides/loft">loft ranges</a> · <a href="/guides/boiler">boiler, heat pump and PV</a> · <a href="/guides/vat">VAT on home works</a> · <a href="/projects">all project types</a>.</p>
     </article>
   </main>
   <footer>
