@@ -109,13 +109,6 @@ nav a[aria-current="page"] { background: var(--navy-50); color: var(--navy-900);
   nav.open a { min-height: 44px; font-size: 15px; }
 }
 
-/* Trust strip */
-.trust-bar { background: var(--navy-50); border-bottom: 1px solid var(--navy-100); font-size: 13px; color: var(--slate-600); }
-.trust-bar .wrap { display: flex; gap: 0.5rem 1rem; flex-wrap: wrap; align-items: center; padding-top: 0.5rem; padding-bottom: 0.5rem; }
-.trust-bar span { display: inline-flex; align-items: center; gap: 0.375rem; }
-.trust-bar span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-teal); }
-.trust-bar a { color: var(--accent); }
-
 /* Hero (navy, as on the sister sites) */
 .hero {
   background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 50%, var(--navy-950) 100%);
