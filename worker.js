@@ -34,20 +34,78 @@ const NOT_FOUND = `<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Project Cost Lab</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="theme-color" content="#062E62">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#062E62">
 </head>
 <body>
-  <main class="wrap" style="padding:48px 16px;">
-    <h1>Page not found</h1>
-    <p>That page doesn't exist on Project Cost Lab. Try one of these:</p>
-    <ul>
-      <li><a href="/">Home project cost calculator</a></li>
-      <li><a href="/projects">All project types</a></li>
-      <li><a href="/guides/">Cost guides</a></li>
-      <li><a href="/contact">Contact Rodway Labs</a></li>
-    </ul>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/" aria-label="Project Cost Lab home"><svg class="mark" viewBox="133 238 290 290" width="36" height="36" aria-hidden="true" focusable="false"><path fill="#062E62" fill-rule="evenodd" d="M166 472V334L265 246.4 364 334V472ZM186 452H344V343L265 273 186 343Z"/><path fill="#062E62" d="M238 361h22.5v22.5H238ZM269.5 361H292v22.5h-22.5ZM238 393h22.5v22.5H238ZM269.5 393H292v22.5h-22.5Z"/><path fill="none" stroke="#0096A1" stroke-width="9" d="M403.5 251v226M390 249.5h27M390 478.5h27M149 511.5h225M147.5 497v29M375.5 497v29"/></svg><span class="wordmark">Project Cost <span class="wm-lab">Lab</span></span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
+      <nav id="nav">
+        <a href="/">Home</a>
+        <a href="/#calculator">Calculator</a>
+        <a href="/projects">Projects</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </header>
+  <main class="section notfound">
+    <div class="wrap prose">
+      <p class="badge">404</p>
+      <h1>Page not found</h1>
+      <p>That page doesn't exist on Project Cost Lab. Try one of these:</p>
+      <ul>
+        <li><a href="/">Home project cost calculator</a></li>
+        <li><a href="/projects">All project types</a></li>
+        <li><a href="/guides/">Cost guides</a></li>
+        <li><a href="/contact">Contact Rodway Labs</a></li>
+      </ul>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand brand-foot" href="/" aria-label="Project Cost Lab home"><svg class="mark" viewBox="133 238 290 290" width="32" height="32" aria-hidden="true" focusable="false"><path fill="#062E62" fill-rule="evenodd" d="M166 472V334L265 246.4 364 334V472ZM186 452H344V343L265 273 186 343Z"/><path fill="#062E62" d="M238 361h22.5v22.5H238ZM269.5 361H292v22.5h-22.5ZM238 393h22.5v22.5H238ZM269.5 393H292v22.5h-22.5Z"/><path fill="none" stroke="#0096A1" stroke-width="9" d="M403.5 251v226M390 249.5h27M390 478.5h27M149 511.5h225M147.5 497v29M375.5 497v29"/></svg><span class="wordmark">Project Cost <span class="wm-lab">Lab</span></span></a>
+          <p class="foot-note">Independent informational tools from Rodway Labs. Not a contractor, architect or quantity surveyor — and not a quote engine.</p>
+          <p class="foot-note">The mid figure is a band for planning, not a tender. The VAT toggle is a display choice, not a ruling.</p>
+          <p class="foot-sister"><a href="https://takehomelab.co.uk">Take-Home Lab</a> · <a href="https://remortgagelab.co.uk">Remortgage Lab</a> · <a href="https://loancalclab.net">LoanCalc Lab</a></p>
+          <div class="published"><span>Published by</span><a href="/about"><img src="/brand/rodway-labs-logo.svg" alt="Rodway Labs" width="85" height="30" loading="lazy" decoding="async"></a></div>
+        </div>
+        <div>
+          <p class="foot-h">Explore</p>
+          <ul>
+            <li><a href="/#calculator">Calculator</a></li>
+            <li><a href="/projects">All projects</a></li>
+            <li><a href="/guides/">Guides</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="foot-legal">
+          <p class="foot-h">Legal &amp; trust</p>
+          <ul>
+            <li><a href="/disclaimer">Disclaimer</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/cookies">Cookies</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/advertising">Advertising &amp; affiliates</a></li>
+            <li><a href="/cookies" data-pcl-prefs>Privacy preferences</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="legal">© 2026 Project Cost Lab · Published by Rodway Labs, an independent UK publisher. Ranges last checked September 2026 · <a href="/about#methodology">Methodology</a> · <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a></p>
+    </div>
+  </footer>
 </body>
 </html>`;
 
@@ -92,10 +150,6 @@ export default {
       url.protocol = "https:";
       url.pathname = path;
       return new Response(null, { status: 301, headers: Object.assign({ Location: url.toString() }, SECURITY) });
-    }
-    if (path === "/favicon.ico") {
-      const icon = await env.ASSETS.fetch(new Request(new URL("/favicon.svg", url), request));
-      return new Response(icon.body, { status: icon.status, headers: withHeaders(icon, { "Content-Type": "image/svg+xml" }) });
     }
     const response = await env.ASSETS.fetch(request);
     if (response.status === 404) {
