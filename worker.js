@@ -54,6 +54,7 @@ const NOT_FOUND = `<!doctype html>
         <a href="/#calculator">Calculator</a>
         <a href="/projects">Projects</a>
         <a href="/guides/">Guides</a>
+        <a href="/news">News</a>
         <a href="/about">About</a>
       </nav>
     </div>
@@ -87,6 +88,7 @@ const NOT_FOUND = `<!doctype html>
             <li><a href="/#calculator">Calculator</a></li>
             <li><a href="/projects">All projects</a></li>
             <li><a href="/guides/">Guides</a></li>
+            <li><a href="/news">News</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>

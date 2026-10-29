@@ -9,3 +9,5 @@ package-lock.json
 wrangler.jsonc
 worker.js
 README.md
+content
+scripts

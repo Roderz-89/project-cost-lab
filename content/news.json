@@ -1,0 +1,125 @@
+{
+  "categories": [
+    "Building costs",
+    "Grants & VAT",
+    "Planning",
+    "Energy"
+  ],
+  "posts": [
+    {
+      "slug": "budget-2026-home-works-energy",
+      "title": "Budget 2026: what changed for home works and energy upgrades",
+      "description": "What the 28 October 2026 Budget means for VAT on insulation, solar and heat pumps, the Boiler Upgrade Scheme, energy bills and building regulations, with a worked £ example.",
+      "date": "2026-10-29",
+      "updated": "2026-10-29",
+      "category": "Energy",
+      "readTime": 5,
+      "excerpt": "VAT on energy-saving materials returns to 5% on 1 April 2027 as planned, heat batteries join the list, and the electricity VAT cut runs to July 2027. A worked example shows the VAT change on solar and insulation bands.",
+      "updateDue": "We will update this post when the secondary legislation for heat batteries is published, when the full eligibility rules for the Household Energy Payment are published, and when Ofgem consults on removing gas standing charges.",
+      "sources": [
+        {
+          "title": "HM Treasury — Budget 2026 (28 October 2026)",
+          "url": "https://www.gov.uk/government/publications/budget-2026-document/budget-2026-html"
+        },
+        {
+          "title": "DESNZ — What the Autumn Budget 2026 means for your energy bills",
+          "url": "https://www.gov.uk/government/news/what-the-autumn-budget-2026-means-for-your-energy-bills"
+        },
+        {
+          "title": "HMRC — VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
+          "url": "https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086"
+        },
+        {
+          "title": "HMRC — Buildings and construction (VAT Notice 708)",
+          "url": "https://www.gov.uk/guidance/buildings-and-construction-vat-notice-708"
+        },
+        {
+          "title": "GOV.UK — Boiler Upgrade Scheme: what you can get",
+          "url": "https://www.gov.uk/apply-boiler-upgrade-scheme/what-you-can-get"
+        },
+        {
+          "title": "GOV.UK — Biodiversity net gain: exempt developments",
+          "url": "https://www.gov.uk/guidance/biodiversity-net-gain-exempt-developments"
+        },
+        {
+          "title": "GOV.UK — Approved Documents (Building Regulations)",
+          "url": "https://www.gov.uk/government/collections/approved-documents"
+        },
+        {
+          "title": "OBR — Economic and fiscal outlook, October 2026",
+          "url": "https://www.gov.uk/government/publications/october-2026-economic-and-fiscal-outlook"
+        }
+      ]
+    },
+    {
+      "slug": "heat-pump-grant-vat-2026",
+      "title": "Heat pumps in late 2026: the £7,500 grant, 0% VAT and the 31 March 2027 dates",
+      "description": "The Boiler Upgrade Scheme grant, the £9,000 off-gas rate and 0% VAT until 31 March 2027, with a worked air source heat pump example from the calculator.",
+      "date": "2026-10-29",
+      "updated": "2026-10-29",
+      "category": "Grants & VAT",
+      "readTime": 5,
+      "excerpt": "The Boiler Upgrade Scheme pays £7,500 towards an air source heat pump, or £9,000 for some oil and LPG homes until 31 March 2027. VAT is 0% until the same date, then 5%. A worked example shows the band before and after the grant.",
+      "updateDue": "We will update this post when GOV.UK or Ofgem publish grant values for installations after 31 March 2027, and once the secondary legislation adding heat batteries to the 5% list is published.",
+      "sources": [
+        {
+          "title": "GOV.UK — Boiler Upgrade Scheme: what you can get",
+          "url": "https://www.gov.uk/apply-boiler-upgrade-scheme/what-you-can-get"
+        },
+        {
+          "title": "Ofgem — Boiler Upgrade Scheme: property owners",
+          "url": "https://www.ofgem.gov.uk/environmental-and-social-schemes/boiler-upgrade-scheme-bus/property-owners"
+        },
+        {
+          "title": "DESNZ — Notice of approved grant categories and values for the Boiler Upgrade Scheme",
+          "url": "https://www.gov.uk/government/publications/boiler-upgrade-scheme-regulations-approved-standards-grant-categories-and-grant-levels/notice-of-approved-grant-categories-and-values-for-the-boiler-upgrade-scheme"
+        },
+        {
+          "title": "HMRC — VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
+          "url": "https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086"
+        },
+        {
+          "title": "HM Treasury — Budget 2026 (28 October 2026)",
+          "url": "https://www.gov.uk/government/publications/budget-2026-document/budget-2026-html"
+        },
+        {
+          "title": "DESNZ — What the Autumn Budget 2026 means for your energy bills",
+          "url": "https://www.gov.uk/government/news/what-the-autumn-budget-2026-means-for-your-energy-bills"
+        }
+      ]
+    },
+    {
+      "slug": "building-material-prices-august-2026",
+      "title": "Building material prices up 6.4% in a year: what it means next to an extension band",
+      "description": "DBT material prices rose 6.4% in the year to August 2026; ONS construction output prices rose 1.9% to June. What each measures, with a worked extension and loft example.",
+      "date": "2026-10-29",
+      "updated": "2026-10-29",
+      "category": "Building costs",
+      "readTime": 5,
+      "excerpt": "Official material prices rose 6.4% in the year to August 2026, led by steel and pipework, while construction output prices rose 1.9% in the year to June. We set both next to a 20 m² extension and a dormer loft band.",
+      "updateDue": "We will update this post after DBT’s next building materials edition on 4 November 2026 and the ONS construction output price indices for July to September 2026 on 12 November 2026.",
+      "sources": [
+        {
+          "title": "DBT — Construction building materials: commentary, September 2026",
+          "url": "https://www.gov.uk/government/statistics/building-materials-and-components-statistics-september-2026/construction-building-materials-commentary-september-2026"
+        },
+        {
+          "title": "DBT — Building materials and components: monthly statistics (collection)",
+          "url": "https://www.gov.uk/government/collections/building-materials-and-components-monthly-statistics-2012"
+        },
+        {
+          "title": "ONS — Construction output in Great Britain: June 2026, new orders and construction output price indices, April to June 2026",
+          "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/june2026newordersandconstructionoutputpriceindicesapriltojune2026"
+        },
+        {
+          "title": "ONS — Construction output in Great Britain: August 2026",
+          "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/august2026"
+        },
+        {
+          "title": "ONS — Release calendar: construction output, September 2026 and price indices July to September 2026 (12 November 2026)",
+          "url": "https://www.ons.gov.uk/releases/constructionoutputingreatbritainseptember2026newordersandconstructionoutputpriceindicesjulytoseptember2026"
+        }
+      ]
+    }
+  ]
+}
