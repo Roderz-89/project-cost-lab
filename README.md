@@ -38,7 +38,7 @@ Single source of truth: `content/news.json` (metadata) + `content/news/<slug>.ht
 `news.html` and `news/*.html` are **generated** — do not edit them by hand.
 
 **Add a post**
-1. Write the body in `content/news/<slug>.html` (lowercase slug, hyphens). Start with a plain intro paragraph; use `<h2>` sections. Do not add the title, dates, "Not a quote" line, sources or "More from News" — the build adds them.
+1. Write the body in `content/news/<slug>.html` (lowercase slug, hyphens). Start with a plain intro paragraph; use `<h2>` sections. Do not add the title, dates, sources or "More from News" — the build adds them.
 2. Include a worked £ example run through the calculator logic in Node (`window.ProjectCostLab.calc(...)` after loading `js/data.js`, `js/projects-a.js`, `js/projects-b.js`, `js/app.js`) and state the inputs. End with an `<div class="update-box"><p><strong>Illustrative only.</strong> …</p></div>` disclaimer.
 3. Add an entry to `content/news.json` → `posts`: `slug`, `title`, `description` (meta, ~155 chars), `date` and `updated` (YYYY-MM-DD), `category` (one of `categories`: Building costs, Grants & VAT, Planning, Energy), `readTime` (minutes; the build fails if it is >1 min off the body), `excerpt`, optional `updateDue` (renders the "Update due" box), and `sources` (`title` + https `url`, official sources only).
 4. `node scripts/build-news.mjs && node scripts/check.mjs`, review, commit, push, deploy, then ping IndexNow for the new URL(s).

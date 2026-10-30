@@ -73,7 +73,6 @@ ${icons}  ${ld(graph)}
 ${header}
 `;
 
-const NOT_QUOTE = `<p class="not-quote"><strong>Not a quote.</strong> Illustrative planning bands from Rodway Labs, not a tender or professional advice — see the <a href="/disclaimer">disclaimer</a>.</p>`;
 const meta = (p) => `<p class="post-meta"><span class="tag">${esc(p.category)}</span><span><time datetime="${p.date}">${fmt(p.date)}</time></span><span aria-hidden="true">·</span><span>${p.readTime} min read</span></p>`;
 
 // ---- /news ------------------------------------------------------------------
@@ -97,7 +96,6 @@ const newsIndex = head({
       <div class="news-intro">
         <h1>News</h1>
         <p class="lede-plain">Short posts on what is moving the cost of UK home projects: building material and construction prices, grants and VAT on energy-saving work, planning and building regulations, and energy bills. Each post links to the official source and, where it helps, shows a worked £ example from our calculator with the inputs stated.</p>
-        ${NOT_QUOTE}
       </div>
       <ul class="post-list">
 ${posts.map(card).join("\n")}
@@ -138,7 +136,6 @@ for (const p of posts) {
         ${meta(p)}
         <h1>${esc(p.title)}</h1>
         <p class="post-dates">Published <time datetime="${p.date}">${fmt(p.date)}</time> · Last updated <time datetime="${p.updated}">${fmt(p.updated)}</time></p>
-        ${NOT_QUOTE}
 ${p.updateDue ? `        <div class="update-box"><p><strong>Update due.</strong> ${esc(p.updateDue)}</p></div>\n` : ""}${p.body.trim().split("\n").map((l) => "        " + l).join("\n")}
         <h2>Sources</h2>
         <ul class="sources">

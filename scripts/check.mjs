@@ -65,6 +65,8 @@ for (const [name, html] of [...pages.map((p) => [p, r(p)]), ["worker.js NOT_FOUN
   ok(/<li><a href="\/news">News<\/a><\/li>/.test(html), `${name}: News missing from footer`);
   ok(!/adsbygoogle|googlesyndication|pagead|ca-pub-|\bpub-\d/i.test(html), `${name}: ad code found`);
   ok(!/class="avatar"|editorial team|Publisher: Rodway|Operator: Rodway|· Published by Rodway Labs<\/p>/.test(html), `${name}: visible byline left`);
+  // "Not a quote" banner only on pages with a working calculator (they load js/app.js)
+  ok(html.includes('class="not-quote"') === /src="\/?js\/app\.js"/.test(html), `${name}: "Not a quote" banner should appear only on calculator pages`);
   for (const m of html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) { inlineChecked++; ok(hashes.has(sha(m[1])), `${name}: inline script hash not in CSP`); }
   for (const m of html.matchAll(/\son(?:click|load|change|input|submit)="([^"]*)"/g)) { inlineChecked++; ok(hashes.has(sha(m[1].replace(/&quot;/g, '"').replace(/&amp;/g, "&"))), `${name}: inline handler hash not in CSP`); }
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { JSON.parse(m[1]); } catch { ok(false, `${name}: invalid JSON-LD`); } }
@@ -84,7 +86,7 @@ for (const p of news.posts) {
   ok(sm.includes(`<loc>https://projectcostlab.co.uk/news/${p.slug}</loc>`), `${p.slug} not in sitemap`);
   ok(h.includes("← All news") && h.includes("More from News") && /Published <time[^>]*>[^<]+<\/time> · Last updated/.test(h), `${p.slug}: back link / More from News / dates line missing`);
   ok(/"@type":"Article"/.test(h) && h.includes('"name":"Rodway Labs"'), `${p.slug}: Article JSON-LD with Rodway Labs publisher missing`);
-  ok(/Illustrative only/.test(h) && /Not a quote/.test(h), `${p.slug}: disclaimer / not-a-quote wording missing`);
+  ok(/Illustrative only/.test(h) && /not a quote/i.test(h), `${p.slug}: disclaimer / not-a-quote wording missing`);
   ok(r(`content/news/${p.slug}.html`) && h.includes(r(`content/news/${p.slug}.html`).trim().split("\n")[0].trim()), `${p.slug}: page out of date — run node scripts/build-news.mjs`);
   ok(r("news.html").includes(`href="/news/${p.slug}"`), `${p.slug}: not listed on /news`);
 }
