@@ -1,7 +1,8 @@
 /**
  * Project Cost Lab.
  * Any non-canonical host/path (www, .html, /index.html, stray trailing slash)
- * gets a single 301 straight to the canonical apex URL. Ads stay off.
+ * gets a single 301 straight to the canonical apex URL. /news/page/1 -> /news.
+ * /news/page/N (N>1) is served from news/page/N.html when it exists, else 404. Ads stay off.
  * Cache: public, max-age=0, must-revalidate.
  * Security headers on every response; real 404s get a helpful page with status 404.
  * CSP: per-response nonce (Cloudflare adds it to its injected challenge-platform
@@ -16,6 +17,7 @@ function canonicalPath(p) {
   else if (c.endsWith(".html")) c = c.slice(0, -5);
   if (c === "/guides") c = "/guides/";
   if (c.length > 1 && c.endsWith("/") && !DIRS.has(c)) c = c.slice(0, -1);
+  if (c === "/news/page/1") c = "/news"; // page 1 of the news list is /news itself
   return c;
 }
 

@@ -88,9 +88,47 @@ for (const p of news.posts) {
   ok(/"@type":"Article"/.test(h) && h.includes('"name":"Rodway Labs"'), `${p.slug}: Article JSON-LD with Rodway Labs publisher missing`);
   ok(/Illustrative only/.test(h) && /not a quote/i.test(h), `${p.slug}: disclaimer / not-a-quote wording missing`);
   ok(r(`content/news/${p.slug}.html`) && h.includes(r(`content/news/${p.slug}.html`).trim().split("\n")[0].trim()), `${p.slug}: page out of date — run node scripts/build-news.mjs`);
-  ok(r("news.html").includes(`href="/news/${p.slug}"`), `${p.slug}: not listed on /news`);
+  ok([r("news.html"), ...(existsSync(join(ROOT, "news/page")) ? readdirSync(join(ROOT, "news/page")).map((f) => r(`news/page/${f}`)) : [])].some((h) => h.includes(`href="/news/${p.slug}"`)), `${p.slug}: not listed on /news or /news/page/N`);
 }
 ok(r("guides/index.html").includes('class="latest-news"'), "Latest news line missing on /guides/");
+
+// ---- news pagination: 12 per page, newest first, every post reachable once ----
+{
+  const PER = 12;
+  const sorted = [...news.posts].sort((a, b) => (b.date + b.updated).localeCompare(a.date + a.updated));
+  const total = Math.max(1, Math.ceil(sorted.length / PER));
+  const file = (n) => (n === 1 ? "news.html" : `news/page/${n}.html`);
+  const path = (n) => (n === 1 ? "/news" : `/news/page/${n}`);
+  const seen = [];
+  for (let n = 1; n <= total; n++) {
+    if (!ok(existsSync(join(ROOT, file(n))), `${file(n)} missing — run node scripts/build-news.mjs`)) continue;
+    const h = r(file(n));
+    const cards = [...h.matchAll(/<article class="post-card">[\s\S]*?<h2><a href="\/news\/([a-z0-9-]+)">/g)].map((m) => m[1]);
+    const want = sorted.slice((n - 1) * PER, n * PER).map((p) => p.slug);
+    ok(cards.length <= PER && JSON.stringify(cards) === JSON.stringify(want), `${path(n)}: expected posts ${want.join(",")} got ${cards.join(",")}`);
+    seen.push(...cards);
+    ok(h.includes(`<link rel="canonical" href="https://projectcostlab.co.uk${path(n)}">`) && h.includes('<meta name="robots" content="index, follow">'), `${path(n)}: canonical/robots wrong`);
+    const hasNav = h.includes('<nav class="pagination" aria-label="News pages">');
+    ok(hasNav === (total > 1), `${path(n)}: pagination nav ${hasNav ? "present with one page" : "missing"}`);
+    if (total > 1) {
+      for (let k = 1; k <= total; k++) ok(h.includes(`href="${path(k)}"`), `${path(n)}: no link to ${path(k)}`);
+      ok((h.match(/aria-current="page" aria-label="Page \d+/g) || []).length === 1 && h.includes(`aria-current="page" aria-label="Page ${n},`), `${path(n)}: current page marker wrong`);
+      ok(n === 1 ? !h.includes('rel="prev"') : h.includes(`href="${path(n - 1)}" rel="prev"`), `${path(n)}: Previous link wrong`);
+      ok(n === total ? !h.includes('rel="next"') : h.includes(`href="${path(n + 1)}" rel="next"`), `${path(n)}: Next link wrong`);
+    }
+    ok(n === 1 ? h.includes("About this section") : !h.includes("About this section") && h.includes(`<title>News — page ${n} | Project Cost Lab</title>`) && h.includes(`<h1>News — page ${n}</h1>`), `${path(n)}: page-1-only sections / title / heading wrong`);
+    if (n > 1) ok(sm.includes(`<loc>https://projectcostlab.co.uk${path(n)}</loc>`), `${path(n)} not in sitemap`);
+  }
+  ok(seen.length === sorted.length && new Set(seen).size === sorted.length, `pagination: ${seen.length} cards for ${sorted.length} posts (each must appear exactly once)`);
+  const extra = existsSync(join(ROOT, "news/page")) ? readdirSync(join(ROOT, "news/page")).filter((f) => !(/^\d+\.html$/.test(f) && +f.slice(0, -5) >= 2 && +f.slice(0, -5) <= total)) : [];
+  ok(extra.length === 0, `stale news/page files: ${extra.join(", ")}`);
+  ok(!existsSync(join(ROOT, "news/page/1.html")), "news/page/1.html must not exist (/news/page/1 redirects to /news)");
+  const smPages = [...sm.matchAll(/<loc>https:\/\/projectcostlab\.co\.uk\/news\/page\/(\d+)<\/loc>/g)].map((m) => +m[1]);
+  ok(smPages.every((k) => k >= 2 && k <= total) && smPages.length === total - 1, `sitemap news pages wrong: ${smPages.join(",")}`);
+  ok(!news.posts.some((p) => p.slug === "page"), 'post slug "page" is reserved');
+  ok(/c === "\/news\/page\/1"\) c = "\/news"/.test(worker), "worker.js: /news/page/1 -> /news redirect missing");
+  console.log(`news pagination: ${sorted.length} posts over ${total} page(s), ${PER} per page, all reachable`);
+}
 
 // ---- ads.txt ----------------------------------------------------------------
 const ads = createHash("sha256").update(readFileSync(join(ROOT, "ads.txt"))).digest("hex");

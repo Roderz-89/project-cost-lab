@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Project Cost Lab — News build.
 // Single source: content/news.json (metadata) + content/news/<slug>.html (post body).
-// Writes: news.html (/news), news/<slug>.html (/news/<slug>), the /news entries in
+// Writes: news.html (/news), news/page/<n>.html (/news/page/<n>, only when >12 posts),
+// news/<slug>.html (/news/<slug>), the /news entries in
 // sitemap.xml, and the "Latest news" line on guides/index.html.
 // Usage: node scripts/build-news.mjs
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync, rmdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -27,6 +28,7 @@ const slugs = new Set();
 for (const p of data.posts) {
   for (const k of ["slug", "title", "description", "date", "updated", "category", "readTime", "excerpt", "sources"]) if (p[k] === undefined || p[k] === "") errors.push(`${p.slug || "?"}: missing ${k}`);
   if (!/^[a-z0-9-]+$/.test(p.slug)) errors.push(`${p.slug}: slug must be lowercase a-z, 0-9 and hyphens`);
+  if (p.slug === "page") errors.push(`${p.slug}: "page" is reserved for /news/page/N`);
   if (slugs.has(p.slug)) errors.push(`${p.slug}: duplicate slug`);
   slugs.add(p.slug);
   if (!CATS.includes(p.category)) errors.push(`${p.slug}: category must be one of ${CATS.join(", ")}`);
@@ -75,32 +77,42 @@ ${header}
 
 const meta = (p) => `<p class="post-meta"><span class="tag">${esc(p.category)}</span><span><time datetime="${p.date}">${fmt(p.date)}</time></span><span aria-hidden="true">·</span><span>${p.readTime} min read</span></p>`;
 
-// ---- /news ------------------------------------------------------------------
+// ---- /news (paginated: PER_PAGE newest posts per page) ------------------------
+// Page 1 = /news (news.html) with the intro and "About this section" blocks.
+// Page N>1 = /news/page/N (news/page/N.html): short heading, list, pagination.
+export const PER_PAGE = 12;
 const listUrl = `${SITE}/news`;
+const pageCount = Math.max(1, Math.ceil(posts.length / PER_PAGE));
+const pagePath = (n) => (n === 1 ? "/news" : `/news/page/${n}`);
 const card = (p) => `        <li><article class="post-card">
           ${meta(p)}
           <h2><a href="/news/${p.slug}">${esc(p.title)}</a></h2>
           <p>${esc(p.excerpt)}</p>
           <a class="read" href="/news/${p.slug}" aria-label="Read post: ${esc(p.title)}">Read post →</a>
         </article></li>`;
-const newsIndex = head({
-  title: "News: UK home project costs, grants and VAT | Project Cost Lab",
-  description: "Short, sourced posts on what is moving UK home project costs: building material prices, heat pump grants, VAT on energy-saving work, planning and energy bills.",
-  path: "/news",
-  graph: [ORG, WEBSITE,
-    { "@type": "CollectionPage", "@id": `${listUrl}#page`, url: listUrl, name: "News", inLanguage: "en-GB", isPartOf: { "@id": `${SITE}/#website` }, publisher: { "@id": `${SITE}/#org` },
-      mainEntity: { "@type": "ItemList", itemListElement: posts.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE}/news/${p.slug}`, name: p.title })) } },
-    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "News", item: listUrl }] }],
-}) + `  <main class="section">
-    <div class="wrap">
-      <div class="news-intro">
-        <h1>News</h1>
-        <p class="lede-plain">Short posts on what is moving the cost of UK home projects: building material and construction prices, grants and VAT on energy-saving work, planning and building regulations, and energy bills. Each post links to the official source and, where it helps, shows a worked £ example from our calculator with the inputs stated.</p>
-      </div>
-      <ul class="post-list">
-${posts.map(card).join("\n")}
-      </ul>
-      <section class="news-about" aria-labelledby="about-news">
+// Page numbers to show: all when there are 7 or fewer, otherwise first, last and current ±1 with gaps.
+const pageNums = (cur, total) => {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const keep = new Set([1, total, cur - 1, cur, cur + 1].filter((n) => n >= 1 && n <= total));
+  const out = [];
+  [...keep].sort((a, b) => a - b).forEach((n, i, a) => { if (i && n - a[i - 1] > 1) out.push(null); out.push(n); });
+  return out;
+};
+const pagination = (cur) => {
+  if (pageCount < 2) return "";
+  const prev = cur > 1 ? `<a class="pg-prev" href="${pagePath(cur - 1)}" rel="prev" aria-label="Previous page">← Previous</a>` : `<span class="pg-prev" aria-disabled="true">← Previous</span>`;
+  const next = cur < pageCount ? `<a class="pg-next" href="${pagePath(cur + 1)}" rel="next" aria-label="Next page">Next →</a>` : `<span class="pg-next" aria-disabled="true">Next →</span>`;
+  const nums = pageNums(cur, pageCount).map((n) => n === null ? `<li class="pg-gap" aria-hidden="true">…</li>`
+    : n === cur ? `<li><a href="${pagePath(n)}" aria-current="page" aria-label="Page ${n}, current page">${n}</a></li>`
+    : `<li><a href="${pagePath(n)}" aria-label="Page ${n}">${n}</a></li>`).join("");
+  return `      <nav class="pagination" aria-label="News pages">
+        ${prev}
+        <ol class="pg-nums">${nums}</ol>
+        ${next}
+      </nav>
+`;
+};
+const ABOUT = `      <section class="news-about" aria-labelledby="about-news">
         <h2 id="about-news">About this section</h2>
         <p>News sits alongside our <a href="/guides/">guides</a> and the <a href="/#calculator">calculator</a>. Guides explain how a project is priced; news posts cover changes as they are published, such as a new statistics release, a grant change or a VAT date. Posts are tagged ${CATS.map(esc).join(", ").replace(/, ([^,]*)$/, " or $1")}. We do not recommend whether to start, delay or commission any work, or how to pay for it.</p>
         <h2>Where our figures come from</h2>
@@ -110,10 +122,41 @@ ${posts.map(card).join("\n")}
         <h2>How posts are updated</h2>
         <p>Each post shows when it was published and when it was last updated. When a post depends on a release that is still to come, it carries an update box with the expected date, and we update the post once the figures are out. Corrections are made in place and the “Last updated” date changes. If you spot an error, please <a href="/contact">contact us</a>.</p>
       </section>
-    </div>
+`;
+const pageHtml = (n) => {
+  const list = posts.slice((n - 1) * PER_PAGE, n * PER_PAGE);
+  const path = pagePath(n), url = SITE + path;
+  const crumbs = [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` }, { "@type": "ListItem", position: 2, name: "News", item: listUrl }];
+  if (n > 1) crumbs.push({ "@type": "ListItem", position: 3, name: `Page ${n}`, item: url });
+  return head({
+    title: n === 1 ? "News: UK home project costs, grants and VAT | Project Cost Lab" : `News — page ${n} | Project Cost Lab`,
+    description: n === 1 ? "Short, sourced posts on what is moving UK home project costs: building material prices, heat pump grants, VAT on energy-saving work, planning and energy bills."
+      : `Page ${n} of ${pageCount} of Project Cost Lab news: earlier sourced posts on UK home project costs, grants and VAT, planning and energy.`,
+    path,
+    graph: [ORG, WEBSITE,
+      { "@type": "CollectionPage", "@id": `${url}#page`, url, name: n === 1 ? "News" : `News — page ${n}`, inLanguage: "en-GB", isPartOf: { "@id": `${SITE}/#website` }, publisher: { "@id": `${SITE}/#org` },
+        mainEntity: { "@type": "ItemList", itemListElement: list.map((p, i) => ({ "@type": "ListItem", position: (n - 1) * PER_PAGE + i + 1, url: `${SITE}/news/${p.slug}`, name: p.title })) } },
+      { "@type": "BreadcrumbList", itemListElement: crumbs }],
+  }) + `  <main class="section">
+    <div class="wrap">
+      <div class="news-intro">
+${n === 1 ? `        <h1>News</h1>
+        <p class="lede-plain">Short posts on what is moving the cost of UK home projects: building material and construction prices, grants and VAT on energy-saving work, planning and building regulations, and energy bills. Each post links to the official source and, where it helps, shows a worked £ example from our calculator with the inputs stated.</p>
+` : `        <h1>News — page ${n}</h1>
+        <p class="lede-plain">Earlier posts, newest first. <a href="/news">Back to the latest news</a>.</p>
+`}      </div>
+      <ul class="post-list">
+${list.map(card).join("\n")}
+      </ul>
+${pagination(n)}${n === 1 ? ABOUT : ""}    </div>
   </main>
 ${footer}`;
-w("news.html", newsIndex);
+};
+w("news.html", pageHtml(1));
+const pageDir = join(ROOT, "news", "page");
+if (existsSync(pageDir)) for (const f of readdirSync(pageDir)) { const m = f.match(/^(\d+)\.html$/); if (!m || +m[1] < 2 || +m[1] > pageCount) unlinkSync(join(pageDir, f)); }
+for (let n = 2; n <= pageCount; n++) w(`news/page/${n}.html`, pageHtml(n));
+if (existsSync(pageDir) && readdirSync(pageDir).length === 0) rmdirSync(pageDir);
 
 // ---- /news/<slug> -----------------------------------------------------------
 if (existsSync(join(ROOT, "news"))) for (const f of readdirSync(join(ROOT, "news"))) if (f.endsWith(".html") && !slugs.has(f.slice(0, -5))) unlinkSync(join(ROOT, "news", f));
@@ -164,10 +207,12 @@ w("guides/index.html", guides);
 // ---- sitemap.xml: replace /news entries ---------------------------------------
 let sm = r("sitemap.xml").replace(/\s*<url>\s*<loc>https:\/\/projectcostlab\.co\.uk\/news[^<]*<\/loc>[\s\S]*?<\/url>/g, "");
 const newest = posts.map((p) => p.updated).sort().pop();
-const entries = [{ loc: listUrl, lastmod: newest }, ...posts.map((p) => ({ loc: `${SITE}/news/${p.slug}`, lastmod: p.updated }))]
+const pageEntries = [];
+for (let n = 2; n <= pageCount; n++) pageEntries.push({ loc: `${SITE}/news/page/${n}`, lastmod: posts.slice((n - 1) * PER_PAGE, n * PER_PAGE).map((p) => p.updated).sort().pop() });
+const entries = [{ loc: listUrl, lastmod: newest }, ...pageEntries, ...posts.map((p) => ({ loc: `${SITE}/news/${p.slug}`, lastmod: p.updated }))]
   .map((e) => `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n  </url>`).join("\n");
 sm = sm.replace(/(<loc>https:\/\/projectcostlab\.co\.uk\/guides\/<\/loc>\s*<lastmod>)([\d-]+)(<\/lastmod>)/, (m, a, d, b) => a + (d > newest ? d : newest) + b);
 sm = sm.replace(/\s*<\/urlset>\s*$/, `\n${entries}\n</urlset>\n`);
 w("sitemap.xml", sm);
 
-console.log(`News build OK: /news + ${posts.length} posts (${posts.map((p) => p.slug).join(", ")}); sitemap and guides hub updated.`);
+console.log(`News build OK: /news (${pageCount} page${pageCount > 1 ? "s" : ""}, ${PER_PAGE} per page) + ${posts.length} posts (${posts.map((p) => p.slug).join(", ")}); sitemap and guides hub updated.`);

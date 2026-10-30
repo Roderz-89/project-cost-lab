@@ -37,11 +37,13 @@ CLOUDFLARE_API_TOKEN=$(cat /home/box/.secrets/cf_deploy_token) npx wrangler@4 de
 Single source of truth: `content/news.json` (metadata) + `content/news/<slug>.html` (post body, HTML fragment).
 `news.html` and `news/*.html` are **generated** — do not edit them by hand.
 
+**Pagination** — `/news` lists the 12 newest posts (sorted by `date`, then `updated`, newest first). Older posts go on `/news/page/2`, `/news/page/3`, … (12 per page, files `news/page/<n>.html`), with a Previous / numbered / Next `<nav aria-label="News pages">` under the list. Only page 1 has the intro and the "About this section" blocks; later pages get a "News — page N" heading, their own canonical, `index, follow` and a unique title. The build only writes pages that have posts, deletes stale page files when the count shrinks, and lists pages 2+ in `sitemap.xml`. With 12 or fewer posts there is no pagination nav and no `news/page/` folder. The worker 301s `/news/page/1` to `/news` and trailing-slash/`.html` variants to the canonical URL; any page number without a file is a 404. `page` is a reserved slug. The page size is `PER_PAGE` in `scripts/build-news.mjs` (keep `scripts/check.mjs` in step).
+
 **Add a post**
 1. Write the body in `content/news/<slug>.html` (lowercase slug, hyphens). Start with a plain intro paragraph; use `<h2>` sections. Do not add the title, dates, sources or "More from News" — the build adds them.
 2. Include a worked £ example run through the calculator logic in Node (`window.ProjectCostLab.calc(...)` after loading `js/data.js`, `js/projects-a.js`, `js/projects-b.js`, `js/app.js`) and state the inputs. End with an `<div class="update-box"><p><strong>Illustrative only.</strong> …</p></div>` disclaimer.
 3. Add an entry to `content/news.json` → `posts`: `slug`, `title`, `description` (meta, ~155 chars), `date` and `updated` (YYYY-MM-DD), `category` (one of `categories`: Building costs, Grants & VAT, Planning, Energy), `readTime` (minutes; the build fails if it is >1 min off the body), `excerpt`, optional `updateDue` (renders the "Update due" box), and `sources` (`title` + https `url`, official sources only).
-4. `node scripts/build-news.mjs && node scripts/check.mjs`, review, commit, push, deploy, then ping IndexNow for the new URL(s).
+4. `node scripts/build-news.mjs && node scripts/check.mjs`, review, commit, push, deploy, then ping IndexNow for the new URL(s) — including any new `/news/page/<n>` the build created (it prints the page count).
 
 **Update a post** — edit the body and/or JSON, set `updated` to today, remove or change `updateDue` once the awaited release is out, rebuild, check, commit, deploy. Corrections are made in place.
 
