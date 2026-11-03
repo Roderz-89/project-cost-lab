@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 // Project Cost Lab — pre-deploy checks. Usage: node scripts/check.mjs
 // Calculator (57 projects, knobs move the band, no NaN), news data + pages,
-// nav/footer links, CSP hashes, no ad code, ads.txt unchanged, internal links.
+// nav/footer links, CSP hashes (fixed policy in _headers), no ad code, ads.txt unchanged,
+// internal links, assets-only config (_redirects single-hop 301s, _headers, 404.html, wrangler.jsonc).
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
+import { generate, canonicalOf } from "./build-static-config.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const r = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -49,8 +51,10 @@ const walk = (d) => readdirSync(join(ROOT, d)).flatMap((f) => {
 });
 const pages = walk("");
 const news = JSON.parse(r("content/news.json"));
-const worker = r("worker.js");
-const hashes = new Set([...worker.matchAll(/'(sha256-[^']+)'/g)].map((m) => m[1]));
+const headersFile = r("_headers");
+const cspLine = (headersFile.match(/^  Content-Security-Policy: (.+)$/m) || [])[1] || "";
+const scriptSrc = (cspLine.match(/(?:^|; )script-src ([^;]+)/) || [])[1] || "";
+const hashes = new Set([...scriptSrc.matchAll(/'(sha256-[^']+)'/g)].map((m) => m[1]));
 const sha = (s) => "sha256-" + createHash("sha256").update(s, "utf8").digest("base64");
 const resolve = (href) => {
   let p = href.split("#")[0].split("?")[0];
@@ -58,8 +62,7 @@ const resolve = (href) => {
   if (p.endsWith("/")) return existsSync(join(ROOT, p, "index.html"));
   return existsSync(join(ROOT, p + ".html")) || existsSync(join(ROOT, p)) || existsSync(join(ROOT, p, "index.html"));
 };
-const html404 = worker.slice(worker.indexOf("const NOT_FOUND"), worker.indexOf("</html>`;"));
-for (const [name, html] of [...pages.map((p) => [p, r(p)]), ["worker.js NOT_FOUND", html404]]) {
+for (const [name, html] of pages.map((p) => [p, r(p)])) {
   if (!html.includes('class="site-header"')) continue;
   ok(/<nav id="nav">[\s\S]*?<a href="\/news"[^>]*>News<\/a>[\s\S]*?<\/nav>/.test(html), `${name}: News missing from main nav`);
   ok(/<li><a href="\/news">News<\/a><\/li>/.test(html), `${name}: News missing from footer`);
@@ -70,7 +73,7 @@ for (const [name, html] of [...pages.map((p) => [p, r(p)]), ["worker.js NOT_FOUN
   for (const m of html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) { inlineChecked++; ok(hashes.has(sha(m[1])), `${name}: inline script hash not in CSP`); }
   for (const m of html.matchAll(/\son(?:click|load|change|input|submit)="([^"]*)"/g)) { inlineChecked++; ok(hashes.has(sha(m[1].replace(/&quot;/g, '"').replace(/&amp;/g, "&"))), `${name}: inline handler hash not in CSP`); }
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { JSON.parse(m[1]); } catch { ok(false, `${name}: invalid JSON-LD`); } }
-  if (name !== "worker.js NOT_FOUND") for (const m of html.matchAll(/href="(\/[^"]*)"/g)) {
+  for (const m of html.matchAll(/href="(\/[^"]*)"/g)) {
     if (/^\/(css|js|fonts|brand)\//.test(m[1]) || /\.(ico|svg|png|webmanifest|xml|txt)$/.test(m[1])) continue;
     ok(resolve(m[1]), `${name}: broken internal link ${m[1]}`);
   }
@@ -126,14 +129,50 @@ ok(r("guides/index.html").includes('class="latest-news"'), "Latest news line mis
   const smPages = [...sm.matchAll(/<loc>https:\/\/projectcostlab\.co\.uk\/news\/page\/(\d+)<\/loc>/g)].map((m) => +m[1]);
   ok(smPages.every((k) => k >= 2 && k <= total) && smPages.length === total - 1, `sitemap news pages wrong: ${smPages.join(",")}`);
   ok(!news.posts.some((p) => p.slug === "page"), 'post slug "page" is reserved');
-  ok(/c === "\/news\/page\/1"\) c = "\/news"/.test(worker), "worker.js: /news/page/1 -> /news redirect missing");
+  ok(/^\/news\/page\/1 \/news 301$/m.test(r("_redirects")), "_redirects: /news/page/1 -> /news 301 missing");
   console.log(`news pagination: ${sorted.length} posts over ${total} page(s), ${PER} per page, all reachable`);
+}
+
+// ---- assets-only config: _redirects, _headers, 404.html, wrangler.jsonc ----------
+{
+  const g = generate();
+  ok(r("_redirects") === g.files._redirects && headersFile === g.files._headers, "_redirects/_headers out of date — run node scripts/build-static-config.mjs");
+  ok(!existsSync(join(ROOT, "worker.js")), "worker.js should not exist (assets-only)");
+  const wr = r("wrangler.jsonc");
+  ok(!/"main"\s*:/.test(wr) && !/run_worker_first/.test(wr) && !/"binding"\s*:/.test(wr), "wrangler.jsonc: main / run_worker_first / binding must be absent");
+  ok(/"name"\s*:\s*"projectcostlab"/.test(wr) && /"workers_dev"\s*:\s*false/.test(wr) && /"not_found_handling"\s*:\s*"404-page"/.test(wr) && /"html_handling"\s*:\s*"auto-trailing-slash"/.test(wr) && /"directory"\s*:\s*"\."/.test(wr), "wrangler.jsonc: name / workers_dev / assets settings wrong");
+  // CSP: fixed, no nonce, no unsafe-inline/eval in script-src, no ad domains, every inline script hashed
+  ok(cspLine && !/nonce-/.test(cspLine) && !/'unsafe-inline'|'unsafe-eval'/.test(scriptSrc) && !/google|doubleclick|adservice|syndication/i.test(cspLine), "_headers: CSP missing, uses a nonce, unsafe script-src or ad domains");
+  ok(hashes.size === g.scriptHashes.length && g.scriptHashes.every((h) => hashes.has(h)), "_headers: CSP script hashes do not exactly match the inline scripts/handlers");
+  for (const h of ["Strict-Transport-Security: max-age=31536000", "X-Content-Type-Options: nosniff", "Referrer-Policy: strict-origin-when-cross-origin", "Permissions-Policy: camera=(), microphone=(), geolocation=()", "X-Frame-Options: SAMEORIGIN", "Cache-Control: public, max-age=0, must-revalidate"])
+    ok(new RegExp("^/\\*\\n(?:  .+\\n)*  " + h.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$", "m").test(headersFile), `_headers: /* block missing ${h}`);
+  ok(!/X-Robots-Tag:\s*noindex/i.test(headersFile.split(/\n\n/)[0]) && !/^\/\*\n(?:  .+\n)*  X-Robots-Tag/m.test(headersFile), "_headers: site-wide X-Robots-Tag would deindex the site");
+  // _redirects: every rule 301, target is a canonical page, no chains, no loops, limits respected
+  const lines = r("_redirects").split("\n").filter((l) => l && !l.startsWith("#"));
+  const canon = new Set(g.pages.map(canonicalOf));
+  const sources = new Set();
+  for (const l of lines) {
+    const [from, to, code, ...rest] = l.split(/\s+/);
+    ok(code === "301" && rest.length === 0 && from.startsWith("/") && !from.includes("*") && !from.includes(":"), `_redirects: bad rule "${l}"`);
+    ok(canon.has(to), `_redirects: ${from} -> ${to} is not a canonical page`);
+    ok(!sources.has(from), `_redirects: duplicate source ${from}`); sources.add(from);
+    ok(l.length <= 1000, `_redirects: rule over 1,000 chars`);
+  }
+  for (const c of canon) ok(!sources.has(c), `_redirects: canonical ${c} is itself redirected (loop/chain)`);
+  ok(lines.length <= 2000, `_redirects: ${lines.length} static rules (limit 2,000)`);
+  for (const f of g.pages) { const c = canonicalOf(f); const v = c === "/" ? ["/index.html"] : c.endsWith("/") ? [c.slice(0, -1), c + "index.html"] : [c + ".html", c + "/"]; for (const x of v) ok(sources.has(x), `_redirects: ${x} -> ${c} missing`); }
+  // 404 page: noindex meta, not in sitemap, has the header/footer
+  const nf = r("404.html");
+  ok(nf.includes('<meta name="robots" content="noindex">') && nf.includes("Page not found") && nf.includes('class="site-header"'), "404.html: noindex meta / content missing");
+  ok(!sm.includes("/404"), "sitemap lists the 404 page");
+  for (const f of g.pages) ok(!r(f).includes('content="noindex'), `${f}: noindex on an indexable page`);
+  console.log(`assets-only: ${lines.length} single-hop 301s, CSP ${g.scriptHashes.length} hash(es) no nonce, 404.html noindex, wrangler.jsonc has no main`);
 }
 
 // ---- ads.txt ----------------------------------------------------------------
 const ads = createHash("sha256").update(readFileSync(join(ROOT, "ads.txt"))).digest("hex");
 ok(ads === "1d8eb929e531b81f3b0c9f4849c988c43ae14df823a4e1494bde9dc8a5748c66", `ads.txt changed (sha256 ${ads})`);
 
-console.log(`pages checked: ${pages.length} + 404; news posts: ${news.posts.length}; inline scripts/handlers hash-checked: ${inlineChecked}; ads.txt sha256 ${ads.slice(0, 12)}…`);
+console.log(`pages checked: ${pages.length} (incl. 404.html); news posts: ${news.posts.length}; inline scripts/handlers hash-checked: ${inlineChecked}; ads.txt sha256 ${ads.slice(0, 12)}…`);
 if (fails) { console.error(`${fails} check(s) failed`); process.exit(1); }
 console.log("All checks passed.");
