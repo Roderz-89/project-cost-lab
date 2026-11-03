@@ -5,6 +5,7 @@
 // news/<slug>.html (/news/<slug>), the /news entries in
 // sitemap.xml, and the "Latest news" line on guides/index.html.
 // Usage: node scripts/build-news.mjs
+import { writeStaticConfig } from "./build-static-config.mjs";
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync, rmdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -216,3 +217,6 @@ sm = sm.replace(/\s*<\/urlset>\s*$/, `\n${entries}\n</urlset>\n`);
 w("sitemap.xml", sm);
 
 console.log(`News build OK: /news (${pageCount} page${pageCount > 1 ? "s" : ""}, ${PER_PAGE} per page) + ${posts.length} posts (${posts.map((p) => p.slug).join(", ")}); sitemap and guides hub updated.`);
+
+// ---- _redirects + _headers (assets-only routing; includes the new news URLs) -----
+writeStaticConfig();
