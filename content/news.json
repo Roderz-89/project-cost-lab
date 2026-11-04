@@ -90,15 +90,19 @@
     },
     {
       "slug": "building-material-prices-august-2026",
-      "title": "Building material prices up 6.4% in a year: what it means next to an extension band",
-      "description": "DBT material prices rose 6.4% in the year to August 2026; ONS construction output prices rose 1.9% to June. What each measures, with a worked extension and loft example.",
+      "title": "Building material prices up 7.2% in a year: what it means next to an extension band",
+      "description": "DBT material prices rose 7.2% in the year to September 2026; ONS construction output prices rose 1.9% to June. What each measures, with a worked extension and loft example.",
       "date": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-04",
       "category": "Building costs",
       "readTime": 5,
-      "excerpt": "Official material prices rose 6.4% in the year to August 2026, led by steel and pipework, while construction output prices rose 1.9% in the year to June. We set both next to a 20 m² extension and a dormer loft band.",
-      "updateDue": "We will update this post after DBT’s next building materials edition on 4 November 2026 and the ONS construction output price indices for July to September 2026 on 12 November 2026.",
+      "excerpt": "Official material prices rose 7.2% in the year to September 2026, led by steel and pipework, while construction output prices rose 1.9% in the year to June. We set both next to a 20 m² extension and a dormer loft band.",
+      "updateDue": "We will update this post after the ONS construction output price indices for July to September 2026 on 12 November 2026 and DBT’s next building materials edition on 2 December 2026.",
       "sources": [
+        {
+          "title": "DBT — Construction building materials: commentary, October 2026",
+          "url": "https://www.gov.uk/government/statistics/building-materials-and-components-statistics-october-2026/construction-building-materials-commentary-october-2026"
+        },
         {
           "title": "DBT — Construction building materials: commentary, September 2026",
           "url": "https://www.gov.uk/government/statistics/building-materials-and-components-statistics-september-2026/construction-building-materials-commentary-september-2026"
