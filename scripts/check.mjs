@@ -136,11 +136,24 @@ ok(r("guides/index.html").includes('class="latest-news"'), "Latest news line mis
 // ---- assets-only config: _redirects, _headers, 404.html, wrangler.jsonc ----------
 {
   const g = generate();
-  ok(r("_redirects") === g.files._redirects && headersFile === g.files._headers, "_redirects/_headers out of date — run node scripts/build-static-config.mjs");
-  ok(!existsSync(join(ROOT, "worker.js")), "worker.js should not exist (assets-only)");
+  ok(Object.entries(g.files).every(([f, t]) => r(f) === t), "_redirects/_headers/csp.mjs/wrangler.jsonc out of date — run node scripts/build-static-config.mjs");
+  // CSP-nonce Worker: worker.js exists, sets the nonce only on text/html, wrangler runs it first only on page paths
+  const wj = r("worker.js");
+  ok(/env\.ASSETS\.fetch\(request\)/.test(wj) && /crypto\.getRandomValues/.test(wj) && /text\/html/.test(wj) && /'nonce-\$\{n\}'/.test(wj) && /headers\.set\("Content-Security-Policy"/.test(wj), "worker.js: must fetch ASSETS and set (not append) a nonce CSP on text/html only");
+  ok(/csp\.mjs/.test(r(".assetsignore")) && /worker\.js/.test(r(".assetsignore")), ".assetsignore must exclude worker.js and csp.mjs");
   const wr = r("wrangler.jsonc");
-  ok(!/"main"\s*:/.test(wr) && !/run_worker_first/.test(wr) && !/"binding"\s*:/.test(wr), "wrangler.jsonc: main / run_worker_first / binding must be absent");
+  ok(/"main"\s*:\s*"worker\.js"/.test(wr) && /"binding"\s*:\s*"ASSETS"/.test(wr) && !/"run_worker_first"\s*:\s*true/.test(wr), "wrangler.jsonc: main/binding missing or run_worker_first is true");
   ok(/"name"\s*:\s*"projectcostlab"/.test(wr) && /"workers_dev"\s*:\s*false/.test(wr) && /"not_found_handling"\s*:\s*"404-page"/.test(wr) && /"html_handling"\s*:\s*"auto-trailing-slash"/.test(wr) && /"directory"\s*:\s*"\."/.test(wr), "wrangler.jsonc: name / workers_dev / assets settings wrong");
+  const pats = g.workerPaths; ok(pats.length <= 100, `run_worker_first: ${pats.length} entries (limit 100)`);
+  const rx = (p) => new RegExp("^" + p.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*") + "$");
+  const pos = pats.filter((p) => !p.startsWith("!")).map(rx), neg = pats.filter((p) => p.startsWith("!")).map((p) => rx(p.slice(1)));
+  const runsWorker = (u) => pos.some((x) => x.test(u)) && !neg.some((x) => x.test(u));
+  const canonAll = g.pages.map(canonicalOf);
+  for (const c of canonAll) ok(runsWorker(c), `run_worker_first: page ${c} would not get a nonce`);
+  for (const l of r("_redirects").split("\n").filter((l) => l && !l.startsWith("#"))) ok(!runsWorker(l.split(" ")[0]), `run_worker_first: redirect source ${l.split(" ")[0]} would invoke the Worker`);
+  const statics = ["/robots.txt", "/sitemap.xml", "/ads.txt", "/172c144d61e909c3028ccfafcee73684.txt", "/BingSiteAuth.xml", "/favicon.ico", "/site.webmanifest", "/404.html"];
+  for (const d of ["css", "js", "fonts", "brand"]) if (existsSync(join(ROOT, d))) for (const f of readdirSync(join(ROOT, d))) statics.push(`/${d}/${f}`);
+  for (const u of statics) ok(!runsWorker(u), `run_worker_first: static ${u} would invoke the Worker`);
   // CSP: fixed, no nonce, no unsafe-inline/eval in script-src, no ad domains, every inline script hashed
   ok(cspLine && !/nonce-/.test(cspLine) && !/'unsafe-inline'|'unsafe-eval'/.test(scriptSrc) && !/google|doubleclick|adservice|syndication/i.test(cspLine), "_headers: CSP missing, uses a nonce, unsafe script-src or ad domains");
   ok(hashes.size === g.scriptHashes.length && g.scriptHashes.every((h) => hashes.has(h)), "_headers: CSP script hashes do not exactly match the inline scripts/handlers");
@@ -166,7 +179,7 @@ ok(r("guides/index.html").includes('class="latest-news"'), "Latest news line mis
   ok(nf.includes('<meta name="robots" content="noindex">') && nf.includes("Page not found") && nf.includes('class="site-header"'), "404.html: noindex meta / content missing");
   ok(!sm.includes("/404"), "sitemap lists the 404 page");
   for (const f of g.pages) ok(!r(f).includes('content="noindex'), `${f}: noindex on an indexable page`);
-  console.log(`assets-only: ${lines.length} single-hop 301s, CSP ${g.scriptHashes.length} hash(es) no nonce, 404.html noindex, wrangler.jsonc has no main`);
+  console.log(`static+nonce: ${lines.length} single-hop 301s (none invoke the Worker), fixed CSP ${g.scriptHashes.length} hash(es), Worker on ${g.workerPaths.length} run_worker_first patterns covering all ${g.pages.length} pages, statics skip it, 404.html noindex`);
 }
 
 // ---- ads.txt ----------------------------------------------------------------

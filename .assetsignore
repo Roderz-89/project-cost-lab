@@ -11,3 +11,4 @@ worker.js
 README.md
 content
 scripts
+csp.mjs
