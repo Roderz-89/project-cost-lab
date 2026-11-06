@@ -7,9 +7,50 @@
   ],
   "posts": [
     {
+      "slug": "planning-fees-december-2026",
+      "title": "Planning fees from 8 December 2026: \u00a3548 to \u00a3575 for a householder application",
+      "description": "England\u2019s householder planning fee rises from \u00a3548 to \u00a3575 on 8 December 2026, with prior approval at \u00a3310. What changed, with a worked extension and loft band.",
+      "date": "2026-11-06",
+      "updated": "2026-11-06",
+      "category": "Planning",
+      "readTime": 5,
+      "excerpt": "Parliament approved new national planning fees for England on 27 October 2026. From 8 December a householder application rises from \u00a3548 to \u00a3575 and larger-home prior approval from \u00a3249 to \u00a3310 \u2014 small next to an extension band.",
+      "updateDue": "We will update this post if the made regulations differ from the approved draft figures, and when MHCLG publishes the separate local fee-setting regulations.",
+      "sources": [
+        {
+          "title": "UK Parliament \u2014 Town and Country Planning (Fees) Regulations 2026 (procedure timeline)",
+          "url": "https://statutoryinstruments.parliament.uk/instrument/DfEhxJ04/timeline/1D26TITE"
+        },
+        {
+          "title": "Legislation.gov.uk \u2014 Draft Town and Country Planning (Fees) Regulations 2026",
+          "url": "https://www.legislation.gov.uk/ukdsi/2026/9780348286625/contents"
+        },
+        {
+          "title": "Planning Portal \u2014 Forthcoming fees for planning applications in England",
+          "url": "https://ecab.planningportal.co.uk/uploads/forthcoming_english_application_fees.pdf"
+        },
+        {
+          "title": "MHCLG \u2014 Fees for planning applications: government response",
+          "url": "https://www.gov.uk/government/consultations/fees-for-planning-applications/outcome/fees-for-planning-applications-government-response"
+        },
+        {
+          "title": "GOV.UK \u2014 Fees for planning applications",
+          "url": "https://www.gov.uk/guidance/fees-for-planning-applications"
+        },
+        {
+          "title": "Legislation.gov.uk \u2014 Building (Local Authority Charges) (England) Regulations 2026 (S.I. 2026/1094)",
+          "url": "https://www.legislation.gov.uk/uksi/2026/1094/made"
+        },
+        {
+          "title": "MHCLG Circular 05/2026 \u2014 Building local authority charges regulations",
+          "url": "https://assets.publishing.service.gov.uk/media/6ad1d2fedfa45fcb6753caac/Circular_052026_-_The_Building__Local_Authority_Charges_and_Amendments_Relating_to_Charging___England__Regulations_2026.pdf"
+        }
+      ]
+    },
+    {
       "slug": "budget-2026-home-works-energy",
       "title": "Budget 2026: what changed for home works and energy upgrades",
-      "description": "What the 28 October 2026 Budget means for VAT on insulation, solar and heat pumps, the Boiler Upgrade Scheme, energy bills and building regulations, with a worked £ example.",
+      "description": "What the 28 October 2026 Budget means for VAT on insulation, solar and heat pumps, the Boiler Upgrade Scheme, energy bills and building regulations, with a worked \u00a3 example.",
       "date": "2026-10-29",
       "updated": "2026-10-29",
       "category": "Energy",
@@ -18,72 +59,72 @@
       "updateDue": "We will update this post when the secondary legislation for heat batteries is published, when the full eligibility rules for the Household Energy Payment are published, and when Ofgem consults on removing gas standing charges.",
       "sources": [
         {
-          "title": "HM Treasury — Budget 2026 (28 October 2026)",
+          "title": "HM Treasury \u2014 Budget 2026 (28 October 2026)",
           "url": "https://www.gov.uk/government/publications/budget-2026-document/budget-2026-html"
         },
         {
-          "title": "DESNZ — What the Autumn Budget 2026 means for your energy bills",
+          "title": "DESNZ \u2014 What the Autumn Budget 2026 means for your energy bills",
           "url": "https://www.gov.uk/government/news/what-the-autumn-budget-2026-means-for-your-energy-bills"
         },
         {
-          "title": "HMRC — VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
+          "title": "HMRC \u2014 VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
           "url": "https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086"
         },
         {
-          "title": "HMRC — Buildings and construction (VAT Notice 708)",
+          "title": "HMRC \u2014 Buildings and construction (VAT Notice 708)",
           "url": "https://www.gov.uk/guidance/buildings-and-construction-vat-notice-708"
         },
         {
-          "title": "GOV.UK — Boiler Upgrade Scheme: what you can get",
+          "title": "GOV.UK \u2014 Boiler Upgrade Scheme: what you can get",
           "url": "https://www.gov.uk/apply-boiler-upgrade-scheme/what-you-can-get"
         },
         {
-          "title": "GOV.UK — Biodiversity net gain: exempt developments",
+          "title": "GOV.UK \u2014 Biodiversity net gain: exempt developments",
           "url": "https://www.gov.uk/guidance/biodiversity-net-gain-exempt-developments"
         },
         {
-          "title": "GOV.UK — Approved Documents (Building Regulations)",
+          "title": "GOV.UK \u2014 Approved Documents (Building Regulations)",
           "url": "https://www.gov.uk/government/collections/approved-documents"
         },
         {
-          "title": "OBR — Economic and fiscal outlook, October 2026",
+          "title": "OBR \u2014 Economic and fiscal outlook, October 2026",
           "url": "https://www.gov.uk/government/publications/october-2026-economic-and-fiscal-outlook"
         }
       ]
     },
     {
       "slug": "heat-pump-grant-vat-2026",
-      "title": "Heat pumps in late 2026: the £7,500 grant, 0% VAT and the 31 March 2027 dates",
-      "description": "The Boiler Upgrade Scheme grant, the £9,000 off-gas rate and 0% VAT until 31 March 2027, with a worked air source heat pump example from the calculator.",
+      "title": "Heat pumps in late 2026: the \u00a37,500 grant, 0% VAT and the 31 March 2027 dates",
+      "description": "The Boiler Upgrade Scheme grant, the \u00a39,000 off-gas rate and 0% VAT until 31 March 2027, with a worked air source heat pump example from the calculator.",
       "date": "2026-10-29",
       "updated": "2026-10-29",
       "category": "Grants & VAT",
       "readTime": 5,
-      "excerpt": "The Boiler Upgrade Scheme pays £7,500 towards an air source heat pump, or £9,000 for some oil and LPG homes until 31 March 2027. VAT is 0% until the same date, then 5%. A worked example shows the band before and after the grant.",
+      "excerpt": "The Boiler Upgrade Scheme pays \u00a37,500 towards an air source heat pump, or \u00a39,000 for some oil and LPG homes until 31 March 2027. VAT is 0% until the same date, then 5%. A worked example shows the band before and after the grant.",
       "updateDue": "We will update this post when GOV.UK or Ofgem publish grant values for installations after 31 March 2027, and once the secondary legislation adding heat batteries to the 5% list is published.",
       "sources": [
         {
-          "title": "GOV.UK — Boiler Upgrade Scheme: what you can get",
+          "title": "GOV.UK \u2014 Boiler Upgrade Scheme: what you can get",
           "url": "https://www.gov.uk/apply-boiler-upgrade-scheme/what-you-can-get"
         },
         {
-          "title": "Ofgem — Boiler Upgrade Scheme: property owners",
+          "title": "Ofgem \u2014 Boiler Upgrade Scheme: property owners",
           "url": "https://www.ofgem.gov.uk/environmental-and-social-schemes/boiler-upgrade-scheme-bus/property-owners"
         },
         {
-          "title": "DESNZ — Notice of approved grant categories and values for the Boiler Upgrade Scheme",
+          "title": "DESNZ \u2014 Notice of approved grant categories and values for the Boiler Upgrade Scheme",
           "url": "https://www.gov.uk/government/publications/boiler-upgrade-scheme-regulations-approved-standards-grant-categories-and-grant-levels/notice-of-approved-grant-categories-and-values-for-the-boiler-upgrade-scheme"
         },
         {
-          "title": "HMRC — VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
+          "title": "HMRC \u2014 VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
           "url": "https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086"
         },
         {
-          "title": "HM Treasury — Budget 2026 (28 October 2026)",
+          "title": "HM Treasury \u2014 Budget 2026 (28 October 2026)",
           "url": "https://www.gov.uk/government/publications/budget-2026-document/budget-2026-html"
         },
         {
-          "title": "DESNZ — What the Autumn Budget 2026 means for your energy bills",
+          "title": "DESNZ \u2014 What the Autumn Budget 2026 means for your energy bills",
           "url": "https://www.gov.uk/government/news/what-the-autumn-budget-2026-means-for-your-energy-bills"
         }
       ]
@@ -96,31 +137,31 @@
       "updated": "2026-11-04",
       "category": "Building costs",
       "readTime": 5,
-      "excerpt": "Official material prices rose 7.2% in the year to September 2026, led by steel and pipework, while construction output prices rose 1.9% in the year to June. We set both next to a 20 m² extension and a dormer loft band.",
-      "updateDue": "We will update this post after the ONS construction output price indices for July to September 2026 on 12 November 2026 and DBT’s next building materials edition on 2 December 2026.",
+      "excerpt": "Official material prices rose 7.2% in the year to September 2026, led by steel and pipework, while construction output prices rose 1.9% in the year to June. We set both next to a 20 m\u00b2 extension and a dormer loft band.",
+      "updateDue": "We will update this post after the ONS construction output price indices for July to September 2026 on 12 November 2026 and DBT\u2019s next building materials edition on 2 December 2026.",
       "sources": [
         {
-          "title": "DBT — Construction building materials: commentary, October 2026",
+          "title": "DBT \u2014 Construction building materials: commentary, October 2026",
           "url": "https://www.gov.uk/government/statistics/building-materials-and-components-statistics-october-2026/construction-building-materials-commentary-october-2026"
         },
         {
-          "title": "DBT — Construction building materials: commentary, September 2026",
+          "title": "DBT \u2014 Construction building materials: commentary, September 2026",
           "url": "https://www.gov.uk/government/statistics/building-materials-and-components-statistics-september-2026/construction-building-materials-commentary-september-2026"
         },
         {
-          "title": "DBT — Building materials and components: monthly statistics (collection)",
+          "title": "DBT \u2014 Building materials and components: monthly statistics (collection)",
           "url": "https://www.gov.uk/government/collections/building-materials-and-components-monthly-statistics-2012"
         },
         {
-          "title": "ONS — Construction output in Great Britain: June 2026, new orders and construction output price indices, April to June 2026",
+          "title": "ONS \u2014 Construction output in Great Britain: June 2026, new orders and construction output price indices, April to June 2026",
           "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/june2026newordersandconstructionoutputpriceindicesapriltojune2026"
         },
         {
-          "title": "ONS — Construction output in Great Britain: August 2026",
+          "title": "ONS \u2014 Construction output in Great Britain: August 2026",
           "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/august2026"
         },
         {
-          "title": "ONS — Release calendar: construction output, September 2026 and price indices July to September 2026 (12 November 2026)",
+          "title": "ONS \u2014 Release calendar: construction output, September 2026 and price indices July to September 2026 (12 November 2026)",
           "url": "https://www.ons.gov.uk/releases/constructionoutputingreatbritainseptember2026newordersandconstructionoutputpriceindicesjulytoseptember2026"
         }
       ]
