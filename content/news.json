@@ -132,13 +132,13 @@
     {
       "slug": "building-material-prices-august-2026",
       "title": "Building material prices up 7.2% in a year: what it means next to an extension band",
-      "description": "DBT material prices rose 7.2% in the year to September 2026; ONS construction output prices rose 1.9% to June. What each measures, with a worked extension and loft example.",
+      "description": "DBT material prices rose 7.2% in the year to September 2026; ONS construction output prices rose 3.2%. What each measures, with a worked extension and loft example.",
       "date": "2026-10-29",
-      "updated": "2026-11-04",
+      "updated": "2026-11-13",
       "category": "Building costs",
       "readTime": 5,
-      "excerpt": "Official material prices rose 7.2% in the year to September 2026, led by steel and pipework, while construction output prices rose 1.9% in the year to June. We set both next to a 20 m\u00b2 extension and a dormer loft band.",
-      "updateDue": "We will update this post after the ONS construction output price indices for July to September 2026 on 12 November 2026 and DBT\u2019s next building materials edition on 2 December 2026.",
+      "excerpt": "Official material prices rose 7.2% in the year to September 2026, led by steel and pipework, while construction output prices rose 3.2% over the same period. We set both next to a 20 m\u00b2 extension and a dormer loft band.",
+      "updateDue": "We will update this post after DBT\u2019s next building materials edition on 2 December 2026.",
       "sources": [
         {
           "title": "DBT \u2014 Construction building materials: commentary, October 2026",
@@ -153,16 +153,12 @@
           "url": "https://www.gov.uk/government/collections/building-materials-and-components-monthly-statistics-2012"
         },
         {
+          "title": "ONS \u2014 Construction output in Great Britain: September 2026, new orders and construction output price indices, July to September 2026",
+          "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/september2026newordersandconstructionoutputpriceindicesjulytoseptember2026"
+        },
+        {
           "title": "ONS \u2014 Construction output in Great Britain: June 2026, new orders and construction output price indices, April to June 2026",
           "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/june2026newordersandconstructionoutputpriceindicesapriltojune2026"
-        },
-        {
-          "title": "ONS \u2014 Construction output in Great Britain: August 2026",
-          "url": "https://www.ons.gov.uk/businessindustryandtrade/constructionindustry/bulletins/constructionoutputingreatbritain/august2026"
-        },
-        {
-          "title": "ONS \u2014 Release calendar: construction output, September 2026 and price indices July to September 2026 (12 November 2026)",
-          "url": "https://www.ons.gov.uk/releases/constructionoutputingreatbritainseptember2026newordersandconstructionoutputpriceindicesjulytoseptember2026"
         }
       ]
     }
