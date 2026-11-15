@@ -7,6 +7,7 @@
   <title>UK building cost calculator for 57 home projects (2026)</title>
   <meta name="description" content="Free UK building cost calculator for 57 home projects, from extensions and lofts to heat pumps. Set size, spec, region and VAT. Ranges, not quotes.">
   <link rel="canonical" href="https://projectcostlab.co.uk/">
+  <!-- og --><meta property="og:type" content="website"><meta property="og:site_name" content="Project Cost Lab"><meta property="og:locale" content="en_GB"><meta property="og:title" content="UK building cost calculator for 57 home projects (2026)"><meta property="og:description" content="Free UK building cost calculator for 57 home projects, from extensions and lofts to heat pumps. Set size, spec, region and VAT. Ranges, not quotes."><meta property="og:url" content="https://projectcostlab.co.uk/"><meta property="og:image" content="https://projectcostlab.co.uk/og/default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><!-- /og -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="theme-color" content="#062E62">
@@ -129,6 +130,7 @@
                   <option value="empty">House empty during works</option>
                   <option value="live_in" selected>Living in during works</option>
                 </select>
+                <p class="hint" id="pc-occ-hint" hidden></p>
               </div>
             </div>
             <div class="row-2">
@@ -147,22 +149,26 @@
                   <option value="zero">0% (energy-saving installs to 31 Mar 2027 — heat pumps, solar, insulation, batteries etc. — or a new dwelling)</option>
                   <option value="ex">Show ex-VAT</option>
                 </select>
+                <p class="hint" id="pc-vat-hint" hidden></p>
               </div>
             </div>
             <label for="pc-contig">Contingency (<span id="pc-contig-label">10%</span>)</label>
             <input id="pc-contig" type="range" min="0" max="25" step="5" value="10">
-            <p class="field-kicker">Optional extras for this job</p>
-            <div id="pc-addons" class="addon-grid"></div>
+            <details class="extras" id="pc-extras" open>
+              <summary class="field-kicker">Optional extras for this job</summary>
+              <div id="pc-addons" class="addon-grid"></div>
+            </details>
             <p class="hint">Most work on an existing home is 20%. Installing qualifying energy-saving materials (heat pumps, solar panels, insulation, batteries and so on) in a home is 0% until 31 Mar 2027, then 5% from 1 Apr 2027. A boiler swap does not qualify. See <a href="/guides/vat">VAT guide</a> and <a href="https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086">VAT Notice 708/6</a>. This tool does not decide your VAT treatment.</p>
             <div class="form-actions">
               <button class="btn" type="button" id="pc-copy">Copy this range</button>
               <button class="btn btn-light" type="button" id="pc-reset">Reset</button>
             </div>
           </form>
-          <div class="calc-out">
+          <div class="calc-out" id="pc-result">
             <p class="hint" id="pc-label">—</p>
             <div class="result-hero" id="pc-mid">—</div>
             <p class="result-sub" id="pc-meta">—</p>
+            <p class="result-pair" id="pc-vatpair"></p>
             <div class="range-track" id="pc-range-bar" aria-hidden="true"><span class="range-mid"></span></div>
             <table class="table">
               <tr><th>Low in this run</th><td id="pc-low">—</td></tr>
@@ -183,11 +189,18 @@
             <p class="method" id="pc-note"></p>
             <p class="inc"><strong>Usually in the band.</strong> <span id="pc-includes"></span></p>
             <p class="exc"><strong>Usually outside the band.</strong> <span id="pc-excludes"></span></p>
+            <div class="calc-notes" id="pc-notes" hidden></div>
             <p class="hint" id="pc-guide" hidden></p>
             <p class="warn">Not a quote. Planning fees, Party Wall awards, temporary accommodation, furniture and professional fees are omitted unless you tick them. Ground conditions, asbestos, services diversions and hidden rot sit outside every published range.</p>
+            <aside class="fund-card" aria-labelledby="pc-fund-h">
+              <p class="fund-h" id="pc-fund-h">Paying for the works?</p>
+              <p>See what borrowing about <strong id="pc-fund-amt">—</strong> could cost as a further advance, a remortgage or a personal loan on <a id="pc-fund-link" href="https://remortgagelab.co.uk/calculators/borrow-for-home-improvements">Remortgage Lab</a>, our sister site.</p>
+              <p class="fund-small">Rodway Labs publishes both sites. Information only — not financial advice, and no one is paid when you click.</p>
+            </aside>
           </div>
         </div>
       </div>
+      <a class="pc-sticky" id="pc-sticky" href="#pc-result" hidden><span>Mid <strong id="pc-sticky-mid">—</strong></span><span class="pc-sticky-band" id="pc-sticky-band"></span><span class="pc-sticky-go">Breakdown ↓</span></a>
       <div class="example" id="pc-example">
         <p><span class="badge">EXAMPLE</span> REAR DORMER · UK MID · VAT ON · 10% CONTINGENCY</p>
         <p>Change any input and this box follows the live run.</p>
@@ -197,6 +210,7 @@
       <div class="wrap" style="margin-top:8px;">
         <p class="not-quote"><strong>Not a quote.</strong> Illustrative planning bands from Rodway Labs, not a tender or professional advice — see the <a href="/disclaimer">disclaimer</a>.</p>
       </div>
+      <div class="wrap"><div class="ad-slot" data-slot="after-result" hidden></div><!-- /ad-slot --></div>
   <section class="section" id="how-to-use">
     <div class="wrap prose">
       <h2>How to use the calculator</h2>
@@ -223,7 +237,7 @@
       <p>With the ±30% spread for this project, the illustrated band is <strong>£56,063 to £104,117</strong>, mid £80,090. Switch the region to South East (ex-London, ×1.12) and the mid becomes £89,701. This is an example of how the arithmetic works, not a price for any real extension.</p>
 
       <h2>How the range is worked out</h2>
-      <p>Each project has a compiled mid rate per unit or per job. The calculator multiplies it by your size, then by specification, access, occupation, listed status and region. Low and high sit a set percentage either side of the mid (±22% to ±42%, wider for jobs that vary more, such as kitchens). Fixed extras are scaled by spec and region; fee extras are a percentage of the works. VAT is applied at the rate you choose, then contingency on top. The full factor list is in the <a href="/about#methodology">methodology</a>.</p>
+      <p>Each project has a compiled mid rate per unit or per job. The calculator multiplies it by your size, then by specification, access, occupation (internal, structural and services jobs only), listed status and region. Low and high sit a set percentage either side of the mid (±22% to ±42%, wider for jobs that vary more, such as kitchens). Fixed extras are scaled by spec and region; fee extras are a percentage of the works. VAT is applied at the rate you choose, then contingency on top. The full factor list is in the <a href="/about#methodology">methodology</a>.</p>
 
       <h2>Edge cases to watch</h2>
       <ul>
@@ -255,6 +269,13 @@
         <a class="card" href="/#calculator"><span class="badge">FABRIC</span><h3>Roof to driveway</h3><p>Re-roof, windows, render, EWI, drive, deck, fence.</p></a>
         <a class="card" href="/#calculator"><span class="badge">ENERGY</span><h3>Heat, power, services</h3><p>Boiler, heat pump, PV, battery, EV, rewire, DPC.</p></a>
       </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>Popular cost pages</h2>
+      <p class="lede-plain">Size, spec and region tables for the jobs people price most, each with the calculator preloaded.</p>
+      <!-- cost-links --><ul class="cost-links"><li><a href="/costs/kitchen-refit">Kitchen refit cost</a></li><li><a href="/costs/bathroom-renovation">Bathroom renovation cost</a></li><li><a href="/costs/single-storey-extension">Single-storey rear extension cost</a></li><li><a href="/costs/dormer-loft-conversion">Rear dormer loft conversion cost</a></li><li><a href="/costs/garage-conversion">Garage conversion cost</a></li><li><a href="/costs/house-rewire">Full house rewire cost</a></li><li><a href="/costs/re-roof">Re-roof (pitched) cost</a></li><li><a href="/costs/replacement-windows">Replacement windows cost</a></li><li><a href="/costs/driveway">Driveway cost</a></li><li><a href="/costs/air-source-heat-pump">Air-source heat pump cost</a></li><li><a href="/costs/solar-panels">Solar panels (PV) cost</a></li><li><a href="/costs/house-renovation">Whole-house mid refurb cost</a></li></ul><!-- /cost-links -->
     </div>
   </section>
   <section class="section">
@@ -300,7 +321,6 @@
             <li><a href="/cookies">Cookies</a></li>
             <li><a href="/terms">Terms</a></li>
             <li><a href="/advertising">Advertising &amp; affiliates</a></li>
-            <li><a href="/cookies" data-pcl-prefs>Privacy preferences</a></li>
           </ul>
         </div>
       </div>
@@ -311,7 +331,5 @@
   <script src="js/projects-a.js"></script>
   <script src="js/projects-b.js"></script>
   <script src="js/app.js"></script>
-
-  <script src="/js/consent.js"></script>
 </body>
 </html>

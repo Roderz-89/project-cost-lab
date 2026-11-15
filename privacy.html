@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index, follow">
   <title>Privacy — Project Cost Lab</title>
-  <meta name="description" content="How Project Cost Lab (Rodway Labs) handles privacy: no analytics, no ad cookies. This site does not show ads.">
+  <meta name="description" content="How Project Cost Lab (Rodway Labs) handles privacy: no cookies, no accounts, cookieless Cloudflare analytics, and calculator inputs stay in your browser.">
   <link rel="canonical" href="https://projectcostlab.co.uk/privacy">
+  <!-- og --><meta property="og:type" content="website"><meta property="og:site_name" content="Project Cost Lab"><meta property="og:locale" content="en_GB"><meta property="og:title" content="Privacy — Project Cost Lab"><meta property="og:description" content="How Project Cost Lab (Rodway Labs) handles privacy: no cookies, no accounts, cookieless Cloudflare analytics, and calculator inputs stay in your browser."><meta property="og:url" content="https://projectcostlab.co.uk/privacy"><meta property="og:image" content="https://projectcostlab.co.uk/og/default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><!-- /og -->
   <link rel="stylesheet" href="css/styles.css">
   <!-- park-rev: 933c698-no-store -->
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -37,7 +38,7 @@
   <main class="section">
     <article class="wrap prose">
       <h1>Privacy</h1>
-      <p class="src"><a href="/about#methodology">Last updated 10 October 2026</a></p>
+      <p class="src"><a href="/about#methodology">Last updated 15 November 2026</a></p>
       <p>Project Cost Lab (projectcostlab.co.uk) is run by Rodway Labs in the United Kingdom. This notice explains, in plain English, what personal data is involved when you use the site. We aim to follow the UK GDPR and the Privacy and Electronic Communications Regulations (PECR).</p>
 
       <h2>Who we are</h2>
@@ -46,21 +47,27 @@
       <h2>The short version</h2>
       <ul>
         <li>We do not ask you to create an account, and the site does not collect your name, address or payment details.</li>
-        <li>The calculator runs in your browser. Your inputs are not sent to us.</li>
-        <li>The only thing we store on your device is your privacy choice, saved in localStorage as <code>pcl-consent</code>.</li>
-        <li>We do not use analytics. We do not use advertising cookies.</li>
+        <li>The calculator runs in your browser. Your inputs are not sent to us. If you change the inputs, they are written into the page address so you can bookmark or share a run; that address stays in your browser unless you share it.</li>
+        <li>We do not set cookies or store anything on your device.</li>
+        <li>We count visits with Cloudflare Web Analytics, which does not use cookies or local storage.</li>
+        <!-- ads-off -->
         <li><strong>This site does not show ads.</strong></li>
+        <!-- /ads-off -->
+        <!-- ads-on
+        <li>Some pages show ads from Google. Google and its partners only use cookies for personalised ads if you agree in the consent message.</li>
+        ads-on -->
       </ul>
 
-      <h2>What is stored on your device</h2>
-      <p>When you make a choice in the “We value your privacy” dialog, your browser stores one value in localStorage under the key <code>pcl-consent</code>: either <code>all</code> (Accept All) or <code>essential</code> (Essential only). It stays on your device, it is not sent to us, and it is not used to track you. It is there so we don’t ask again on every page. Storing it is strictly necessary to remember the choice you asked us to remember. If you close the dialog without choosing, nothing is stored and we treat the visit as essential only.</p>
-      <p>Full details are on the <a href="/cookies">Cookies</a> page.</p>
-
       <h2>Analytics</h2>
-      <p>We do not run any analytics or measurement tool on this site. Choosing Accept All does not start one.</p>
+      <p>We use Cloudflare Web Analytics to see how many people visit each page, which sites send them, and roughly where in the world they are, so we know which tools and guides are useful. It does not set cookies, does not use local storage, and does not build a profile of you or follow you across other sites. We see totals, not individuals. Our lawful basis is legitimate interests: running and improving the site.</p>
 
       <h2>Advertising</h2>
-      <p>This site does not show ads. No advertising script is loaded, and no advertising cookies are set, whatever you choose. <a href="/ads.txt">ads.txt</a> authorises no ad seller. See also our <a href="/advertising">Advertising</a> page.</p>
+      <!-- ads-off -->
+      <p>This site does not show ads. No advertising script is loaded and no advertising cookies are set. <a href="/ads.txt">ads.txt</a> authorises no ad seller. See also our <a href="/advertising">Advertising</a> page.</p>
+      <!-- /ads-off -->
+      <!-- ads-on
+      <p>Some pages show ads served by Google. Before any advertising cookie is set or read, a consent message from Google (a Google-certified consent management platform) asks for your choice, with “Reject all” as easy to pick as “Accept all”. If you decline, Google may still show non-personalised ads, which use limited data for things like frequency capping and fraud prevention. You can change your choice at any time with the “Privacy and cookie settings” link at the foot of every page. Google’s use of data is explained at <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a>. See also our <a href="/advertising">Advertising</a> page.</p>
+      ads-on -->
 
       <h2>Hosting</h2>
       <p>The site is hosted and delivered by Cloudflare. As with any website, delivering a page means your browser’s request, including your IP address and basic technical details such as the browser type and the page requested, passes through Cloudflare’s network. Cloudflare may keep basic logs of those requests to run the service and protect it against abuse. We do not use that information to build a profile of you. Cloudflare’s own privacy policy describes its processing.</p>
@@ -68,8 +75,8 @@
       <h2>If you contact us</h2>
       <p>If you get in touch through the <a href="/contact">Contact</a> page, we use your message and contact details only to reply and to fix anything you have reported. We do not add you to a mailing list.</p>
 
-      <h2>Changing your choice</h2>
-      <p>You can change your choice at any time with the <strong>Privacy preferences</strong> link at the foot of every page. You can also clear this site’s data in your browser settings. That removes the stored choice, and the dialog will appear again on your next visit.</p>
+      <h2>Links to our sister sites</h2>
+      <p>Calculator results include a link to Remortgage Lab, another Rodway Labs site. The link carries the rounded cost figure in the address so the borrowing calculator can start from it. Nothing else about you is passed, and no one is paid when you click.</p>
 
       <h2>Your rights</h2>
       <p>Under the UK GDPR you have rights to ask for access to personal data we hold about you, and to ask us to correct or delete it, or to object to how it is used. Because this site collects so little, in most cases we will hold nothing beyond any message you have sent us. To make a request, use the <a href="/contact">Contact</a> page. If you are unhappy with how we have handled your data, you can complain to the Information Commissioner’s Office (ICO).</p>
@@ -115,14 +122,11 @@
             <li><a href="/cookies">Cookies</a></li>
             <li><a href="/terms">Terms</a></li>
             <li><a href="/advertising">Advertising &amp; affiliates</a></li>
-            <li><a href="/cookies" data-pcl-prefs>Privacy preferences</a></li>
           </ul>
         </div>
       </div>
       <p class="legal">© 2026 Project Cost Lab · Published by Rodway Labs, an independent UK publisher. Ranges last checked September 2026 · <a href="/about#methodology">Methodology</a> · <a href="mailto:hello@projectcostlab.co.uk">hello@projectcostlab.co.uk</a></p>
     </div>
   </footer>
-
-  <script src="/js/consent.js"></script>
 </body>
 </html>
