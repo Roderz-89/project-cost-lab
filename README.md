@@ -39,7 +39,9 @@ python3 scripts/og-images.py  # share images in /og (Pillow + Inter font); rerun
 - `scripts/seo.mjs` — Open Graph/Twitter tags on every page (between `<!-- og -->` markers) and a BreadcrumbList on guides.
 - `scripts/ads.mjs` — the ad switch (see Ads below).
 
-Run both before every deploy. Deploy command (token is read from the box secret, never printed):
+**Auto-deploy (from 15 Nov 2026):** the `projectcostlab` Worker is connected to this repo with Cloudflare Workers Builds. Every push to `main` runs `node scripts/check.mjs` (build fails if any check fails) then `npx wrangler deploy`. Generated files are committed, so run `node scripts/build.mjs` locally before pushing. Other branches get preview builds.
+
+Manual fallback — run both scripts, then deploy (token is read from the box secret, never printed):
 
 ```bash
 CLOUDFLARE_API_TOKEN=$(cat /home/box/.secrets/cf_deploy_token) npx wrangler@4 deploy
