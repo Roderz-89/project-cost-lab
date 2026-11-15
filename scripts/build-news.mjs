@@ -54,7 +54,7 @@ const header = tpl.slice(tpl.indexOf("  <header class=\"site-header\">"), tpl.in
   .replace('<a href="/news">News</a>', '<a href="/news" aria-current="page">News</a>');
 const footer = tpl.slice(tpl.indexOf("  <footer class=\"site-footer\">"));
 const icons = tpl.slice(tpl.indexOf('  <link rel="preload"'), tpl.indexOf('  <script type="application/ld+json">'));
-if (!header.includes('href="/news" aria-current="page"') || !footer.includes("/js/consent.js")) { console.error("News build failed: could not read header/footer from guides/index.html"); process.exit(1); }
+if (!header.includes('href="/news" aria-current="page"') || !footer.includes("Legal &amp; trust")) { console.error("News build failed: could not read header/footer from guides/index.html"); process.exit(1); }
 
 const ORG = { "@type": "Organization", "@id": `${SITE}/#org`, name: "Rodway Labs", url: `${SITE}/`, logo: { "@type": "ImageObject", url: `${SITE}/brand/rodway-labs-logo.png`, width: 934, height: 328 } };
 const WEBSITE = { "@type": "WebSite", "@id": `${SITE}/#website`, name: "Project Cost Lab", url: `${SITE}/`, inLanguage: "en-GB", publisher: { "@id": `${SITE}/#org` } };

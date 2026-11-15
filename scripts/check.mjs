@@ -9,6 +9,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 import { generate, canonicalOf } from "./build-static-config.mjs";
+import { ADS_TXT_OFF, applyAds } from "./ads.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const r = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -46,11 +47,12 @@ console.log(`calculator: ${ids.length} projects, ${combos} combinations, 0 NaN e
 // ---- pages ----------------------------------------------------------------
 const walk = (d) => readdirSync(join(ROOT, d)).flatMap((f) => {
   const p = d ? `${d}/${f}` : f;
-  if ([".git", "node_modules", ".wrangler", "content", "scripts"].includes(f)) return [];
+  if ([".git", "node_modules", ".wrangler", "content", "scripts", "config"].includes(f)) return [];
   return statSync(join(ROOT, p)).isDirectory() ? walk(p) : p.endsWith(".html") ? [p] : [];
 });
 const pages = walk("");
 const news = JSON.parse(r("content/news.json"));
+const ADS = JSON.parse(r("config/ads.json"));
 const headersFile = r("_headers");
 const cspLine = (headersFile.match(/^  Content-Security-Policy: (.+)$/m) || [])[1] || "";
 const scriptSrc = (cspLine.match(/(?:^|; )script-src ([^;]+)/) || [])[1] || "";
@@ -66,7 +68,10 @@ for (const [name, html] of pages.map((p) => [p, r(p)])) {
   if (!html.includes('class="site-header"')) continue;
   ok(/<nav id="nav">[\s\S]*?<a href="\/news"[^>]*>News<\/a>[\s\S]*?<\/nav>/.test(html), `${name}: News missing from main nav`);
   ok(/<li><a href="\/news">News<\/a><\/li>/.test(html), `${name}: News missing from footer`);
-  ok(!/adsbygoogle|googlesyndication|pagead|ca-pub-|\bpub-\d/i.test(html), `${name}: ad code found`);
+  if (!ADS.enabled) ok(!/adsbygoogle|googlesyndication|pagead|ca-pub-|\bpub-\d/i.test(html.replace(/<!-- ads-on[\s\S]*?ads-on -->/g, "")), `${name}: ad code found while config/ads.json has enabled=false`);
+  ok(applyAds(html, ADS, name) === html, `${name}: out of step with config/ads.json — run node scripts/ads.mjs`);
+  ok(!/consent\.js|data-pcl-prefs/.test(html), `${name}: old consent banner reference left`);
+  if (name !== "404.html") ok(/<meta property="og:title"/.test(html) && /<meta property="og:image" content="https:\/\/projectcostlab\.co\.uk\/og\/[a-z0-9-]+\.png">/.test(html), `${name}: Open Graph tags missing — run node scripts/seo.mjs`);
   ok(!/class="avatar"|editorial team|Publisher: Rodway|Operator: Rodway|· Published by Rodway Labs<\/p>/.test(html), `${name}: visible byline left`);
   // "Not a quote" banner only on pages with a working calculator (they load js/app.js)
   ok(html.includes('class="not-quote"') === /src="\/?js\/app\.js"/.test(html), `${name}: "Not a quote" banner should appear only on calculator pages`);
@@ -155,7 +160,8 @@ ok(r("guides/index.html").includes('class="latest-news"'), "Latest news line mis
   for (const d of ["css", "js", "fonts", "brand"]) if (existsSync(join(ROOT, d))) for (const f of readdirSync(join(ROOT, d))) statics.push(`/${d}/${f}`);
   for (const u of statics) ok(!runsWorker(u), `run_worker_first: static ${u} would invoke the Worker`);
   // CSP: fixed, no nonce, no unsafe-inline/eval in script-src, no ad domains, every inline script hashed
-  ok(cspLine && !/nonce-/.test(cspLine) && !/'unsafe-inline'|'unsafe-eval'/.test(scriptSrc) && !/google|doubleclick|adservice|syndication/i.test(cspLine), "_headers: CSP missing, uses a nonce, unsafe script-src or ad domains");
+  ok(cspLine && !/nonce-/.test(cspLine) && !/'unsafe-inline'|'unsafe-eval'/.test(scriptSrc) && (ADS.enabled || !/google|doubleclick|adservice|syndication/i.test(cspLine)), "_headers: CSP missing, uses a nonce, unsafe script-src or ad domains while ads are off");
+  ok(/static\.cloudflareinsights\.com/.test(scriptSrc) && /connect-src[^;]*cloudflareinsights\.com/.test(cspLine), "_headers: CSP must allow the Cloudflare Web Analytics beacon");
   ok(hashes.size === g.scriptHashes.length && g.scriptHashes.every((h) => hashes.has(h)), "_headers: CSP script hashes do not exactly match the inline scripts/handlers");
   for (const h of ["Strict-Transport-Security: max-age=31536000", "X-Content-Type-Options: nosniff", "Referrer-Policy: strict-origin-when-cross-origin", "Permissions-Policy: camera=(), microphone=(), geolocation=()", "X-Frame-Options: SAMEORIGIN", "Cache-Control: public, max-age=0, must-revalidate"])
     ok(new RegExp("^/\\*\\n(?:  .+\\n)*  " + h.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$", "m").test(headersFile), `_headers: /* block missing ${h}`);
@@ -182,9 +188,33 @@ ok(r("guides/index.html").includes('class="latest-news"'), "Latest news line mis
   console.log(`static+nonce: ${lines.length} single-hop 301s (none invoke the Worker), fixed CSP ${g.scriptHashes.length} hash(es), Worker on ${g.workerPaths.length} run_worker_first patterns covering all ${g.pages.length} pages, statics skip it, 404.html noindex`);
 }
 
-// ---- ads.txt ----------------------------------------------------------------
+// ---- ads.txt (must match config/ads.json) -------------------------------------
 const ads = createHash("sha256").update(readFileSync(join(ROOT, "ads.txt"))).digest("hex");
-ok(ads === "1d8eb929e531b81f3b0c9f4849c988c43ae14df823a4e1494bde9dc8a5748c66", `ads.txt changed (sha256 ${ads})`);
+if (!ADS.enabled) ok(r("ads.txt") === ADS_TXT_OFF && ads === "1d8eb929e531b81f3b0c9f4849c988c43ae14df823a4e1494bde9dc8a5748c66", `ads.txt must authorise no seller while ads are off (sha256 ${ads})`);
+else ok(r("ads.txt").includes(`google.com, ${ADS.client.replace("ca-", "")}, DIRECT, f08c47fec0942fa0`), "ads.txt does not list the AdSense publisher from config/ads.json");
+
+// ---- /costs pages --------------------------------------------------------------
+{
+  const costs = JSON.parse(r("content/costs.json"));
+  const map = (r("js/data.js").match(/"COST_PAGES":(\{[^}]*\})/) || [])[1];
+  ok(map && JSON.stringify(JSON.parse(map)) === JSON.stringify(Object.fromEntries(costs.pages.map((p) => [p.id, p.slug]))), "js/data.js COST_PAGES out of step — run node scripts/build-costs.mjs");
+  for (const p of costs.pages) {
+    const f = `costs/${p.slug}.html`;
+    if (!ok(existsSync(join(ROOT, f)), `${f} missing — run node scripts/build-costs.mjs`)) continue;
+    const h = r(f);
+    ok(h.includes(`data-project="${p.id}"`) && h.includes('id="pc-result"'), `${f}: calculator not preloaded with ${p.id}`);
+    ok(sm.includes(`<loc>https://projectcostlab.co.uk/costs/${p.slug}</loc>`), `${f}: not in sitemap`);
+    ok(r("projects.html").includes(`href="/costs/${p.slug}"`), `${f}: not linked from /projects`);
+    ok(r("index.html").includes(`href="/costs/${p.slug}"`), `${f}: not linked from the home page`);
+    ok(/"@type":"BreadcrumbList"/.test(h) && /"@type":"Article"/.test(h), `${f}: Article/BreadcrumbList JSON-LD missing`);
+    ok(existsSync(join(ROOT, `og/${p.slug}.png`)), `og/${p.slug}.png missing — run python3 scripts/og-images.py`);
+    // the summary figure must equal the calculator at the stated settings
+    const x = L.calc({ project: p.id, qty: p.sizes ? p.sizes[1] : PCL.PROJECTS[p.id].defaultQty, region: "uk", spec: "mid", access: "typical", occupied: "live_in", listed: "no", vat: "ex", contig: 0, addons: [] });
+    const r10 = (n) => "£" + (Math.round(n / 10) * 10).toLocaleString("en-GB");
+    ok(h.includes(`<p class="cost-summary-fig">${r10(x.total.low)} – ${r10(x.total.high)}</p>`), `${f}: summary band does not match the calculator — rebuild`);
+  }
+  console.log(`costs: ${costs.pages.length} pages, each preloaded, in sitemap, linked from /projects and home, figures match calc()`);
+}
 
 console.log(`pages checked: ${pages.length} (incl. 404.html); news posts: ${news.posts.length}; inline scripts/handlers hash-checked: ${inlineChecked}; ads.txt sha256 ${ads.slice(0, 12)}…`);
 if (fails) { console.error(`${fails} check(s) failed`); process.exit(1); }

@@ -1,0 +1,293 @@
+{
+  "_readme": "Project cost pages at /costs/<slug>. Built by scripts/build-costs.mjs. Every £ figure on these pages is computed from the calculator at build time, so prose here must not contain £ amounts. Add a page only when it has its own written intro, drivers, permissions note and FAQs — no template-only pages.",
+  "checked": "2026-11-15",
+  "pages": [
+    {
+      "id": "kitchen",
+      "slug": "kitchen-refit",
+      "name": "Kitchen refit",
+      "ogTitle": "Kitchen refit cost UK 2026",
+      "ogSub": "Priced per metre of run, by spec and region",
+      "sizes": [4, 6, 9],
+      "sizeNote": "a small galley, a typical L-shape and a large kitchen with an island run",
+      "intro": "<p>A kitchen refit in the same room is priced here by the <strong>linear metre of units</strong>, not by floor area. Run length, the quality of the doors and worktops, and how much the services move decide most of the cost. A kitchen that keeps its sink, hob and boiler where they are is a very different job from one that moves the sink to an island.</p><p>The bands cover stripping out the old kitchen, units, worktops, sink and tap, fitting, the splashback and making good. Appliances and new lighting are optional extras, because many people keep their appliances or buy them separately.</p>",
+      "drivers": [
+        "<strong>Worktops.</strong> Laminate sits at the budget end; quartz and other stone, which need templating and specialist fitting, push a job towards the high band.",
+        "<strong>Moving services.</strong> Relocating the sink, hob extraction or the boiler adds plumbing, ducting and making good that sit outside the band. Moving a boiler is priced as an extra on the boiler projects.",
+        "<strong>Doors and storage.</strong> Painted shaker, handleless and bespoke joinery cost more than flat-pack doors; internal storage fittings add up quickly.",
+        "<strong>The room itself.</strong> Replastering, new flooring and lighting are often needed once old units come out. Floor and wall finishes beyond the splashback are outside the band."
+      ],
+      "rules": "<p>Replacing a kitchen in the same room does not normally need planning permission. New electrical circuits, a new consumer unit and gas work are covered by the Building Regulations and must be done by a registered electrician (or notified to Building Control) and a Gas Safe registered engineer. In a listed building, check with the council before removing original features.</p>",
+      "faq": [
+        { "q": "Why is a kitchen priced per metre rather than per m²?", "a": "Because the cost follows the units, worktops and appliances along the walls, not the floor area. Two kitchens with the same floor area can have very different run lengths." },
+        { "q": "Are appliances included?", "a": "No. Appliances are an optional extra in the calculator, so you can see the band with and without a typical oven, hob, hood and dishwasher pack." },
+        { "q": "How long does a kitchen refit take?", "a": "The programme shown is for the fitting work once units arrive. Lead times for made-to-order units and stone worktops can add several weeks before work starts, so ask suppliers for current lead times." }
+      ],
+      "related": ["bathroom", "full_refurb", "ext_single"],
+      "guide": ["/guides/cost-per-square-metre", "Why kitchens are not priced per m²"]
+    },
+    {
+      "id": "bathroom",
+      "slug": "bathroom-renovation",
+      "name": "Bathroom renovation",
+      "ogTitle": "Bathroom renovation cost UK 2026",
+      "ogSub": "Family bathroom bands by size, spec and region",
+      "sizes": [3.5, 5, 7],
+      "sizeNote": "a compact bathroom, a typical family bathroom and a large bathroom",
+      "intro": "<p>A family bathroom renovation strips out the old suite and refits the room: strip-out, sanitaryware, tiling, flooring, an extract fan, labour and decoration. It is priced here per m² of floor because tiled area, the number of fittings and the labour all grow with the room.</p><p>Small rooms cost more per m² than large ones, because the same trades and fixed items are spread over less floor.</p>",
+      "drivers": [
+        "<strong>Tiling.</strong> Full-height tiling and large-format porcelain take longer to fit than half-height ceramic tiles.",
+        "<strong>Layout changes.</strong> Moving the toilet means moving the soil pipe, which can be the most expensive change in the room.",
+        "<strong>Showers.</strong> A walk-in shower or wet-room floor needs tanking and a fall to the drain; the wet room project has its own band.",
+        "<strong>Hidden problems.</strong> Rotten joists or leaking pipes found once the floor is up sit outside every published range."
+      ],
+      "rules": "<p>A like-for-like bathroom replacement does not normally need planning permission. Electrical work in a room with a bath or shower is covered by Part P of the Building Regulations in England and Wales and should be done by a registered electrician who can self-certify it. Adding a new bathroom, or new drainage, may also need Building Regulations approval, so check with Building Control before work starts.</p>",
+      "faq": [
+        { "q": "Does the band include the bathroom suite?", "a": "Yes. The band covers a suite at the chosen specification with fitting, plumbing, tiling and finishes. Designer brands and freestanding baths push a job above the high end." },
+        { "q": "Is a wet room more expensive?", "a": "Usually, because the whole floor has to be waterproofed and laid to a fall. See the wet room project in the calculator for its own band." },
+        { "q": "Can I live at home during a bathroom refit?", "a": "Many people do. If it is the only toilet, plan for a few days without one or arrange a temporary unit. The calculator's living-in setting adds a small uplift for working around a lived-in home." }
+      ],
+      "related": ["ensuite", "kitchen", "rewire"],
+      "guide": ["/guides/vat", "VAT on home works"]
+    },
+    {
+      "id": "ext_single",
+      "slug": "single-storey-extension",
+      "name": "Single-storey rear extension",
+      "ogTitle": "Single-storey extension cost UK 2026",
+      "ogSub": "Bands per m² by size, spec and region",
+      "sizes": [12, 20, 30],
+      "sizeNote": "a small 12 m² room, a typical 20 m² kitchen-diner extension and a larger 30 m² extension",
+      "intro": "<p>A single-storey rear extension is the most common way to add space to a UK house. The band here covers foundations, walls, roof, windows and doors, insulation, first and second fix, plastering and decoration, as a shell-plus-finishes job at the chosen spec.</p><p>The number most people search for is a price per m², but fixed costs such as design, foundations near drains and knocking through to the house do not shrink with a smaller footprint. That is why small extensions cost more per m².</p>",
+      "drivers": [
+        "<strong>Glazing.</strong> Wide sliding or bi-fold doors and rooflights are often the biggest single upgrade. Tick the bi-fold extra to see the effect.",
+        "<strong>Steels and knock-through.</strong> Opening the back of the house needs structural steel; long spans need more.",
+        "<strong>Ground and drains.</strong> Building over or near a public sewer, clay soil or trees can mean deeper foundations and a build-over agreement with the water company.",
+        "<strong>The kitchen inside.</strong> Most extensions become kitchen-diners. The kitchen is an optional extra, not part of the shell."
+      ],
+      "rules": "<p>Many single-storey rear extensions in England can be built under permitted development within size limits; larger ones can use the prior approval route, and anything bigger, or in a conservation area, needs a householder planning application. Building Regulations approval is always needed, and work on or near a shared wall triggers the Party Wall Act. Check the current limits on the Planning Portal before you design, and see our <a href=\"/news/planning-fees-december-2026\">planning fees post</a> for the current fee.</p>",
+      "faq": [
+        { "q": "What is a typical cost per m² for a single-storey extension?", "a": "Use the size table on this page: it divides each band by its floor area. The figure falls as the extension gets bigger because fixed costs are spread over more space." },
+        { "q": "Does the band include planning and design fees?", "a": "No. Planning and drawings, Party Wall and architect plus engineer fees are optional extras so you can see what each adds." },
+        { "q": "Should I add contingency?", "a": "For structural work a 10–15% contingency is a common planning allowance, more for older houses or unknown ground. The calculator applies it last." }
+      ],
+      "related": ["ext_side", "ext_double", "kitchen"],
+      "guide": ["/guides/extension", "Extension cost per m²"]
+    },
+    {
+      "id": "loft_dormer",
+      "slug": "dormer-loft-conversion",
+      "name": "Rear dormer loft conversion",
+      "ogTitle": "Dormer loft conversion cost UK 2026",
+      "ogSub": "Bands per m² of useful floor, by spec and region",
+      "sizes": [20, 28, 38],
+      "sizeNote": "a smaller loft room, a typical double bedroom with storage and a large dormer with space for an ensuite",
+      "intro": "<p>A rear dormer is the most common UK loft conversion: a box-shaped extension to the back slope of the roof that turns a sloping loft into a room with full headroom. The band covers the dormer structure and covering, a new floor, insulation, the staircase, electrics, plastering and decoration.</p><p>It is priced per m² of <strong>useful floor</strong> — the area with enough headroom to use — which is smaller than the loft's footprint.</p>",
+      "drivers": [
+        "<strong>Dormer width and finish.</strong> A full-width dormer with tiles or slate to match the roof costs more than a smaller one clad in felt or board.",
+        "<strong>The staircase.</strong> Fitting a proper stair into the floor below can mean losing part of a bedroom or rearranging the landing.",
+        "<strong>An ensuite.</strong> Adding a shower room is a common optional extra; it needs a route for the waste pipe.",
+        "<strong>Steels and the roof structure.</strong> Some roofs need more steelwork than others, which only a structural engineer can confirm."
+      ],
+      "rules": "<p>A rear dormer on a house in England can often be built under permitted development within a volume allowance, but not in a conservation area or on a flat, and the materials must be similar to the existing house. Building Regulations approval is always required, including a safe escape route in case of fire. Work on a party wall needs notice to the neighbours. Check the current rules on the Planning Portal.</p>",
+      "faq": [
+        { "q": "Why is the calculator figure higher than some quoted loft prices?", "a": "Many published loft figures exclude VAT and contingency. This page shows the band without contingency, both ex-VAT and with 20% VAT, so you can compare like with like." },
+        { "q": "Is a dormer cheaper than a hip-to-gable or mansard?", "a": "Usually. A hip-to-gable rebuilds the side of the roof and a mansard rebuilds most of it, so both have higher bands in the calculator." },
+        { "q": "How much of my loft counts as useful floor?", "a": "Measure the area with enough headroom to stand and use — often well under the full footprint. Use that figure as the size." }
+      ],
+      "related": ["loft_velux", "loft_hip", "loft_mansard"],
+      "guide": ["/guides/loft", "Loft conversion cost UK"]
+    },
+    {
+      "id": "garage_conv",
+      "slug": "garage-conversion",
+      "name": "Garage conversion",
+      "ogTitle": "Garage conversion cost UK 2026",
+      "ogSub": "Integral garage to habitable room, by size and spec",
+      "sizes": [12, 16, 24],
+      "sizeNote": "a single garage, a typical single garage with utility space and a double garage",
+      "intro": "<p>Converting an integral or attached garage into a habitable room is one of the lower-cost ways to add space, because the walls and roof are already there. The band covers infilling the door opening with a wall and window, insulating, a new floor, electrics, plastering and decoration. Heating and new foundations sit outside it.</p>",
+      "drivers": [
+        "<strong>The floor.</strong> Garage floors are usually lower than the house and uninsulated; raising and insulating them is a large share of the work.",
+        "<strong>The new wall.</strong> The infill under the old door needs a foundation that may not already exist; new foundations are outside the band.",
+        "<strong>Heating and services.</strong> Extending radiators or adding underfloor heating, and moving a boiler or meter if one sits in the garage, add to the band.",
+        "<strong>What the room becomes.</strong> A bedroom with an ensuite or a utility with plumbing costs more than a simple study."
+      ],
+      "rules": "<p>A garage conversion that changes only the inside and the door opening can often be done under permitted development in England. Some newer estates have planning conditions that remove those rights, so check the planning history for your house. Building Regulations approval is needed because a garage is not built to habitable standards for insulation, ventilation, fire safety and damp-proofing.</p>",
+      "faq": [
+        { "q": "Do I need planning permission to convert a garage?", "a": "Often not, but some houses have permitted development rights removed by a planning condition. Check with your council or the planning history before you commit." },
+        { "q": "Is a detached garage priced the same?", "a": "No. A detached garage usually needs more work on the walls, roof and services. The calculator's garage conversion band is for an integral garage." },
+        { "q": "Will I lose parking?", "a": "Usually the garage space, and sometimes a council expects off-street parking to be kept. Check local parking standards if the driveway is short." }
+      ],
+      "related": ["garden_room", "ext_single", "driveway"],
+      "guide": ["/guides/cost-per-square-metre", "Cost per square metre"]
+    },
+    {
+      "id": "rewire",
+      "slug": "house-rewire",
+      "name": "Full house rewire",
+      "ogTitle": "House rewire cost UK 2026",
+      "ogSub": "Full rewire bands by floor area and region",
+      "sizes": [60, 90, 130],
+      "sizeNote": "a two-bedroom flat or small terrace, a typical three-bedroom semi and a larger four-bedroom house",
+      "intro": "<p>A full rewire replaces the cables, sockets, switches, light fittings' wiring and usually the consumer unit throughout a house. It is priced here per m² of internal floor, because the number of circuits and the length of cable grow with the house.</p><p>Most of the disruption comes from lifting floorboards and chasing walls, so a rewire is often timed with replastering and decorating.</p>",
+      "drivers": [
+        "<strong>Access.</strong> An empty house with floorboards up is far quicker to wire than a lived-in, carpeted, freshly decorated one.",
+        "<strong>Number of points.</strong> Extra sockets, outside lights, data cabling and EV-ready circuits all add time and materials.",
+        "<strong>Making good.</strong> Replastering chased walls and redecorating are separate jobs; the replaster and decorate projects have their own bands.",
+        "<strong>The consumer unit.</strong> Usually replaced as part of a rewire; it is also a separate project in the calculator."
+      ],
+      "rules": "<p>A rewire is notifiable electrical work under Part P of the Building Regulations in England and Wales. Use an electrician registered with a competent person scheme, who can self-certify the work and give you an Electrical Installation Certificate; otherwise Building Control must be notified before work starts. An Electrical Installation Condition Report (EICR) on the existing wiring helps decide whether a full rewire is needed.</p>",
+      "faq": [
+        { "q": "How do I know if a house needs rewiring?", "a": "An electrician's Electrical Installation Condition Report (EICR) will say. Old rubber or fabric cable, no earth to lighting circuits or an old fuse box are common signs." },
+        { "q": "Can I stay in the house during a rewire?", "a": "Many people do, room by room, but it takes longer and costs more than an empty house. The living-in setting reflects that." },
+        { "q": "Does the band include replastering?", "a": "No. The band covers cable, the consumer unit, sockets and switches, testing and certification. Replastering and decoration are separate projects in the calculator." }
+      ],
+      "related": ["consumer_unit", "plaster_house", "full_refurb"],
+      "guide": ["/guides/region-access", "Region and access"]
+    },
+    {
+      "id": "reroof",
+      "slug": "re-roof",
+      "name": "Re-roof (pitched)",
+      "ogTitle": "Re-roofing a house cost UK 2026",
+      "ogSub": "Pitched roof bands per m² of roof slope",
+      "sizes": [55, 80, 120],
+      "sizeNote": "a terrace roof, a typical semi-detached roof and a larger detached roof",
+      "intro": "<p>Re-roofing a pitched roof means stripping the old tiles or slates and battens, laying a new breathable membrane and battens, and re-covering, with new flashings and ridge and hip fixings. It is priced per m² of <strong>roof slope</strong>, which is larger than the house's floor plan because of the pitch.</p><p>Scaffolding is a large fixed part of any roof job and is included in the band for a typical house.</p>",
+      "drivers": [
+        "<strong>The covering.</strong> Concrete tiles sit at the budget end; clay tiles and natural slate push a job up.",
+        "<strong>Roof shape.</strong> Hips, valleys, dormers and chimneys all add cutting and leadwork.",
+        "<strong>Timber condition.</strong> Rotten rafters or sagging found once the roof is stripped are outside the band.",
+        "<strong>Insulation.</strong> Re-roofing is the moment to improve roof insulation, which may be required (see below)."
+      ],
+      "rules": "<p>Replacing a roof covering like for like does not normally need planning permission, except on a listed building or in a conservation area with an Article 4 direction. Under the Building Regulations in England, renovating more than a quarter of a roof's area usually means notifying Building Control and upgrading insulation where it is practical. A roofer registered with a competent person scheme can self-certify this; otherwise check with Building Control.</p>",
+      "faq": [
+        { "q": "How do I measure roof slope area?", "a": "Roofers measure each slope's length up the pitch times its width. As a rough guide, a pitched roof's slope area is often a third to a half larger than the footprint of the house." },
+        { "q": "Does the band include scaffolding?", "a": "Scaffolding for a typical house is included. Extra hire time is an optional extra if the job overruns." },
+        { "q": "Is a flat roof priced the same?", "a": "No. A flat roof has its own project in the calculator, priced per m²." }
+      ],
+      "related": ["flat_roof", "guttering", "fascia"],
+      "guide": ["/guides/region-access", "Region and access"]
+    },
+    {
+      "id": "windows",
+      "slug": "replacement-windows",
+      "name": "Replacement windows",
+      "ogTitle": "Replacement windows cost UK 2026",
+      "ogSub": "uPVC and aluminium, priced per window",
+      "sizes": [5, 8, 12],
+      "sizeNote": "a small house or flat, a typical three-bedroom semi and a larger house",
+      "intro": "<p>Replacing windows is priced here <strong>per window</strong>, supplied and fitted, for a typical domestic size. White uPVC sits at the budget end; bays, aluminium and timber sit towards the high spec. The band covers the windows, fitting, making good and taking the old frames away.</p><p>Changing the size of an opening is structural work and sits outside the band.</p>",
+      "drivers": [
+        "<strong>Material.</strong> White uPVC is the lowest-cost frame; coloured or woodgrain finishes, aluminium and timber cost more.",
+        "<strong>Glazing.</strong> Triple glazing, acoustic or safety glass and integral blinds add to each unit.",
+        "<strong>Shape and size.</strong> Bays, arched heads and floor-to-ceiling units need more frame and fitting time.",
+        "<strong>Access.</strong> Upper-floor windows above a conservatory or on a tall house may need scaffolding."
+      ],
+      "rules": "<p>Replacement windows in a house do not normally need planning permission if they look similar to the existing ones, but listed buildings, conservation areas with an Article 4 direction and flats can be different. Under the Building Regulations they must meet thermal and ventilation standards; an installer registered with a competent person scheme (such as FENSA or CERTASS) can self-certify and give you a certificate, which you will need when you sell.</p>",
+      "faq": [
+        { "q": "Is the price per window or per m²?", "a": "Per window, for a typical domestic size. Very large or shaped windows cost more than the band suggests." },
+        { "q": "Do I need a certificate for new windows?", "a": "Yes. Ask for the competent person scheme certificate or a Building Control completion certificate; buyers' solicitors will ask for it." },
+        { "q": "Are external doors included?", "a": "No. Front and back doors and bi-fold pairs have their own project in the calculator." }
+      ],
+      "related": ["doors_ext", "render", "ewi"],
+      "guide": ["/guides/vat", "VAT on home works"]
+    },
+    {
+      "id": "driveway",
+      "slug": "driveway",
+      "name": "Driveway",
+      "ogTitle": "Driveway cost UK 2026",
+      "ogSub": "Tarmac, block paving and resin, per m²",
+      "sizes": [25, 40, 70],
+      "sizeNote": "a single-car drive, a typical two-car drive and a larger drive",
+      "intro": "<p>A new driveway is priced per m² of finished surface. The band covers digging out, a compacted sub-base, edging and the surface, at a spec that runs from tarmac at the budget end, through block paving at mid, to porcelain or resin bound at high.</p><p>Most of what you cannot see — the depth of the dig and the sub-base — is what decides how long a driveway lasts.</p>",
+      "drivers": [
+        "<strong>Excavation and muck-away.</strong> Removing an old drive or lawn and taking spoil away is a large share of the cost.",
+        "<strong>Surface choice.</strong> Block paving takes more labour than tarmac; resin bound needs a sound base and skilled laying.",
+        "<strong>Drainage.</strong> Making the surface permeable, or adding a channel drain and soakaway, adds cost but may be needed (see below).",
+        "<strong>Extras.</strong> A dropped kerb, walls, gates and lighting sit outside the band."
+      ],
+      "rules": "<p>In England, paving a front garden with more than 5 m² of hard surface needs planning permission unless the surface is permeable or water drains to a lawn or border within the property. A dropped kerb onto the road always needs the council's permission and is usually built by an approved contractor, with its own fee. Check your council's current rules and fees.</p>",
+      "faq": [
+        { "q": "Is block paving or tarmac cheaper?", "a": "Tarmac is usually cheaper to lay; block paving costs more but is easier to repair in patches. Use the spec setting to compare." },
+        { "q": "Does the band include a dropped kerb?", "a": "No. A dropped kerb needs council permission and is priced separately by the council or its approved contractor." },
+        { "q": "Do I need planning permission for a driveway?", "a": "Not if the surface is permeable or drains within your property, in England. Otherwise, more than 5 m² of front garden paving needs planning permission." }
+      ],
+      "related": ["patio", "landscaping", "fencing"],
+      "guide": ["/guides/region-access", "Region and access"]
+    },
+    {
+      "id": "heat_pump",
+      "slug": "air-source-heat-pump",
+      "name": "Air-source heat pump",
+      "ogTitle": "Air-source heat pump cost UK 2026",
+      "ogSub": "Installed band before and after the grant",
+      "sizes": null,
+      "intro": "<p>Replacing a gas or oil boiler with an air-source heat pump means fitting an outdoor unit, a hot-water cylinder in most homes, controls, and often some larger radiators. The band here is for a typical three-bedroom house and is shown <strong>before any grant</strong>; the grant comes off afterwards.</p><p>Installing a heat pump in a home is zero-rated for VAT until 31 March 2027 and 5% from 1 April 2027, so this page shows the band at the rate in force when it was built.</p>",
+      "drivers": [
+        "<strong>Emitters.</strong> Radiators sized for a hot gas boiler may need upgrading so the heat pump can run at a lower flow temperature. A full radiator upgrade sits above the mid band.",
+        "<strong>The cylinder.</strong> Most homes need a new hot-water cylinder; it is an optional extra in the calculator.",
+        "<strong>Insulation first.</strong> A better-insulated house needs a smaller heat pump. Loft and cavity wall insulation have their own projects.",
+        "<strong>Siting.</strong> Long pipe runs from the outdoor unit and electrical upgrades add cost."
+      ],
+      "rules": "<p>The Boiler Upgrade Scheme offers a grant towards an air-source heat pump in England and Wales, and a higher grant until 31 March 2027 for eligible homes off the gas grid that replace oil or LPG heating. The installer applies and must be MCS certified. Scotland and Northern Ireland run separate schemes. Many heat pumps can be installed under permitted development in England, subject to conditions on noise and siting; check the current rules on the Planning Portal. See our <a href=\"/news/heat-pump-grant-vat-2026\">heat pump grant and VAT post</a>.</p>",
+      "faq": [
+        { "q": "Does the band include the Boiler Upgrade Scheme grant?", "a": "No. The band is the installed cost; the table on this page shows the effect of taking the standard grant off afterwards." },
+        { "q": "Will VAT change?", "a": "Installing qualifying energy-saving materials such as heat pumps in a home is 0% VAT until 31 March 2027, then 5% from 1 April 2027 (HMRC VAT Notice 708/6)." },
+        { "q": "Is a heat pump cheaper to run than a gas boiler?", "a": "It depends on your tariff, your house and the system design. Our boiler vs heat pump guide works through the arithmetic with dated prices." }
+      ],
+      "related": ["boiler_combi", "solar_pv", "loft_insul"],
+      "guide": ["/guides/boiler-vs-heat-pump", "Boiler vs heat pump"]
+    },
+    {
+      "id": "solar_pv",
+      "slug": "solar-panels",
+      "name": "Solar panels (PV)",
+      "ogTitle": "Solar panels cost UK 2026",
+      "ogSub": "Installed bands per kWp, with the VAT dates",
+      "sizes": [3, 4, 6],
+      "sizeNote": "a small 3 kWp array, a typical 4 kWp array and a larger 6 kWp array",
+      "intro": "<p>A solar PV system is priced here per <strong>kWp</strong> (kilowatt peak, the array's rated output). The band covers panels, inverter, roof mounting kit, electrics and commissioning on a straightforward pitched roof. Scaffolding is an optional extra, and a battery is a separate project.</p><p>Installing solar panels on a home is zero-rated for VAT until 31 March 2027 and 5% from 1 April 2027, so the tables use the rate in force when this page was built.</p>",
+      "drivers": [
+        "<strong>Scaffolding.</strong> A large fixed cost that most roofs need; tick the scaffolding extra to include it. It is one reason small arrays cost more per kWp.",
+        "<strong>Panel and inverter choice.</strong> Higher-efficiency panels and hybrid inverters (ready for a battery) cost more.",
+        "<strong>The roof.</strong> Slate, multiple roof faces and in-roof mounting add labour.",
+        "<strong>Electrics.</strong> An old consumer unit may need replacing to connect the system."
+      ],
+      "rules": "<p>Roof-mounted solar panels on most houses in England are permitted development, subject to conditions on how far they project and on listed buildings and conservation areas. Your installer will notify the electricity network operator. To be paid for exported electricity through the Smart Export Guarantee, suppliers usually require an MCS certified installation. Check the current rules on the Planning Portal before you commit.</p>",
+      "faq": [
+        { "q": "What size solar system do I need?", "a": "It depends on your roof and electricity use. Around 4 kWp is a common size for a three-bedroom house with a suitable roof; use the size setting to compare." },
+        { "q": "Does the band include a battery?", "a": "No. Home battery storage has its own project in the calculator, priced per kWh." },
+        { "q": "Is VAT charged on solar panels?", "a": "Installing them in a home is 0% VAT until 31 March 2027, then 5% from 1 April 2027. Panels bought without installation are standard-rated." }
+      ],
+      "related": ["battery", "heat_pump", "ev_charger"],
+      "guide": ["/guides/boiler", "Boiler, heat pump and PV"]
+    },
+    {
+      "id": "full_refurb",
+      "slug": "house-renovation",
+      "name": "Whole-house mid refurb",
+      "ogTitle": "House renovation cost UK 2026",
+      "ogSub": "Whole-house refurb bands per m² of floor",
+      "sizes": [65, 90, 130],
+      "sizeNote": "a two-bedroom terrace, a typical three-bedroom semi and a larger four-bedroom house",
+      "intro": "<p>A mid-level whole-house refurbishment updates a tired house without extending it: typically a new kitchen and bathroom, rewiring, some replumbing and heating work, replastering, new flooring, joinery and full decoration. It is priced per m² of internal floor.</p><p>For a cosmetic refresh, or a structural renovation that moves walls and replaces roofs and floors, use the other whole-house projects in the calculator — they have their own bands.</p>",
+      "drivers": [
+        "<strong>Scope creep.</strong> Once walls and floors are opened, damp, rot and old wiring often widen the job. Contingency matters most here.",
+        "<strong>Empty or lived in.</strong> Working in an empty house is faster and cheaper; living in means phasing the work.",
+        "<strong>Kitchen and bathroom spec.</strong> These two rooms can swing the total more than anything else.",
+        "<strong>Professional fees.</strong> A larger refurb often needs a designer or surveyor to plan and manage it."
+      ],
+      "rules": "<p>Internal refurbishment does not normally need planning permission, except for a listed building, which needs listed building consent for most changes. Rewiring, new heating, structural alterations, new drainage and replacement windows each fall under the Building Regulations, so use registered tradespeople who can self-certify, or notify Building Control. Check for asbestos before stripping out a house built before 2000.</p>",
+      "faq": [
+        { "q": "How much contingency should I hold on a renovation?", "a": "Older houses often justify 15–20% or more, because problems are only found once work starts. The calculator lets you set up to 25%." },
+        { "q": "Does the band include a new kitchen and bathroom?", "a": "A mid refurb band assumes an updated kitchen and bathroom at mid spec. Price them separately with their own projects if you want to see them on their own." },
+        { "q": "Is VAT lower on renovating an empty home?", "a": "A reduced 5% rate can apply to renovating a home that has been empty for two years or more, if the conditions are met. See our VAT guide and HMRC's guidance." }
+      ],
+      "related": ["full_cosmetic", "full_structural", "rewire"],
+      "guide": ["/guides/vat", "VAT on home works"]
+    }
+  ]
+}

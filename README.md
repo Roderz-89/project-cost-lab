@@ -2,7 +2,7 @@
 
 UK home-project cost range calculator and guides from **Rodway Labs**. Live at [https://projectcostlab.co.uk](https://projectcostlab.co.uk).
 
-**Status (3 Oct 2026): indexable again.** `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. No response sends `X-Robots-Tag: noindex` (only a direct hit on the `/404` template does). **This site does not show ads.** `ads.txt` authorises nobody. A first-party cookie consent banner is live; neither choice loads ads or analytics.
+**Status (15 Nov 2026):** indexable. `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. **Ads are off** (`config/ads.json` → `enabled: false`), so `ads.txt` authorises nobody and no ad code is on any page. The first-party consent banner has been removed: the site sets no cookies and stores nothing on the device. Visits are counted with cookieless **Cloudflare Web Analytics** (enable it in the dashboard — see Analytics below).
 
 ## What it is
 
@@ -24,14 +24,20 @@ See **Build & checks** below for the exact deploy command.
 
 ## Build & checks
 
-Plain static HTML; no bundler. Two Node scripts (Node 18+), not served (listed in `.assetsignore`):
+Plain static HTML; no bundler. Node scripts (Node 18+), not served (listed in `.assetsignore`):
 
 ```bash
-node scripts/build-news.mjs   # builds /news, /news/<slug>, sitemap /news entries, "Latest news" on /guides/
-node scripts/check.mjs        # calculator (57 projects, knobs move the band, 0 NaN), nav/footer, CSP hashes,
-                              # JSON-LD, internal links, no ad code, ads.txt sha256 unchanged, news pages in sync,
-                              # _redirects/_headers up to date, single-hop 301s, 404.html noindex, no main in wrangler.jsonc
+node scripts/build.mjs        # runs, in order: build-news, build-costs, seo, ads, build-static-config
+node scripts/check.mjs        # calculator (57 projects, knobs move the band, 0 NaN), nav/footer, CSP hashes + allowed hosts,
+                              # JSON-LD, internal links, pages match config/ads.json, ads.txt, Open Graph tags,
+                              # /costs pages (preloaded, in sitemap, linked, figures equal calc()), news pages in sync,
+                              # _redirects/_headers up to date, single-hop 301s, 404.html noindex
+python3 scripts/og-images.py  # share images in /og (Pillow + Inter font); rerun after adding a cost page
 ```
+
+- `scripts/build-costs.mjs` — `/costs/<slug>` pages from `content/costs.json` (written copy) + the calculator. Every £ figure is computed from `calc()` at build time; the build fails if the written copy contains £ amounts. Also writes the static `/projects` catalogue rows (crawlable links), `COST_PAGES` in `js/data.js`, the home page "Popular cost pages" links and the `/costs` sitemap entries. Add a page only with its own intro, drivers, permissions note and FAQs.
+- `scripts/seo.mjs` — Open Graph/Twitter tags on every page (between `<!-- og -->` markers) and a BreadcrumbList on guides.
+- `scripts/ads.mjs` — the ad switch (see Ads below).
 
 Run both before every deploy. Deploy command (token is read from the box secret, never printed):
 
@@ -56,11 +62,23 @@ Single source of truth: `content/news.json` (metadata) + `content/news/<slug>.ht
 
 Rules: UK home-project costs only (not loans, borrowing, rates or credit); official sources (ONS, DBT, HMRC, HM Treasury, DESNZ, Ofgem, GOV.UK, MHCLG, Planning Portal; OBR only where relevant); never invent figures — if data is not out, write a preview with no predictions and an `updateDue` date; calm UK English; no advice to buy, borrow or commission work; no personal names (Rodway Labs only); no ads. If a guide is ever converted into a post, add a 301 for its old URL to the `extra` rules in `scripts/build-static-config.mjs`.
 
+## Calculator notes (Nov 2026)
+
+- The 8% "living in during works" uplift applies only to internal, structural and services jobs; `NO_OCCUPATION` in `js/data.js` lists the projects it skips (outside, roofing, garden, insulation, heating plant).
+- Qualifying energy-saving installs (`ENERGY_SAVING`) default to 0% VAT until `ENERGY_VAT_ZERO_UNTIL` (31 Mar 2027), then 5%, unless the user changes VAT.
+- Runs are shareable: inputs are written to the query string (`?p=&q=&s=&r=&a=&o=&l=&v=&c=&x=`) after the first edit and restored on load.
+- Results link to Remortgage Lab's borrow-for-home-improvements calculator with the rounded mid (`?amount=`). No commission; disclosed on /advertising and /privacy.
+
+## Analytics
+
+Cloudflare Web Analytics (cookieless, no consent needed). In the Cloudflare dashboard: **Analytics & Logs → Web Analytics → Add a site → projectcostlab.co.uk → automatic setup**. The CSP already allows `static.cloudflareinsights.com` (script) and `cloudflareinsights.com` (beacon).
+
 ## Indexing & ads
 
 - `robots.txt` — `Allow: /` and `Sitemap: https://projectcostlab.co.uk/sitemap.xml`
-- `ads.txt` — comments only; authorises no seller
-- This site does not show ads. Consent banner stores `pcl-consent` (`all` or `essential`) in localStorage and does not load third-party tags either way.
+- **Ad switch: `config/ads.json`.** With `enabled: false` (now) there is no ad code anywhere, `ads.txt` authorises no seller and the policy pages show their "no ads" wording (`<!-- ads-off -->` blocks).
+- **To apply to AdSense:** add the site in AdSense to get the publisher ID → set `client` (`ca-pub-…`) and `enabled: true` → `node scripts/build.mjs && node scripts/check.mjs` → deploy → in AdSense, set up the **Privacy & messaging → European regulations** consent message (Google-certified CMP; needed for UK traffic) → request review. That build adds the account meta + loader to every page, writes `ads.txt`, switches the policy wording to the `<!-- ads-on … ads-on -->` blocks, adds the "Privacy and cookie settings" footer link and opens the CSP to Google's ad hosts. Test the live pages for CSP errors in the browser console after deploying.
+- **After approval:** create display ad units and put their IDs in `slots` (`after-result`, `in-content`). Units only render in the reserved `<div class="ad-slot">` placeholders: below the calculator and mid-article on cost pages, never between the inputs and the result. Keep Auto ads off.
 
 ## Contact
 

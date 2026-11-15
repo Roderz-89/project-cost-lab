@@ -12,3 +12,5 @@ README.md
 content
 scripts
 csp.mjs
+config
+config/**

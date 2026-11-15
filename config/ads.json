@@ -1,0 +1,10 @@
+{
+  "_readme": "Ad switch. Leave enabled=false until you add the site in AdSense. Then set client to your publisher ID (ca-pub-…), set enabled=true, run node scripts/build.mjs and deploy; the site then carries the AdSense code for review. slots maps placement names to AdSense ad unit IDs (create display units in AdSense after approval); empty slots are skipped. Keep Auto ads OFF in AdSense so ads never land between the calculator inputs and the result.",
+  "enabled": false,
+  "network": "adsense",
+  "client": "",
+  "slots": {
+    "after-result": "",
+    "in-content": ""
+  }
+}
