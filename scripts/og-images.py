@@ -10,7 +10,7 @@ FD = "/usr/share/fonts/opentype/inter/"
 def font(name, size): return ImageFont.truetype(FD + name, size)
 
 def mark(size):
-    svg = open(os.path.join(ROOT, "brand/pcl-mark.svg")).read().replace("#062E62", "#FFFFFF")
+    svg = open(os.path.join(ROOT, "brand/pcl-mark-reverse.svg")).read()
     png = subprocess.run(["rsvg-convert", "-w", str(size), "-h", str(size)], input=svg.encode(), capture_output=True, check=True).stdout
     from io import BytesIO
     return Image.open(BytesIO(png)).convert("RGBA")
@@ -24,17 +24,24 @@ def wrap(d, text, f, width):
     lines.append(cur); return lines
 
 def make(path, title, sub):
-    im = Image.new("RGB", (1200, 630), NAVY); d = ImageDraw.Draw(im)
-    d.rectangle([0, 600, 1200, 630], fill=TEAL)
-    m = mark(96); im.paste(m, (72, 64), m)
-    d.text((188, 86), "Project Cost", font=font("InterDisplay-Bold.otf", 44), fill=WHITE)
-    w = d.textlength("Project Cost ", font=font("InterDisplay-Bold.otf", 44))
-    d.text((188 + w, 86), "Lab", font=font("InterDisplay-Bold.otf", 44), fill=TEAL)
-    ft = font("InterDisplay-Bold.otf", 68); y = 230
-    for line in wrap(d, title, ft, 1056)[:3]:
-        d.text((72, y), line, font=ft, fill=WHITE); y += 82
-    d.text((72, y + 18), sub, font=font("Inter-SemiBold.otf", 32), fill=MUTED)
-    d.text((72, 540), "Illustrative UK ranges · not a quote · Rodway Labs", font=font("Inter-SemiBold.otf", 24), fill=MUTED)
+    im = Image.new("RGB", (1200, 630), NAVY); d = ImageDraw.Draw(im, "RGBA")
+    # faint blueprint grid
+    for x in range(0, 1200, 40): d.line([(x, 0), (x, 630)], fill=(255, 255, 255, 10))
+    for y in range(0, 630, 40): d.line([(0, y), (1200, y)], fill=(255, 255, 255, 10))
+    # low / mid / high range bars, bottom right
+    for i, (h, c) in enumerate([(120, (255, 255, 255, 38)), (220, TEAL + (255,)), (170, (255, 255, 255, 38))]):
+        x = 930 + i * 70; d.rounded_rectangle([x, 520 - h, x + 50, 520], radius=8, fill=c)
+    d.rectangle([0, 606, 1200, 630], fill=TEAL)
+    m = mark(84); im.paste(m, (72, 64), m)
+    fb = font("InterDisplay-Bold.otf", 42)
+    d.text((176, 84), "Project Cost", font=fb, fill=WHITE)
+    w = d.textlength("Project Cost ", font=fb)
+    d.text((176 + w, 84), "Lab", font=fb, fill=(20, 179, 190))
+    ft = font("InterDisplay-Bold.otf", 66); y = 222
+    for line in wrap(d, title, ft, 820)[:3]:
+        d.text((72, y), line, font=ft, fill=WHITE); y += 80
+    d.text((72, y + 18), sub, font=font("Inter-SemiBold.otf", 30), fill=MUTED)
+    d.text((72, 540), "Illustrative UK ranges \u00b7 not a quote \u00b7 Rodway Labs", font=font("Inter-SemiBold.otf", 24), fill=MUTED)
     im.save(path, optimize=True)
 
 os.makedirs(os.path.join(ROOT, "og"), exist_ok=True)

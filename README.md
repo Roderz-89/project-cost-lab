@@ -71,6 +71,12 @@ Rules: UK home-project costs only (not loans, borrowing, rates or credit); offic
 - Runs are shareable: inputs are written to the query string (`?p=&q=&s=&r=&a=&o=&l=&v=&c=&x=`) after the first edit and restored on load.
 - Results link to Remortgage Lab's borrow-for-home-improvements calculator with the rounded mid (`?amount=`). No commission; disclosed on /advertising and /privacy.
 
+## Brand & UI (v2, Nov 2026)
+
+- Mark: `brand/pcl-mark.svg` (navy tile, roofline, low/mid/high bars with the mid in teal); `brand/pcl-mark-reverse.svg` for dark backgrounds (OG images). Favicons, PWA icons and `safari-pinned-tab.svg` are rendered from it with `rsvg-convert`.
+- The inline header/footer mark is copied into every page; the news and cost builds take the chrome from `guides/index.html`, so edit it there first and propagate.
+- `css/styles.css` holds the design tokens (navy/teal, radius, shadows). Sticky header with a "Cost calculator" CTA (`.nav-cta`); home hero shows the worked-example band — keep its figures equal to the worked example table if rates change.
+
 ## Analytics
 
 Cloudflare Web Analytics (cookieless, no consent needed). In the Cloudflare dashboard: **Analytics & Logs → Web Analytics → Add a site → projectcostlab.co.uk → automatic setup**. The CSP already allows `static.cloudflareinsights.com` (script) and `cloudflareinsights.com` (beacon).

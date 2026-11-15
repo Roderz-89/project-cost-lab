@@ -22,51 +22,55 @@
 <body>
   <header class="site-header">
     <div class="wrap header-row">
-      <a class="brand" href="/" aria-label="Project Cost Lab home"><svg class="mark" viewBox="133 238 290 290" width="36" height="36" aria-hidden="true" focusable="false"><path fill="#062E62" fill-rule="evenodd" d="M166 472V334L265 246.4 364 334V472ZM186 452H344V343L265 273 186 343Z"/><path fill="#062E62" d="M238 361h22.5v22.5H238ZM269.5 361H292v22.5h-22.5ZM238 393h22.5v22.5H238ZM269.5 393H292v22.5h-22.5Z"/><path fill="none" stroke="#0096A1" stroke-width="9" d="M403.5 251v226M390 249.5h27M390 478.5h27M149 511.5h225M147.5 497v29M375.5 497v29"/></svg><span class="wordmark">Project Cost <span class="wm-lab">Lab</span></span></a>
+      <a class="brand" href="/" aria-label="Project Cost Lab home"><svg class="mark" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#062E62"/><path d="M12.5 31 32 14.5 51.5 31" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="19" y="39" width="7" height="11" rx="1.75" fill="#fff"/><rect x="28.5" y="30" width="7" height="20" rx="1.75" fill="#14B3BE"/><rect x="38" y="35" width="7" height="15" rx="1.75" fill="#fff"/></svg><span class="wordmark">Project Cost <span class="wm-lab">Lab</span></span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open')?'true':'false')">Menu</button>
       <nav id="nav">
         <a href="/" aria-current="page">Home</a>
-        <a href="/#calculator">Calculator</a>
         <a href="/projects">Projects</a>
         <a href="/guides/">Guides</a>
         <a href="/news">News</a>
         <a href="/about">About</a>
+        <a class="nav-cta" href="/#calculator">Cost calculator</a>
       </nav>
     </div>
   </header>
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="kicker">Loft, extension, kitchen, heat pump, driveway — or a whole-house refurb?</p>
-        <h1>Put a range on the works before you collect quotes</h1>
-        <p class="lede">57 compiled 2026 UK project types. Change the size, spec, region, access, whether you live in, VAT treatment, contingency and optional extras. Illustrative only — not a tender and not a builder.</p>
-        <div class="meta">
-          <span><a href="/about#methodology">Last checked 14 Oct 2026</a> · Ranges compiled September 2026</span>
-        </div>
+        <p class="kicker">Free UK cost ranges · 57 home projects · updated for 2026</p>
+        <h1>Know what your project should cost <em>before</em> you get quotes</h1>
+        <p class="lede">Extensions, lofts, kitchens, heat pumps, driveways and more. Set the size, spec, region, access and VAT, and get a low, mid and high band in seconds — free, with no sign-up.</p>
         <div class="actions">
-          <a class="btn" href="#calculator">Open the range calculator</a>
-          <a class="linkish" href="/projects">Browse all project types →</a>
+          <a class="btn" href="#calculator">Estimate my project cost</a>
+          <a class="linkish" href="/projects">Browse all 57 project types →</a>
         </div>
         <div class="steps">
           <div><span class="num">1</span><strong>Pick a job</strong>57 UK project types</div>
-          <div><span class="num">2</span><strong>Tune it</strong>Size, spec, access, extras</div>
-          <div><span class="num">3</span><strong>Range</strong>Low / mid / high with VAT</div>
+          <div><span class="num">2</span><strong>Tune it</strong>Size, spec, region, extras</div>
+          <div><span class="num">3</span><strong>Get a range</strong>Low / mid / high, VAT shown</div>
         </div>
       </div>
       <div>
-        <div class="panel">
-          <p style="letter-spacing:.08em;font-size:.72rem;margin:0 0 8px;color:#94a3b8;">POSITIONING</p>
-          <h2>The mid figure is a band, not a price</h2>
-          <p>Access, spec, region, VAT and what you add on move the number more than the project name. Use the range to size a budget, then get written quotes on the same drawing.</p>
-          <a class="btn" href="#calculator">Estimate a range</a>
-        </div>
-        <div class="panel light" style="margin-top:14px;">
-          <h2 style="font-size:1rem;">UK cost tools — illustrative only</h2>
-          <p>Not a builder, architect or quantity surveyor. We do not inspect properties or arrange trades.</p>
-          <p>Ranges compiled from 2026 UK trade guides — see the <a href="/about#methodology">methodology</a>. Your site will differ.</p>
+        <div class="hero-card">
+          <div class="hero-card-top"><p class="hero-card-title">Worked example</p><span class="badge">Illustrative</span></div>
+          <p class="hero-card-job">20 m² single-storey rear extension</p>
+          <p class="hero-card-spec">Mid spec · UK mid-range · living in · 20% VAT · 10% contingency</p>
+          <p class="hero-card-mid">Illustrated mid</p>
+          <p class="hero-card-fig">£80,090</p>
+          <div class="range-track" aria-hidden="true"><span class="range-mid" style="--mid:50%"></span></div>
+          <p class="hero-card-ends"><span>Low<strong>£56,063</strong></span><span>High<strong>£104,117</strong></span></p>
+          <p class="hero-card-foot">A planning band, not a price. Access, spec, region and VAT move the number more than the project name — use the range to size a budget, then compare written quotes. <a href="/about#methodology">How the ranges are built</a>.</p>
         </div>
       </div>
     </div>
+  </section>
+  <section class="trust" aria-label="About these ranges">
+    <ul class="wrap trust-row">
+      <li><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></span><span><strong>57 project types</strong>Lofts to heat pumps</span></li>
+      <li><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><strong>14 UK regions</strong>London to Northern Ireland</span></li>
+      <li><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span><span><strong>0%, 5% or 20% VAT</strong>Shown separately</span></li>
+      <li><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span><strong><a href="/about#methodology">Last checked 14 Oct 2026</a></strong>No sign-up, no cookies</span></li>
+    </ul>
   </section>
 <section class="calc-section" id="calculator">
     <div class="wrap">
@@ -74,7 +78,7 @@
         <div class="calc-head">
           <p class="badge">CALCULATOR</p>
           <h2>Project cost range — 2026 illustration</h2>
-          <p class="hint" style="margin:6px 0 0;">Filter a category, then edit every input that applies to that job.</p>
+          <p class="hint">Filter a category, then edit every input that applies to that job.</p>
         </div>
         <div id="pc-cats" class="cat-row" aria-label="Project categories"></div>
         <div class="calc-grid">
@@ -259,28 +263,41 @@
       <p class="src">For a single project’s compiled mid before factors, see the <a href="/projects">projects catalogue</a>. The calculator’s job is your own scenario; the catalogue’s job is comparison.</p>
     </div>
   </section>
-  <section class="section">
+  <section class="section section-alt">
     <div class="wrap">
-      <h2>What you can price in this lab</h2>
+      <p class="eyebrow">What you can price</p>
+      <h2>Every common home project, one calculator</h2>
       <p class="lede-plain">Each type has its own size unit and extras. Open the catalogue for the compiled mid before factors. Figures remain ranges, not quotes.</p>
       <div class="cards cards-4">
-        <a class="card" href="/#calculator"><span class="badge">SPACE</span><h3>Lofts &amp; extensions</h3><p>Velux to mansard, rear, side, wraparound, orangery.</p></a>
-        <a class="card" href="/#calculator"><span class="badge">ROOMS</span><h3>Kitchen &amp; bath</h3><p>Refit by run length, family bath, ensuite, wet room.</p></a>
-        <a class="card" href="/#calculator"><span class="badge">FABRIC</span><h3>Roof to driveway</h3><p>Re-roof, windows, render, EWI, drive, deck, fence.</p></a>
-        <a class="card" href="/#calculator"><span class="badge">ENERGY</span><h3>Heat, power, services</h3><p>Boiler, heat pump, PV, battery, EV, rewire, DPC.</p></a>
+        <a class="card" href="/#calculator"><span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-5h6v5"/></svg></span><h3>Lofts &amp; extensions</h3><p>Velux to mansard, rear, side, wraparound, orangery.</p><span class="go">Price it</span></a>
+        <a class="card" href="/#calculator"><span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M8 6h.01M12 13v4"/></svg></span><h3>Kitchen &amp; bath</h3><p>Refit by run length, family bath, ensuite, wet room.</p><span class="go">Price it</span></a>
+        <a class="card" href="/#calculator"><span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-4h6v4M9 12h6"/></svg></span><h3>Roof to driveway</h3><p>Re-roof, windows, render, EWI, drive, deck, fence.</p><span class="go">Price it</span></a>
+        <a class="card" href="/#calculator"><span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><h3>Heat, power, services</h3><p>Boiler, heat pump, PV, battery, EV, rewire, DPC.</p><span class="go">Price it</span></a>
       </div>
     </div>
   </section>
   <section class="section">
     <div class="wrap">
-      <h2>Popular cost pages</h2>
-      <p class="lede-plain">Size, spec and region tables for the jobs people price most, each with the calculator preloaded.</p>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Popular cost pages</p>
+          <h2>How much does it cost in the UK?</h2>
+          <p class="lede-plain">Size, spec and region tables for the jobs people price most, each with the calculator preloaded.</p>
+        </div>
+        <a class="more" href="/projects">All projects →</a>
+      </div>
       <!-- cost-links --><ul class="cost-links"><li><a href="/costs/kitchen-refit">Kitchen refit cost</a></li><li><a href="/costs/bathroom-renovation">Bathroom renovation cost</a></li><li><a href="/costs/single-storey-extension">Single-storey rear extension cost</a></li><li><a href="/costs/dormer-loft-conversion">Rear dormer loft conversion cost</a></li><li><a href="/costs/garage-conversion">Garage conversion cost</a></li><li><a href="/costs/house-rewire">Full house rewire cost</a></li><li><a href="/costs/re-roof">Re-roof (pitched) cost</a></li><li><a href="/costs/replacement-windows">Replacement windows cost</a></li><li><a href="/costs/driveway">Driveway cost</a></li><li><a href="/costs/air-source-heat-pump">Air-source heat pump cost</a></li><li><a href="/costs/solar-panels">Solar panels (PV) cost</a></li><li><a href="/costs/house-renovation">Whole-house mid refurb cost</a></li></ul><!-- /cost-links -->
     </div>
   </section>
-  <section class="section">
+  <section class="section section-alt">
     <div class="wrap">
-      <h2>Guides with numbers</h2>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Guides</p>
+          <h2>Plain-English guides with numbers</h2>
+        </div>
+        <a class="more" href="/guides/">All guides →</a>
+      </div>
       <div class="cards cards-5">
         <a class="card" href="/guides/loft"><span class="badge">GUIDE</span><h3>Loft conversion ranges</h3><p>Velux versus dormer, hip-to-gable and mansard.</p></a>
         <a class="card" href="/guides/extension"><span class="badge">GUIDE</span><h3>Extension £ per m²</h3><p>Why floor area is a blunt tool on its own.</p></a>
@@ -296,7 +313,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="brand brand-foot" href="/" aria-label="Project Cost Lab home"><svg class="mark" viewBox="133 238 290 290" width="32" height="32" aria-hidden="true" focusable="false"><path fill="#062E62" fill-rule="evenodd" d="M166 472V334L265 246.4 364 334V472ZM186 452H344V343L265 273 186 343Z"/><path fill="#062E62" d="M238 361h22.5v22.5H238ZM269.5 361H292v22.5h-22.5ZM238 393h22.5v22.5H238ZM269.5 393H292v22.5h-22.5Z"/><path fill="none" stroke="#0096A1" stroke-width="9" d="M403.5 251v226M390 249.5h27M390 478.5h27M149 511.5h225M147.5 497v29M375.5 497v29"/></svg><span class="wordmark">Project Cost <span class="wm-lab">Lab</span></span></a>
+          <a class="brand brand-foot" href="/" aria-label="Project Cost Lab home"><svg class="mark" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#062E62"/><path d="M12.5 31 32 14.5 51.5 31" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="19" y="39" width="7" height="11" rx="1.75" fill="#fff"/><rect x="28.5" y="30" width="7" height="20" rx="1.75" fill="#14B3BE"/><rect x="38" y="35" width="7" height="15" rx="1.75" fill="#fff"/></svg><span class="wordmark">Project Cost <span class="wm-lab">Lab</span></span></a>
           <p class="foot-note">Independent informational tools from Rodway Labs. Not a contractor, architect or quantity surveyor — and not a quote engine.</p>
           <p class="foot-note">The mid figure is a band for planning, not a tender. The VAT toggle is a display choice, not a ruling.</p>
           <p class="foot-sister"><a href="https://takehomelab.co.uk">Take-Home Lab</a> · <a href="https://remortgagelab.co.uk">Remortgage Lab</a> · <a href="https://loancalclab.net">LoanCalc Lab</a></p>
