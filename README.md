@@ -2,7 +2,7 @@
 
 UK home-project cost range calculator and guides from **Rodway Labs**. Live at [https://projectcostlab.co.uk](https://projectcostlab.co.uk).
 
-**Status (15 Nov 2026):** indexable. `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. **Ads are off** (`config/ads.json` → `enabled: false`), so `ads.txt` authorises nobody and no ad code is on any page. The first-party consent banner has been removed: the site sets no cookies and stores nothing on the device. Visits are counted with cookieless **Cloudflare Web Analytics** (enable it in the dashboard — see Analytics below).
+**Status (15 Nov 2026):** indexable. `robots.txt` allows crawling and lists the sitemap. HTML pages use `index,follow`. **Ads are on for AdSense review (16 Nov 2026)** (`config/ads.json` → `enabled: true`, `ca-pub-7612291779397704`): `ads.txt` lists the publisher and every page carries the AdSense loader; ad slots stay empty until units are created after approval. Consent comes from Google's certified CMP (AdSense → Privacy & messaging). The old first-party consent banner is gone: the site sets no cookies of its own (Google may, with consent). Visits are counted with cookieless **Cloudflare Web Analytics** (enable it in the dashboard — see Analytics below).
 
 ## What it is
 

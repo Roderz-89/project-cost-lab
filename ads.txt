@@ -1,1 +1,2 @@
-# This site does not show ads. This file authorises no seller.
+# Authorised sellers for projectcostlab.co.uk
+google.com, pub-7612291779397704, DIRECT, f08c47fec0942fa0
