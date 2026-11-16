@@ -11,23 +11,27 @@
       "title": "Planning fees from 8 December 2026: \u00a3548 to \u00a3575 for a householder application",
       "description": "England\u2019s householder planning fee rises from \u00a3548 to \u00a3575 on 8 December 2026, with prior approval at \u00a3310. What changed, with a worked extension and loft band.",
       "date": "2026-11-06",
-      "updated": "2026-11-06",
+      "updated": "2026-11-16",
       "category": "Planning",
       "readTime": 5,
-      "excerpt": "Parliament approved new national planning fees for England on 27 October 2026. From 8 December a householder application rises from \u00a3548 to \u00a3575 and larger-home prior approval from \u00a3249 to \u00a3310 \u2014 small next to an extension band.",
-      "updateDue": "We will update this post if the made regulations differ from the approved draft figures, and when MHCLG publishes the separate local fee-setting regulations.",
+      "excerpt": "New national planning fees for England were made on 10 November 2026 (S.I. 2026/1192). From 8 December a householder application rises from \u00a3548 to \u00a3575 and larger-home prior approval from \u00a3249 to \u00a3310 \u2014 small next to an extension band.",
+      "updateDue": "We will update this post when MHCLG publishes the separate regulations that let councils set some planning fees locally.",
       "sources": [
         {
           "title": "UK Parliament \u2014 Town and Country Planning (Fees) Regulations 2026 (procedure timeline)",
           "url": "https://statutoryinstruments.parliament.uk/instrument/DfEhxJ04/timeline/1D26TITE"
         },
         {
-          "title": "Legislation.gov.uk \u2014 Draft Town and Country Planning (Fees) Regulations 2026",
-          "url": "https://www.legislation.gov.uk/ukdsi/2026/9780348286625/contents"
+          "title": "Legislation.gov.uk \u2014 Town and Country Planning (Fees) (Amendment and Transitional Provision) Regulations 2026 (S.I. 2026/1192), as made",
+          "url": "https://www.legislation.gov.uk/uksi/2026/1192/made"
         },
         {
           "title": "Planning Portal \u2014 Forthcoming fees for planning applications in England",
           "url": "https://ecab.planningportal.co.uk/uploads/forthcoming_english_application_fees.pdf"
+        },
+        {
+          "title": "GOV.UK \u2014 Fees for planning applications in England from 8 December 2026",
+          "url": "https://assets.publishing.service.gov.uk/media/6af1a985bdaa07fdf9470e18/Planning_fees_national_increases_from_8_December_2026.pdf"
         },
         {
           "title": "MHCLG \u2014 Fees for planning applications: government response",
