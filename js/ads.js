@@ -6,7 +6,7 @@
 (function () {
   "use strict";
   var q = (window.adsbygoogle = window.adsbygoogle || []);
-  Array.prototype.forEach.call(document.querySelectorAll("ins.adsbygoogle"), function () { q.push({}); });
+  Array.prototype.forEach.call(document.querySelectorAll("ins.adsbygoogle:not([data-adsbygoogle-status])"), function () { q.push({}); });
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("[data-ads-consent]");
     if (!a) return;
