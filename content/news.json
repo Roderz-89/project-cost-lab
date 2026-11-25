@@ -7,6 +7,43 @@
   ],
   "posts": [
     {
+      "slug": "energy-price-cap-january-2027",
+      "title": "Energy price cap January to March 2027: what a 26% rise means for heat pump and boiler running costs",
+      "description": "Ofgem’s cap rises 26% from 1 January 2027, with gas up more than electricity. The new rates, the heat pump vs gas boiler arithmetic and a worked install band.",
+      "date": "2026-11-25",
+      "updated": "2026-11-25",
+      "category": "Energy",
+      "readTime": 5,
+      "excerpt": "From 1 January 2027 the cap averages 32.69p per kWh for electricity and 10.96p for gas. The electricity-to-gas price ratio falls from about 3.3 to about 3.0, which changes the heat pump vs gas boiler running-cost sums.",
+      "updateDue": "We will update this post when Ofgem announces the cap for April to June 2027, which it says it will publish by 23 February 2027.",
+      "sources": [
+        {
+          "title": "Ofgem — Energy price cap to rise by 26% from January 2027 (25 November 2026)",
+          "url": "https://www.ofgem.gov.uk/press-release/energy-price-cap-rise-26-january-2027"
+        },
+        {
+          "title": "Ofgem — Changes to energy price cap between 1 January and 31 March 2027",
+          "url": "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-january-and-31-march-2027"
+        },
+        {
+          "title": "Ofgem — Energy price cap unit rates and standing charges",
+          "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges"
+        },
+        {
+          "title": "GOV.UK — Boiler Upgrade Scheme: what you can get",
+          "url": "https://www.gov.uk/apply-boiler-upgrade-scheme/what-you-can-get"
+        },
+        {
+          "title": "DESNZ — Approval to over-allocate vouchers for the Boiler Upgrade Scheme, November 2026",
+          "url": "https://www.gov.uk/government/publications/boiler-upgrade-scheme-approval-to-over-allocate-vouchers-november-2026/approval-to-over-allocate-vouchers-for-the-boiler-upgrade-scheme-november-2026"
+        },
+        {
+          "title": "HMRC — VAT on energy-saving materials and heating equipment (VAT Notice 708/6)",
+          "url": "https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086"
+        }
+      ]
+    },
+    {
       "slug": "planning-fees-december-2026",
       "title": "Planning fees from 8 December 2026: \u00a3548 to \u00a3575 for a householder application",
       "description": "England\u2019s householder planning fee rises from \u00a3548 to \u00a3575 on 8 December 2026, with prior approval at \u00a3310. What changed, with a worked extension and loft band.",
