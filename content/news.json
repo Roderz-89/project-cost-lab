@@ -93,11 +93,11 @@
       "title": "Budget 2026: what changed for home works and energy upgrades",
       "description": "What the 28 October 2026 Budget means for VAT on insulation, solar and heat pumps, the Boiler Upgrade Scheme, energy bills and building regulations, with a worked \u00a3 example.",
       "date": "2026-10-29",
-      "updated": "2026-11-15",
+      "updated": "2026-11-27",
       "category": "Energy",
       "readTime": 5,
       "excerpt": "VAT on energy-saving materials returns to 5% on 1 April 2027 as planned, heat batteries join the list, and the electricity VAT cut runs to July 2027. A worked example shows the VAT change on solar and insulation bands.",
-      "updateDue": "We will update this post when the secondary legislation for heat batteries is published, when the full eligibility rules for the Household Energy Payment are published, and when Ofgem consults on removing gas standing charges.",
+      "updateDue": "We will update this post when the secondary legislation for heat batteries is published and when Ofgem consults on removing gas standing charges.",
       "sources": [
         {
           "title": "HM Treasury \u2014 Budget 2026 (28 October 2026)",
@@ -130,6 +130,14 @@
         {
           "title": "OBR \u2014 Economic and fiscal outlook, October 2026",
           "url": "https://www.gov.uk/government/publications/october-2026-economic-and-fiscal-outlook"
+        },
+        {
+          "title": "MHCLG, HM Treasury and DESNZ — Household Energy Payment 2027: factsheet for households (24 November 2026)",
+          "url": "https://www.gov.uk/government/publications/household-energy-payment-2027-factsheet-for-households/household-energy-payment-2027-factsheet-for-households"
+        },
+        {
+          "title": "MHCLG — Household Energy Payment 2027: guidance for billing authorities (24 November 2026)",
+          "url": "https://www.gov.uk/government/publications/household-energy-payment-2027-guidance-for-billing-authorities/household-energy-payment-2027-guidance-for-billing-authorities"
         }
       ]
     },
